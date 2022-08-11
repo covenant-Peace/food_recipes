@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, sized_box_for_whitespace
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
@@ -16,7 +15,7 @@ class HistoryCard extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 15.0,
+          height: 10.0,
         ),
         Container(
           width: 336.0,
@@ -29,7 +28,7 @@ class HistoryCard extends StatelessWidget {
           height: 5.0,
         ),
         Container(
-          margin: EdgeInsets.only(left: 30.0, right: 30.0),
+          // margin: EdgeInsets.only(left: 18.0, right: 30.0),
           width: 340,
           height: 80,
           child: Row(
@@ -46,13 +45,11 @@ class HistoryCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    // alignment: Alignment.bottomLeft,
                     width: 60.0,
                     height: 18.0,
                     child: Text(
-                      'dd.mm.yyyy',
+                      '23.03.2021',
                       style: kTextJourney3,
-                      textAlign: TextAlign.left,
                     ),
                   ),
                 ],
@@ -68,7 +65,6 @@ class HistoryCard extends StatelessWidget {
             ],
           ),
         ),
-
       ],
     );
   }

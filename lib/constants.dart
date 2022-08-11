@@ -105,3 +105,95 @@ const kTextJourney15 = TextStyle(
   fontSize: 14.0,
 );
 
+const kTextJourney16 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFBDBDBD),
+  fontWeight: FontWeight.w400,
+  fontSize: 12.0,
+);
+
+const kTextJourney17 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFF2F2F2),
+  fontWeight: FontWeight.w500,
+  fontSize: 12.0,
+);
+
+const kTextGet = TextStyle(
+  fontSize: 14.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w400,
+  color: Color(0xFFE5E5E5),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet1 = TextStyle(
+  fontSize: 18.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w700,
+  color: Color(0xFFFFFFFF),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet2 = TextStyle(
+  fontSize: 18.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w600,
+  color: Color(0xFFEDA92E),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet3 = TextStyle(
+  fontSize: 18.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w400,
+  color: Color(0xFF222222),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet4 = TextStyle(
+  fontSize: 16.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w500,
+  color: Color(0xFFFFFFFF),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet5 = TextStyle(
+  fontSize: 12.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w400,
+  color: Color(0xFFE5E5E5),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet6 = TextStyle(
+  fontSize: 14.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w500,
+  color: Color(0xFFEDA92E),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextJourney18 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFEDA92E),
+  fontWeight: FontWeight.w700,
+  fontSize: 24.0,
+);
+
+const kTextJourney19 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Colors.orange,
+  fontWeight: FontWeight.w400,
+  fontSize: 16.0,
+);
+
+const kTextJourney20 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFFFFFFF),
+  fontWeight: FontWeight.w500,
+  fontSize: 12.0,
+);
+
+

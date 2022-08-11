@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-class PaymentCard extends StatelessWidget {
+class PaymentCard extends StatelessWidget{
 
   final Function onPressed;
   final Color cardColor;
-  final Widget fieldText;
+  final Widget number;
 
-  PaymentCard({this.onPressed, this.cardColor, this.fieldText});
+  PaymentCard({this.onPressed, this.cardColor, this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class PaymentCard extends StatelessWidget {
             )),
         child: GestureDetector(
           onTap: onPressed,
-          child: fieldText,
+          child: number,
         ),
       ),
     );

@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'sign_up.dart';
 import 'homescreen.dart';
 import 'journey.dart';
 

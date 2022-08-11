@@ -17,14 +17,9 @@ class Phone extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      child: Container(
-        width: 48.0,
-        height: 21.0,
-        margin: EdgeInsets.only(left: 73.0),
-        child: Text(
-          labelText,
-          style: gret,
-        ),
+      child: Text(
+        labelText,
+        style: gret,
       ),
     );
   }

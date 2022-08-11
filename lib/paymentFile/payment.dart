@@ -3,8 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
-import 'package:food_recipes/paymentFile/historyCard.dart';
-import 'payment_card.dart';
+import 'package:food_recipes/model/history_card.dart';
+import 'package:food_recipes/model/payment_card.dart';
+import 'package:food_recipes/payment_method.dart';
+import 'package:food_recipes/view/shopping_page.dart';
 
 enum Paymentcard {
   first,
@@ -23,7 +25,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> foodWidget = [
+    List<PaymentCard> foodWidget = [
       PaymentCard(
         onPressed: () {
           setState(() {
@@ -33,17 +35,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
         cardColor: selectedCard == Paymentcard.first
             ? Colors.white
             : Color(0xFF6A6A6A),
-        fieldText: selectedCard == Paymentcard.first
+        number: selectedCard == Paymentcard.first
             ? ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    hintText: '********',
-                    hintStyle: kTextJourney9,
-                    border: InputBorder.none,
-                  ),
-                  obscureText: true,
-                  keyboardType: TextInputType.phone,
-                ),
+                title: Text(''),
                 trailing: Icon(
                   Icons.panorama_fish_eye,
                   color: selectedCard == Paymentcard.first
@@ -70,17 +64,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
         cardColor: selectedCard == Paymentcard.second
             ? Colors.white
             : Color(0xFF6A6A6A),
-        fieldText: selectedCard == Paymentcard.second
+        number: selectedCard == Paymentcard.second
             ? ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    hintText: '********',
-                    hintStyle: kTextJourney9,
-                    border: InputBorder.none,
-                  ),
-                  obscureText: true,
-                  keyboardType: TextInputType.phone,
-                ),
+                title: Text(''),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     hintText: '********',
+                //     hintStyle: kTextJourney9,
+                //     border: InputBorder.none,
+                //   ),
+                //   obscureText: true,
+                //   keyboardType: TextInputType.phone,
+                // ),
                 trailing: Icon(
                   Icons.panorama_fish_eye,
                   color: selectedCard == Paymentcard.second
@@ -99,6 +94,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
       ),
     ];
+
     return Scaffold(
       backgroundColor: Color(0xFF222222),
       body: ListView(
@@ -141,7 +137,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             height: 35.0,
           ),
           Container(
-            margin: EdgeInsets.only(left: 18.0, right: 36.0),
+            margin: EdgeInsets.only(left: 18.0, right: 30.0),
             child: Row(
               children: <Widget>[
                 Container(
@@ -156,23 +152,36 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 SizedBox(
                   width: 70.0,
                 ),
-                Container(
-                  color: Colors.orange,
-                  height: 28.0,
-                  width: 80.0,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.add_box_outlined,
-                        color: Colors.black,
-                      ),
-                      Text(
-                        'Add new',
-                        style: kTextJourney7,
-                      ),
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    // controller.cardAdd(history)
+                    // Get.to(PaymentMethod());
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PaymentMethod()));
+                  },
+                  child: Container(
+                    height: 28.0,
+                    width: 80.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2.0),
+                      color: Colors.orange,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.add_box_outlined,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          'Add new',
+                          style: kTextJourney7,
+                        ),
+                      ],
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -183,9 +192,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
             children: <Widget>[
               foodWidget.first,
               SizedBox(
-                height: 19.0,
+                height: 15.0,
               ),
-              foodWidget.last
+              foodWidget.last,
             ],
           ),
           SizedBox(
@@ -200,26 +209,48 @@ class _PaymentScreenState extends State<PaymentScreen> {
               style: kTextJourney13,
             ),
           ),
-          HistoryCard(
-            food: 'Fruit Salad + Ogbono Soup + Small chop ...',
-            amount: 8000,
+          Column(
+            children: [
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 18.0, right: 30.0),
+                // width: 300,
+                // height: 200,
+                child: Column(
+                  children: [
+                    HistoryCard(
+                      food: 'Fruit Salad + Ogbono Soup + Small chop ...',
+                      amount: 8000,
+                    ),
+                    HistoryCard(
+                      food: 'Fruit Salad + Ogbono Soup + Small chop ...',
+                      amount: 8000,
+                    ),
+                    HistoryCard(
+                      food: 'Fruit Salad + Ogbono Soup + Small chop ...',
+                      amount: 5000,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
-          HistoryCard(
-            food: 'Fruit Salad + Ogbono Soup + Small chop ...',
-            amount: 8000,
-          ),
-          HistoryCard(
-            food: 'Fruit Salad + Ogbono Soup + Small chop ...',
-            amount: 5000,
+          SizedBox(
+            height: 20,
           ),
           GestureDetector(
             onTap: () {
-              setState(() {
-                selectedCard == Paymentcard.first
-                    ? foodWidget.removeAt(0)
-                    : foodWidget.removeAt(1);
-              },
+              setState(
+                () {
+                  selectedCard == Paymentcard.first
+                      ? foodWidget.removeAt(0)
+                      : foodWidget.removeAt(1);
+                },
               );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShoppingPage()));
             },
             child: Container(
               width: 341.0,

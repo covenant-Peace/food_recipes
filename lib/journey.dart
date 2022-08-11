@@ -15,21 +15,14 @@ class JourneyScreen extends StatelessWidget {
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child: Container(
-              // padding: EdgeInsets.only(left: 0.0, right: 0.0),
-              child: Image.asset(
-                'images/child.png',
-                // width: 500.0,
-                //   color: Color(0xFFC4C4C4),
-              ),
-              height: 600.0,
-              // width: double.infinity,
+            child: Image.asset(
+              'images/child.png',
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 312.5,
+              height: 270.0,
               width: 428.0,
               decoration: BoxDecoration(
                 color: Color(0xFFF2F2F2),

@@ -55,12 +55,7 @@ class Description extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 20.0,
-          ),
-          SizedBox(
-            height: 60.0,
-          ),
+
         ],
       ),
     );

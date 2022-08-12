@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/constants.dart';
 
 class ModalDescription extends StatefulWidget {
@@ -27,7 +28,6 @@ class _ModalDescriptionState extends State<ModalDescription> {
   Widget build(BuildContext context) {
     return Container(
       height: 520.5,
-      width: 428.0,
       decoration: BoxDecoration(
         color: Color(0xFF222222),
         borderRadius: BorderRadius.only(
@@ -35,21 +35,18 @@ class _ModalDescriptionState extends State<ModalDescription> {
           topRight: Radius.circular(62.0),
         ),
       ),
-      child: Container(
-        margin: EdgeInsets.only(left: 40.0, right: 40.0),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 36, right: 35, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: 18.0,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 120.0),
-              height: 2.0,
-              width: 40.0,
-              child: Divider(
-                color: Color(0xFFE5E5E5),
-                thickness: 2.0,
+            Center(
+              child: Container(
+                width: 40.0,
+                child: Divider(
+                  color: Color(0xFFE5E5E5),
+                  thickness: 2.0,
+                ),
               ),
             ),
             SizedBox(
@@ -62,10 +59,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                   'Mediterranean',
                   style: kTextJourney20,
                 ),
-                Icon(
-                  Icons.panorama_fisheye,
-                  color: Colors.white,
-                ),
+                SvgPicture.asset('images/salad.svg')
               ],
             ),
             SizedBox(

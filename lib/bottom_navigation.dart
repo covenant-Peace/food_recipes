@@ -6,6 +6,10 @@ import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/passwordFile/forgot_password.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/sign_up.dart';
+import 'package:food_recipes/view/description.dart';
+import 'package:food_recipes/view/place_order.dart';
+import 'package:food_recipes/view/shopping_page.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -22,11 +26,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> pages = <Widget>[
-    JourneyScreen(),
-    SignUpScreen(),
+    Description(),
+    PlaceOrder(),
+    ShoppingPage(),
     LoginScreen(),
     PaymentScreen(),
-    ForgotPassword(),
   ];
 
   @override
@@ -39,17 +43,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
         unselectedItemColor: Color(0xFFBDBDBD),
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined), label: 'Home'),
+              icon: SvgPicture.asset('images/Home.svg'), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.grid_view), label: 'Category'),
+              icon: SvgPicture.asset('images/category.svg'), label: 'Category'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
+            icon: SvgPicture.asset('images/cart.svg'),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_none_outlined),
+              icon: SvgPicture.asset('images/notification.svg'),
               label: 'Notification'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/account.svg'), label: 'Account'),
         ],
         currentIndex: selectedIndex,
         onTap: _onItemTapped,

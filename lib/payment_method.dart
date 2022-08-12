@@ -31,13 +31,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
       bottomNavigationBar: just,
       body: Padding(
         padding:
-            const EdgeInsets.only(left: 36, right: 36, top: 36, bottom: 36),
+            const EdgeInsets.only(left: 36, right: 36, top: 26, bottom: 36),
         child: ListView(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: 40.0,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,11 +94,12 @@ class _PaymentMethodState extends State<PaymentMethod> {
               child: ListTile(
                 title: TextField(
                   decoration: InputDecoration(
-                    hintText: 'Cardholder\'s name',
-                    hintStyle: kTextJourney5,
+                    labelText: 'Cardholder\'s name',
+                    labelStyle: kTextJourney5,
                     border: InputBorder.none,
                   ),
                   obscureText: false,
+                  style: kTextJourney5,
                   keyboardType: TextInputType.emailAddress,
                 ),
               ),
@@ -147,8 +145,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                CardNumber(),
-                CardNumber(),
+                CardNumber1(),
+                CardNumber1(),
                 SizedBox(
                   width: 46.0,
                 ),
@@ -185,7 +183,13 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       ),
                       obscureText: false,
                       maxLength: 3,
+                      style: kTextJourney17,
                       keyboardType: TextInputType.phone,
+                      onChanged: (newText){
+                        if(newText.length == 3){
+                          FocusScope.of(context).unfocus();
+                        }
+                      },
                     ),
                   ),
                 ),
@@ -221,3 +225,50 @@ class _PaymentMethodState extends State<PaymentMethod> {
     );
   }
 }
+
+class CardNumber1 extends StatelessWidget {
+  String cpNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 65.0,
+      height: 56.0,
+      // margin: EdgeInsets.only(left: 36.0, right: 38.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          color: Color(0xFF222222),
+          border: Border(
+            top: BorderSide(
+                color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+            bottom: BorderSide(
+                color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+            left: BorderSide(
+                color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+            right: BorderSide(
+                color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+          )),
+      child: ListTile(
+        title: TextField(
+          decoration: InputDecoration(
+            // hintText: '1234',
+            // hintStyle: kTextJourney16,
+            border: InputBorder.none,
+          ),
+          obscureText: false,
+          maxLength: 2,
+          style: kTextJourney16,
+          cursorColor: Colors.white,
+          keyboardType: TextInputType.phone,
+          onChanged: (newText) {
+            cpNumber = newText;
+            if(newText.length == 2){
+              FocusScope.of(context).nextFocus();
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+

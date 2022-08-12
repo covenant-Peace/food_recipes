@@ -35,10 +35,18 @@ class CardNumber extends StatelessWidget {
           ),
           obscureText: false,
           maxLength: 4,
+          style: kTextJourney17,
           cursorColor: Colors.white,
+          focusNode: FocusNode(),
           keyboardType: TextInputType.phone,
           onChanged: (newText) {
             cpNumber = newText;
+            if(newText.length == 4){
+              FocusScope.of(context).nextFocus();
+            }
+          },
+          onEditingComplete: (){
+            FocusManager.instance.primaryFocus?.unfocus();
           },
         ),
       ),

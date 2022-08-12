@@ -18,7 +18,6 @@ class PaymentCard extends StatelessWidget{
       child: Container(
         width: 354.0,
         height: 56.0,
-        margin: EdgeInsets.only(left: 36.0, right: 36.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             color: Color(0xFF222222),

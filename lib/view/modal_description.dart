@@ -1,15 +1,27 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
-import 'package:get/get.dart';
-import 'package:food_recipes/controller/number_controller.dart';
-import 'package:food_recipes/controller/shopping_controller.dart';
 
-class ModalDescription extends StatelessWidget {
-  final numController = Get.put(NumberController());
-  final foodieController = Get.put(ShoppingController());
+class ModalDescription extends StatefulWidget {
+  @override
+  State<ModalDescription> createState() => _ModalDescriptionState();
+}
+
+class _ModalDescriptionState extends State<ModalDescription> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _removeCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +109,7 @@ class ModalDescription extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            // payController
-                            //     .removeFromCart(
-                            //     controller
-                            //         .foods[
-                            //     index]);
+                            _removeCounter();
                           },
                           child: Icon(
                             Icons.remove,
@@ -109,14 +117,10 @@ class ModalDescription extends StatelessWidget {
                             size: 10.0,
                           ),
                         ),
-                        GetX<NumberController>(builder: ((controller) {
-                          return Text('${controller.count}');
-                        })),
+                        Text('$_counter'),
                         GestureDetector(
                           onTap: () {
-                            // numController.addToCart(
-                            //     controller
-                            //         .foods[index]);
+                            _incrementCounter();
                           },
                           child: Icon(
                             Icons.add,

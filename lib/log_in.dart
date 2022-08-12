@@ -11,295 +11,294 @@ import 'sign_up.dart';
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color(0xFF222222),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 38.0, right: 36.0),
-          child: ListView(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                'Log In',
-                style: kTextJourney6,
-              ),
-              SizedBox(
-                height: 47.0,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color(0xFF222222),
-                    border: Border(
-                      top: BorderSide(
-                          color: Colors.orange,
-                          width: 1,
-                          style: BorderStyle.solid),
-                      bottom: BorderSide(
-                          color: Colors.orange,
-                          width: 1,
-                          style: BorderStyle.solid),
-                      left: BorderSide(
-                          color: Colors.orange,
-                          width: 1,
-                          style: BorderStyle.solid),
-                      right: BorderSide(
-                          color: Colors.orange,
-                          width: 1,
-                          style: BorderStyle.solid),
-                    )),
-                child: ListTile(
-                  title: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      hintStyle: kTextJourney5,
-                      border: InputBorder.none,
-                    ),
-                    obscureText: false,
-                    keyboardType: TextInputType.emailAddress,
+    return Scaffold(
+      backgroundColor: Color(0xFF222222),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 38.0, right: 36.0),
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Log In',
+              style: kTextJourney6,
+            ),
+            SizedBox(
+              height: 47.0,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Color(0xFF222222),
+                  border: Border(
+                    top: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    left: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    right: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                  )),
+              child: ListTile(
+                title: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: kTextJourney5,
+                    border: InputBorder.none,
                   ),
+                  style: kTextJourney5,
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
                 ),
               ),
-              SizedBox(
-                height: 14.0,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color(0xFF222222),
-                    border: Border(
-                      top: BorderSide(
-                          color: Color(0xFF6A6A6A),
-                          width: 1,
-                          style: BorderStyle.solid),
-                      bottom: BorderSide(
-                          color: Color(0xFF6A6A6A),
-                          width: 1,
-                          style: BorderStyle.solid),
-                      left: BorderSide(
-                          color: Color(0xFF6A6A6A),
-                          width: 1,
-                          style: BorderStyle.solid),
-                      right: BorderSide(
-                          color: Color(0xFF6A6A6A),
-                          width: 1,
-                          style: BorderStyle.solid),
-                    )),
-                child: ListTile(
-                  title: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Enter password',
-                      hintStyle: kTextJourney3,
-                      border: InputBorder.none,
-                    ),
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
+            ),
+            SizedBox(
+              height: 14.0,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Color(0xFF222222),
+                  border: Border(
+                    top: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    left: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    right: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                  )),
+              child: ListTile(
+                title: TextField(
+                  decoration: InputDecoration(
+                    // hintText: 'Enter password',
+                    labelText: 'Enter Password',
+                    labelStyle: kTextJourney3,
+                    // hintStyle: kTextJourney3,
+                    border: InputBorder.none,
                   ),
+                  obscureText: true,
+                  style: kTextJourney5,
+                  keyboardType: TextInputType.text,
                 ),
               ),
-              SizedBox(
-                height: 11.0,
+            ),
+            SizedBox(
+              height: 11.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ForgotPassword()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 1.0,
+                  ),
+                  Text(
+                    'Forgot Password?',
+                    style: kTextJourney9,
+                  ),
+                ],
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ForgotPassword()));
-                },
+            ),
+            SizedBox(
+              height: 11.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaymentScreen()));
+              },
+              child: Container(
+                height: 56.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35.0),
+                  color: Color(0xFFEDA92E),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'Log In',
+                  style: kTextJourney4,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 31.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  width: 130.0,
+                  child: Divider(
+                    thickness: 1.0,
+                    color: Color(0xFF6A6A6A),
+                  ),
+                ),
+                Text(
+                  'or',
+                  style: kTextJourney3,
+                ),
+                Container(
+                  width: 130.0,
+                  child: Divider(
+                    thickness: 1.0,
+                    color: Color(0xFF6A6A6A),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 56.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35.0),
+                  color: Color(0xFFF2F2F2),
+                ),
+                alignment: Alignment.center,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Image.asset('images/google.png'),
                     SizedBox(
-                      width: 1.0,
+                      width: 8.0,
                     ),
                     Text(
-                      'Forgot Password?',
-                      style: kTextJourney9,
+                      'Sign up with Google',
+                      style: kTextJourney7,
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 11.0,
+            ),
+            SizedBox(
+              height: 12.0,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 56.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35.0),
+                  color: Color(0xFF3B5998),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('images/facebook.png'),
+                    SizedBox(
+                      width: 8.0,
+                    ),
+                    Text(
+                      'Sign up with Facebook',
+                      style: kTextJourney7,
+                    ),
+                  ],
+                ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PaymentScreen()));
-                },
-                child: Container(
-                  height: 56.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35.0),
-                    color: Color(0xFFEDA92E),
-                  ),
-                  alignment: Alignment.center,
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Don\'t have an account?',
+                  style: kTextJourney3,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignUpScreen()));
+                  },
                   child: Text(
-                    'Log In',
-                    style: kTextJourney4,
-                    textAlign: TextAlign.center,
+                    ' Signup',
+                    style: kTextJourney8,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 31.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    width: 130.0,
-                    child: Divider(
-                      thickness: 1.0,
-                      color: Color(0xFF6A6A6A),
-                    ),
-                  ),
-                  Text(
-                    'or',
-                    style: kTextJourney3,
-                  ),
-                  Container(
-                    width: 130.0,
-                    child: Divider(
-                      thickness: 1.0,
-                      color: Color(0xFF6A6A6A),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              GestureDetector(
-                onTap: () {},
+              ],
+            ),
+            SizedBox(
+              height: 50.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => JourneyScreen()));
+              },
+              child: Center(
                 child: Container(
-                  height: 56.0,
+                  height: 76.0,
+                  width: 76.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35.0),
-                    color: Color(0xFFF2F2F2),
-                  ),
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('images/google.png'),
-                      SizedBox(
-                        width: 8.0,
-                      ),
-                      Text(
-                        'Sign up with Google',
-                        style: kTextJourney7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 56.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35.0),
-                    color: Color(0xFF3B5998),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('images/facebook.png'),
-                      SizedBox(
-                        width: 8.0,
-                      ),
-                      Text(
-                        'Sign up with Facebook',
-                        style: kTextJourney7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Don\'t have an account?',
-                    style: kTextJourney3,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
-                    },
-                    child: Text(
-                      ' Signup',
-                      style: kTextJourney8,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 50.0,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => JourneyScreen()));
-                },
-                child: Center(
-                  child: Container(
-                    height: 76.0,
-                    width: 76.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border(
-                        top: BorderSide(
-                            color: Colors.orange,
-                            width: 1,
-                            style: BorderStyle.solid),
-                        bottom: BorderSide(
-                            color: Colors.orange,
-                            width: 1,
-                            style: BorderStyle.solid),
-                        left: BorderSide(
-                            color: Colors.orange,
-                            width: 1,
-                            style: BorderStyle.solid),
-                        right: BorderSide(
-                            color: Colors.orange,
-                            width: 1,
-                            style: BorderStyle.solid),
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Skip \nfor now',
-                          style: kTextJourney5,
-                          textAlign: TextAlign.center,
-                        ),
-                        Icon(
-                          Icons.arrow_right_alt_sharp,
+                    shape: BoxShape.circle,
+                    border: Border(
+                      top: BorderSide(
                           color: Colors.orange,
-                        ),
-                      ],
+                          width: 1,
+                          style: BorderStyle.solid),
+                      bottom: BorderSide(
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
+                      left: BorderSide(
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
+                      right: BorderSide(
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
                     ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Skip \nfor now',
+                        style: kTextJourney5,
+                        textAlign: TextAlign.center,
+                      ),
+                      Icon(
+                        Icons.arrow_right_alt_sharp,
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

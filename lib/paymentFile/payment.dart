@@ -97,60 +97,43 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
     return Scaffold(
       backgroundColor: Color(0xFF222222),
-      body: ListView(
-        children: <Widget>[
-          SizedBox(
-            height: 40.0,
-          ),
-          Row(
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 26.0),
-                  height: 20.0,
-                  width: 20.0,
-                  alignment: Alignment.topLeft,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 36, right: 36),
+        child: ListView(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                   child: Icon(
                     Icons.keyboard_arrow_left_sharp,
                     color: Colors.white,
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 58.0,
-              ),
-              Container(
-                height: 24.0,
-                width: 130.0,
-                alignment: Alignment.topCenter,
-                child: Text(
+                // SizedBox(
+                //   width: 1.0,
+                // ),
+                Text(
                   'Payment History',
                   style: kTextJourney11,
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 35.0,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 18.0, right: 30.0),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: 128.0,
-                  height: 21.0,
-                  margin: EdgeInsets.only(left: 26.0),
-                  child: Text(
-                    'Saved payment card',
-                    style: kTextJourney9,
-                  ),
-                ),
                 SizedBox(
-                  width: 70.0,
+                  width: 1.0,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 35.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Saved payment card',
+                  style: kTextJourney9,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -184,41 +167,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Column(
-            children: <Widget>[
-              foodWidget.first,
-              SizedBox(
-                height: 15.0,
-              ),
-              foodWidget.last,
-            ],
-          ),
-          SizedBox(
-            height: 38.0,
-          ),
-          Container(
-            height: 21.0,
-            width: 58.0,
-            margin: EdgeInsets.only(left: 26.0),
-            child: Text(
+            SizedBox(
+              height: 15.0,
+            ),
+            Column(
+              children: <Widget>[
+                foodWidget.first,
+                SizedBox(
+                  height: 15.0,
+                ),
+                foodWidget.last,
+              ],
+            ),
+            SizedBox(
+              height: 38.0,
+            ),
+            Text(
               'History()',
               style: kTextJourney13,
             ),
-          ),
-          Column(
-            children: [
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 18.0, right: 30.0),
-                // width: 300,
-                // height: 200,
-                child: Column(
+            Column(
+              children: [
+                SizedBox(
+                  height: 10.0,
+                ),
+                Column(
                   children: [
                     HistoryCard(
                       food: 'Fruit Salad + Ogbono Soup + Small chop ...',
@@ -233,42 +206,41 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       amount: 5000,
                     ),
                   ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(
+                  () {
+                    selectedCard == Paymentcard.first
+                        ? foodWidget.removeAt(0)
+                        : foodWidget.removeAt(1);
+                  },
+                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ShoppingPage()));
+              },
+              child: Container(
+                width: 341.0,
+                height: 56.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(48.0),
+                  color: Color(0xFFEDA92E),
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(
-                () {
-                  selectedCard == Paymentcard.first
-                      ? foodWidget.removeAt(0)
-                      : foodWidget.removeAt(1);
-                },
-              );
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ShoppingPage()));
-            },
-            child: Container(
-              width: 341.0,
-              height: 56.0,
-              margin: EdgeInsets.only(left: 44.0, right: 43.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35.0),
-                color: Color(0xFFEDA92E),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                'Delete Card',
-                style: kTextJourney4,
-                textAlign: TextAlign.center,
+                alignment: Alignment.center,
+                child: Text(
+                  'Delete Card',
+                  style: kTextJourney4,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -5,12 +5,12 @@ class NumberController extends GetxController {
   var quantityItems = <Food>[].obs;
 
   int get count =>quantityItems.length;
-  addToCart(Food food) {
+  addToCart(var food) {
     quantityItems.add(food);
   }
 
 
-  removeFromCart(Food food) {
+  removeFromCart(var food) {
     quantityItems.remove(food);
   }
 

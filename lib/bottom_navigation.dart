@@ -43,18 +43,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
         unselectedItemColor: Color(0xFFBDBDBD),
         items: [
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/Home.svg'), label: 'Home'),
+              icon: SvgPicture.asset('images/Home.svg'), label: 'Home', activeIcon: SvgPicture.asset('images/Home.svg', color: Colors.orange,)),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/category.svg'), label: 'Category'),
+              icon: SvgPicture.asset('images/category.svg'), label: 'Category', activeIcon: SvgPicture.asset('images/category.svg', color: Colors.orange,)),
           BottomNavigationBarItem(
             icon: SvgPicture.asset('images/cart.svg'),
             label: 'Cart',
+              activeIcon: SvgPicture.asset('images/cart.svg', color: Colors.orange,)
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset('images/notification.svg'),
-              label: 'Notification'),
+              label: 'Notification', activeIcon: SvgPicture.asset('images/notification.svg', color: Colors.orange,)),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/account.svg'), label: 'Account'),
+              icon: SvgPicture.asset('images/account.svg'), label: 'Account', activeIcon: SvgPicture.asset('images/account.svg', color: Colors.orange,)),
         ],
         currentIndex: selectedIndex,
         onTap: _onItemTapped,

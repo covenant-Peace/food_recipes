@@ -11,7 +11,6 @@ enum Call {
   email,
 }
 
-
 class ForgotPassword extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
@@ -114,14 +113,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     width: 130.0,
                     child: Divider(
                       thickness: 2.0,
-                      color: selectedCall == Call.phone? Colors.orange : Color(0xFF6A6A6A),
+                      color: selectedCall == Call.phone
+                          ? Colors.orange
+                          : Color(0xFF6A6A6A),
                     ),
                   ),
                   SizedBox(
                     width: 130.0,
                     child: Divider(
                       thickness: 2.0,
-                      color: selectedCall == Call.email? Colors.orange : Color(0xFF6A6A6A),
+                      color: selectedCall == Call.email
+                          ? Colors.orange
+                          : Color(0xFF6A6A6A),
                     ),
                   ),
                 ],
@@ -136,13 +139,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     color: Color(0xFF222222),
                     border: Border(
                       top: BorderSide(
-                          color: Colors.orange, width: 1, style: BorderStyle.solid),
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
                       bottom: BorderSide(
-                          color: Colors.orange, width: 1, style: BorderStyle.solid),
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
                       left: BorderSide(
-                          color: Colors.orange, width: 1, style: BorderStyle.solid),
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
                       right: BorderSide(
-                          color: Colors.orange, width: 1, style: BorderStyle.solid),
+                          color: Colors.orange,
+                          width: 1,
+                          style: BorderStyle.solid),
                     )),
                 child: ListTile(
                   title: TextField(
@@ -151,7 +162,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       hintStyle: kTextJourney5,
                       border: InputBorder.none,
                     ),
-
+                    style: kTextJourney5,
                     obscureText: false,
                     keyboardType: selectedCall == Call.email
                         ? TextInputType.emailAddress

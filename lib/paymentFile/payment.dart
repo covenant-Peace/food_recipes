@@ -98,7 +98,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF222222),
       body: Padding(
-        padding: const EdgeInsets.only(left: 36, right: 36),
+        padding: const EdgeInsets.only(left: 36, right: 36, top: 6),
         child: ListView(
           children: <Widget>[
             Row(

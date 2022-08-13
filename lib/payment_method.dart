@@ -204,11 +204,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     MaterialPageRoute(builder: (context) => PaymentScreen()));
               },
               child: Container(
-                width: 341.0,
                 height: 56.0,
-                margin: EdgeInsets.only(left: 44.0, right: 43.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35.0),
+                  borderRadius: BorderRadius.circular(48.0),
                   color: Color(0xFFEDA92E),
                 ),
                 alignment: Alignment.center,

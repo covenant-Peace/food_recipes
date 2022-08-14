@@ -204,4 +204,10 @@ const kTextGet7 = TextStyle(
   fontStyle: FontStyle.normal,
 );
 
+const kTextJourney21 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFF6A6A6A),
+  fontWeight: FontWeight.w500,
+  fontSize: 16.0,
+);
 

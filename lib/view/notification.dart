@@ -45,17 +45,17 @@ final controller = Get.put(NotifyController());
               ()=> ListView.builder(itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: (){
-                    controller.fish = !controller.fish;
+                    controller.fish.value = !controller.fish.value;
                   },
                   child: Row(children: [
-                    good.leading,
+                    SvgPicture.asset(controller.notes[index].leading, color: controller.fish.value?,),
                     Column(
                       children: [
-                        Text(good.title, style: kTextGet4,),
-                        Text(good.description, textAlign: TextAlign.center, style: kTextGet7,),
+                        Text(controller.notes[index].title, style: controller.fish.value? kTextGet4 : kTextJourney21,),
+                        Text(controller.notes[index].description, textAlign: TextAlign.center, style: controller.fish.value? kTextGet7:kTextJourney3,),
                       ],
                     ),
-                    Text(good.time, style: kTextJourney3,),
+                    Text(controller.notes[index].time, style: kTextJourney3,),
                   ],
                   ),
                 );

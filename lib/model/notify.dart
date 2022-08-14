@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Notify {
   final String title;
   final String description;
-  final Widget leading;
+  final String leading;
   //final Widget point;
   final String time;
 

@@ -1,6 +1,12 @@
-<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0137 20.1316H5.66592C2.59955 20.1316 0.247152 19.024 0.915344 14.5664L1.69338 8.52517C2.10528 6.30092 3.52404 5.44966 4.76889 5.44966H14.9474C16.2105 5.44966 17.5469 6.36499 18.0229 8.52517L18.8009 14.5664C19.3684 18.5206 17.0801 20.1316 14.0137 20.1316Z" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.151 5.22998C14.151 2.84391 12.2167 0.909611 9.83068 0.909611V0.909611C8.68168 0.904743 7.57807 1.35777 6.76388 2.16853C5.94969 2.97928 5.49199 4.08097 5.492 5.22998H5.492" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12.7963 9.73341H12.7506" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.96572 9.73341H6.91995" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg fill="none" height="21" viewBox="0 0 20 21" width="20" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" d="M14.0137 20.1316H5.66592C2.59955 20.1316 0.247152 19.024 0.915344 14.5664L1.69338 8.52517C2.10528 6.30092 3.52404 5.44966 4.76889 5.44966H14.9474C16.2105 5.44966 17.5469 6.36499 18.0229 8.52517L18.8009 14.5664C19.3684 18.5206 17.0801 20.1316 14.0137 20.1316Z"
+        fill-rule="evenodd"
+        stroke="#BDBDBD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+    <path
+        d="M14.151 5.22998C14.151 2.84391 12.2167 0.909611 9.83068 0.909611V0.909611C8.68168 0.904743 7.57807 1.35777 6.76388 2.16853C5.94969 2.97928 5.49199 4.08097 5.492 5.22998H5.492"
+        stroke="#BDBDBD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+    <path d="M12.7963 9.73341H12.7506" stroke="#BDBDBD" stroke-linecap="round" stroke-linejoin="round"
+        stroke-width="1.5" />
+    <path d="M6.96572 9.73341H6.91995" stroke="#BDBDBD" stroke-linecap="round" stroke-linejoin="round"
+        stroke-width="1.5" />
 </svg>

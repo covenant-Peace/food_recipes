@@ -24,29 +24,49 @@ class NotifyController extends GetxController {
           'Payment Unsuccessful',
           'Card was unable to be charged from due to issue from the card **** **** 2317 for the delivery fee',
           SvgPicture.asset('images/warn.svg'),
-          CircleAvatar(
-            radius: 4,
-            backgroundColor: Color(0xffeda92e),
-          ),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
           '17:23'),
       Notify(
           'Payment successful',
           'Order from cart was successfully charged from **** **** 2317',
           SvgPicture.asset('images/warn.svg'),
-          SizedBox(
-            width: 1,
-          ),
+          // SizedBox(
+          //   width: 1,
+          // ),
           '17:23'),
 
       Notify(
           'New recipe added',
           'Avocado Sauce recipe has been added  to the list and currently has 20+ reviews from users already',
-          SvgPicture.asset('images/warn.svg'),
-          CircleAvatar(
-            radius: 4,
-            backgroundColor: Color(0xffeda92e),
-          ),
+          SvgPicture.asset('images/delete.svg'),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
           '17:23'),
+
+      Notify(
+          'New recipe added',
+          'Ofada Sauce recipe has been added and currently has 10+ reviews from users already',
+          SvgPicture.asset('images/delete.svg'),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
+          '17:23'),
+
+      Notify(
+          'Order to be delivered',
+          'Order successfully sent out  and delivery will be in take 20 mins ',
+          SvgPicture.asset('images/delete.svg'),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
+          '6 days'),
     ];
     notes.value = noteResult;
   }

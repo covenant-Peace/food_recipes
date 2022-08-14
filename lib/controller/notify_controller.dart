@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NotifyController extends GetxController {
   // ignore: prefer_collection_literals
   var notes = List<Notify>().obs;
+  var fish = true.obs;
 
   @override
   void onInit() {
@@ -37,7 +38,6 @@ class NotifyController extends GetxController {
           //   width: 1,
           // ),
           '17:23'),
-
       Notify(
           'New recipe added',
           'Avocado Sauce recipe has been added  to the list and currently has 20+ reviews from users already',
@@ -47,7 +47,6 @@ class NotifyController extends GetxController {
           //   backgroundColor: Color(0xffeda92e),
           // ),
           '17:23'),
-
       Notify(
           'New recipe added',
           'Ofada Sauce recipe has been added and currently has 10+ reviews from users already',
@@ -57,16 +56,33 @@ class NotifyController extends GetxController {
           //   backgroundColor: Color(0xffeda92e),
           // ),
           '17:23'),
-
       Notify(
           'Order to be delivered',
           'Order successfully sent out  and delivery will be in take 20 mins ',
-          SvgPicture.asset('images/delete.svg'),
+          SvgPicture.asset('images/bike.svg'),
           // CircleAvatar(
           //   radius: 4,
           //   backgroundColor: Color(0xffeda92e),
           // ),
           '6 days'),
+      Notify(
+          'New recipe added',
+          'Ofada Sauce recipe has been added and currently has 10+ reviews from users already',
+          SvgPicture.asset('images/delete.svg'),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
+          '8 days'),
+      Notify(
+          'New recipe added',
+          'Avocado Sauce recipe has been added  to the list and currently has 20+ reviews from users already',
+          SvgPicture.asset('images/delete.svg'),
+          // CircleAvatar(
+          //   radius: 4,
+          //   backgroundColor: Color(0xffeda92e),
+          // ),
+          '17:23'),
     ];
     notes.value = noteResult;
   }

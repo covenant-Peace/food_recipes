@@ -10,6 +10,7 @@ import 'package:food_recipes/view/description.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/view/notification.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     Description(),
     PlaceOrder(),
     ShoppingPage(),
-    LoginScreen(),
+    Notification(),
     PaymentScreen(),
   ];
 

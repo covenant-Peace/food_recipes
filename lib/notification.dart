@@ -16,16 +16,22 @@ class Going extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color(0xff222222),
         body: Padding(
-          padding: const EdgeInsets.only(left: 35, right: 29, top: 25),
+          padding: const EdgeInsets.only(left: 35, right: 29, top: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Color(0xfff2f2f2),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    color: Color(0xfff2f2f2),
+                    size: 15,
+                  ),
                 ),
                 SvgPicture.asset('images/pen.svg'),
               ],
@@ -37,9 +43,6 @@ class Going extends StatelessWidget {
               'Notification',
               style: kTextJourney10,
             ),
-            SizedBox(
-              height: 35,
-            ),
             Expanded(
               child: GetX<NotifyController>(builder:
                     (controller) => ListView.builder(
@@ -50,6 +53,7 @@ class Going extends StatelessWidget {
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SvgPicture.asset(
                           controller.notes[index].leading,
@@ -58,6 +62,7 @@ class Going extends StatelessWidget {
                               : Color(0xff6a6a6a),
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -69,6 +74,9 @@ class Going extends StatelessWidget {
                                     : SizedBox(
                                   width: 0.01,
                                 ),
+                                SizedBox(
+                                  width: 13,
+                                ),
                                 Text(
                                   controller.notes[index].title,
                                   style: controller.fish.value
@@ -78,12 +86,18 @@ class Going extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Text(
-                              controller.notes[index].description,
-                              textAlign: TextAlign.center,
-                              style:
-                              controller.fish.value ? kTextGet7 : kTextJourney3,
+                            SizedBox(
+                              width: 252,
+                              child: Text(
+                                controller.notes[index].description,
+                                textAlign: TextAlign.start,
+                                style:
+                                controller.fish.value ? kTextGet7 : kTextJourney3,
+                              ),
                             ),
+                            SizedBox(
+                              height: 20,
+                            )
                           ],
                         ),
                         Text(

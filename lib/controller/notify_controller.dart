@@ -18,6 +18,18 @@ class NotifyController extends GetxController {
     fetchFoods();
   }
 
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+
+  }
+
+
   void fetchFoods() async {
     await Future.delayed(Duration(seconds: 1));
     var noteResult = [

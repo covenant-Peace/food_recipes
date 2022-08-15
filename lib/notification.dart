@@ -74,6 +74,7 @@ class Going extends StatelessWidget {
                                   style: controller.fish.value
                                       ? kTextGet4
                                       : kTextJourney21,
+                                  textAlign: TextAlign.center,
                                 ),
                               ],
                             ),

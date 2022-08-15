@@ -12,83 +12,94 @@ class Going extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff222222),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 35, right: 29),
-        child: ListView(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(
-                Icons.arrow_back_ios_new_outlined,
-                color: Color(0xfff2f2f2),
-              ),
-              SvgPicture.asset('images/pen.svg'),
-            ],
-          ),
-          SizedBox(
-            height: 45.97,
-          ),
-          Text(
-            'Notification',
-            style: kTextJourney10,
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          Obx(
-                () => ListView.builder(itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  controller.fish.value = !controller.fish.value;
-                },
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      controller.notes[index].leading,
-                      color: controller.fish.value
-                          ? Color(0xffe5e5e5)
-                          : Color(0xff6a6a6a),
-                    ),
-                    Column(
+    return GetMaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xff222222),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 35, right: 29, top: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: Color(0xfff2f2f2),
+                ),
+                SvgPicture.asset('images/pen.svg'),
+              ],
+            ),
+            SizedBox(
+              height: 45.97,
+            ),
+            Text(
+              'Notification',
+              style: kTextJourney10,
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            Expanded(
+              child: GetX<NotifyController>(builder:
+                    (controller) => ListView.builder(
+                        itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      controller.fish.value = !controller.fish.value;
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        SvgPicture.asset(
+                          controller.notes[index].leading,
+                          color: controller.fish.value
+                              ? Color(0xffe5e5e5)
+                              : Color(0xff6a6a6a),
+                        ),
+                        Column(
                           children: [
-                            controller.fish.value
-                                ? CircleAvatar(
-                              radius: 4,
-                              backgroundColor: Color(0xffeda92e),
-                            )
-                                : SizedBox(
-                              width: 0.01,
+                            Row(
+                              children: [
+                                controller.fish.value
+                                    ? CircleAvatar(
+                                  radius: 4,
+                                  backgroundColor: Color(0xffeda92e),
+                                )
+                                    : SizedBox(
+                                  width: 0.01,
+                                ),
+                                Text(
+                                  controller.notes[index].title,
+                                  style: controller.fish.value
+                                      ? kTextGet4
+                                      : kTextJourney21,
+                                ),
+                              ],
                             ),
                             Text(
-                              controller.notes[index].title,
-                              style: controller.fish.value
-                                  ? kTextGet4
-                                  : kTextJourney21,
+                              controller.notes[index].description,
+                              textAlign: TextAlign.center,
+                              style:
+                              controller.fish.value ? kTextGet7 : kTextJourney3,
                             ),
                           ],
                         ),
                         Text(
-                          controller.notes[index].description,
-                          textAlign: TextAlign.center,
-                          style:
-                          controller.fish.value ? kTextGet7 : kTextJourney3,
+                          controller.notes[index].time,
+                          style: kTextJourney3,
                         ),
                       ],
                     ),
-                    Text(
-                      controller.notes[index].time,
-                      style: kTextJourney3,
-                    ),
-                  ],
+                  );
+
+                },
+                      itemCount: controller.notes.length,
                 ),
-              );
-            }),
-          ),
-        ]),
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }

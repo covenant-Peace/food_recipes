@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class NotifyController extends GetxController {
   // ignore: prefer_collection_literals
-  var notes = List<Notify>().obs;
+  var notes = <Notify>[].obs;
   var fish = true.obs;
 
   @override

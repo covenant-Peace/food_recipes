@@ -47,9 +47,9 @@ class Going extends StatelessWidget {
               child: GetX<NotifyController>(builder:
                     (controller) => ListView.builder(
                         itemBuilder: (context, index) {
-                  return GestureDetector(
+                  return InkWell(
                     onTap: () {
-                      controller.fish.value = !controller.fish.value;
+                      controller.fish?.value = false;
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

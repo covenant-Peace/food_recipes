@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:get/get.dart';
 import 'package:food_recipes/model/food.dart';
+import 'package:get/get.dart';
 
 class ShoppingController extends GetxController {
   var foods = List<Food>().obs;

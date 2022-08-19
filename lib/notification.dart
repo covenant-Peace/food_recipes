@@ -17,14 +17,13 @@ class Going extends StatelessWidget {
         backgroundColor: Color(0xff222222),
         body: Padding(
           padding: const EdgeInsets.only(left: 35, right: 29, top: 35),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: Icon(
@@ -44,72 +43,72 @@ class Going extends StatelessWidget {
               style: kTextJourney10,
             ),
             Expanded(
-              child: GetX<NotifyController>(builder:
-                    (controller) => ListView.builder(
-                        itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      controller.fish?.value = false;
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          controller.notes[index].leading,
-                          color: controller.fish.value
-                              ? Color(0xffe5e5e5)
-                              : Color(0xff6a6a6a),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                controller.fish.value
-                                    ? CircleAvatar(
-                                  radius: 4,
-                                  backgroundColor: Color(0xffeda92e),
-                                )
-                                    : SizedBox(
-                                  width: 0.01,
-                                ),
-                                SizedBox(
-                                  width: 13,
-                                ),
-                                Text(
-                                  controller.notes[index].title,
-                                  style: controller.fish.value
-                                      ? kTextGet4
-                                      : kTextJourney21,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 252,
-                              child: Text(
-                                controller.notes[index].description,
-                                textAlign: TextAlign.start,
-                                style:
-                                controller.fish.value ? kTextGet7 : kTextJourney3,
+              child: GetX<NotifyController>(
+                builder: (controller) => ListView.builder(
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        controller.fish?.value = false;
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(
+                            controller.notes[index].leading,
+                            color: controller.fish.value
+                                ? Color(0xffe5e5e5)
+                                : Color(0xff6a6a6a),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  controller.fish.value
+                                      ? CircleAvatar(
+                                          radius: 4,
+                                          backgroundColor: Color(0xffeda92e),
+                                        )
+                                      : SizedBox(
+                                          width: 0.01,
+                                        ),
+                                  SizedBox(
+                                    width: 13,
+                                  ),
+                                  Text(
+                                    controller.notes[index].title,
+                                    style: controller.fish.value
+                                        ? kTextGet4
+                                        : kTextJourney21,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            )
-                          ],
-                        ),
-                        Text(
-                          controller.notes[index].time,
-                          style: kTextJourney3,
-                        ),
-                      ],
-                    ),
-                  );
-
-                },
-                      itemCount: controller.notes.length,
+                              SizedBox(
+                                width: 252,
+                                child: Text(
+                                  controller.notes[index].description,
+                                  textAlign: TextAlign.start,
+                                  style: controller.fish.value
+                                      ? kTextGet7
+                                      : kTextJourney3,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              )
+                            ],
+                          ),
+                          Text(
+                            controller.notes[index].time,
+                            style: kTextJourney3,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: controller.notes.length,
                 ),
               ),
             ),

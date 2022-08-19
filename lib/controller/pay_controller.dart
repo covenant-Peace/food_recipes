@@ -1,5 +1,6 @@
 import 'package:food_recipes/model/food.dart';
 import 'package:get/get.dart';
+
 import 'shopping_controller.dart';
 
 class PayController extends GetxController {
@@ -11,6 +12,7 @@ class PayController extends GetxController {
 
   Food uis;
   ShoppingController oii;
+
   // bool vidi(int index) => payItems[index];
 
   // double get totalPrice1 =>
@@ -21,8 +23,13 @@ class PayController extends GetxController {
     totalPrice;
   }
 
-  removeFromCart1(int id1, String foodName1, String foodDescription1, double price1){
-    final foodie = Food(id: id1, foodDescription: foodDescription1, foodName: foodName1, price: price1);
+  removeFromCart1(
+      int id1, String foodName1, String foodDescription1, double price1) {
+    final foodie = Food(
+        id: id1,
+        foodDescription: foodDescription1,
+        foodName: foodName1,
+        price: price1);
     payItems.remove(foodie);
   }
 

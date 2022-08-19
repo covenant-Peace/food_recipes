@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
-
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
@@ -14,11 +13,8 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       backgroundColor: Color(0xff222222),
       body: Column(
-        children: [
-
-        ],
+        children: [],
       ),
     );
   }
 }
-

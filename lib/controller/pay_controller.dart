@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'shopping_controller.dart';
 
 class PayController extends GetxController {
-  var payItems = List<Food>().obs;
+  var payItems = <Food>[].obs;
 
   int get count => payItems.length;
 

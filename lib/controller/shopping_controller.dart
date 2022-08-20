@@ -4,7 +4,7 @@ import 'package:food_recipes/model/food.dart';
 import 'package:get/get.dart';
 
 class ShoppingController extends GetxController {
-  var foods = List<Food>().obs;
+  var foods = <Food>[].obs;
 
   @override
   void onInit() {

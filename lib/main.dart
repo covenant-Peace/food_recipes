@@ -11,11 +11,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: JourneyScreen(),
-      // initialRoute: HomeScreen.id,
-      // routes: {
-      //   SignUpScreen.id: (context) => SignUpScreen(),
-      //   JourneyScreen.id: (context) => JourneyScreen(),
-      // },
     );
   }
 }

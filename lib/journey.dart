@@ -11,7 +11,6 @@ class JourneyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        // fit: StackFit.expand,
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,

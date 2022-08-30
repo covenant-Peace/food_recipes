@@ -35,18 +35,26 @@ class SignUpScreen extends StatelessWidget {
                     " Email ",
                     style: kTextJourney5,
                   ),
+                  //enabled: true,
                   fillColor: Colors.orange,
                   hoverColor: Colors.orange,
                   focusColor: Colors.orange,
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   isDense: true,
-                  //labelStyle: kTextJourney5,
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.orange,
-                        width: 0.5,
+                        width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(11)),
+                      borderRadius: BorderRadius.circular(11)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(11)
+                  ),
                 ),
                 obscureText: false,
                 style: kTextJourney5,

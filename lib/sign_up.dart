@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/view/description.dart';
@@ -51,8 +52,8 @@ class SignUpScreen extends StatelessWidget {
               child: ListTile(
                 title: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Email',
-                    labelStyle: kTextJourney5,
+                    label: Text('Email', style: kTextJourney5,),
+                    //labelStyle: kTextJourney5,
                     border: InputBorder.none,
                   ),
                   obscureText: false,
@@ -96,6 +97,10 @@ class SignUpScreen extends StatelessWidget {
                   obscureText: false,
                   style: kTextJourney3,
                   keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(11),
+                  FilteringTextInputFormatter.digitsOnly
+                  ],
                 ),
               ),
             ),

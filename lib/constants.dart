@@ -211,3 +211,34 @@ const kTextJourney21 = TextStyle(
   fontSize: 16.0,
 );
 
+const kTextGet8 = TextStyle(
+  fontSize: 16.0,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+  color: Color(0xFFE5E5E5),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextGet9 = TextStyle(
+  fontSize: 12.0,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w400,
+  color: Color(0xFF6a6a6a),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextJourney22 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFEDA92E),
+  fontWeight: FontWeight.w400,
+  fontSize: 12.0,
+);
+
+const kTextGet10 = TextStyle(
+  fontSize: 12.0,
+  fontFamily: 'Inter',
+  fontWeight: FontWeight.w600,
+  color: Color(0xFFbdbdbd),
+  fontStyle: FontStyle.normal,
+);
+

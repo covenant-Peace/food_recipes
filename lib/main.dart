@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipes/landing_page.dart';
 
 import 'journey.dart';
 
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: JourneyScreen(),
+      home: LandingPage()
+      //JourneyScreen(),
     );
   }
 }

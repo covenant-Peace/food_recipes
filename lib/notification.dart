@@ -25,6 +25,7 @@ class Going extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    FocusScope.of(context).unfocus();
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_outlined,

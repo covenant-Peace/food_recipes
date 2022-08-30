@@ -49,6 +49,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
+                      FocusScope.of(context).unfocus();
                     },
                     child: Icon(
                       Icons.keyboard_arrow_left_sharp,

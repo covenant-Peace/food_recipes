@@ -42,6 +42,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    FocusScope.of(context).unfocus();
                   },
                   child: Icon(
                     Icons.keyboard_arrow_left_sharp,

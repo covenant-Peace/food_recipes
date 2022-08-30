@@ -55,50 +55,54 @@ class Going extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(
-                            controller.notes[index].leading,
-                            color: controller.fish.value
-                                ? Color(0xffe5e5e5)
-                                : Color(0xff6a6a6a),
-                          ),
-                          Column(
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
+                              SvgPicture.asset(
+                                controller.notes[index].leading,
+                                color: controller.fish.value
+                                    ? Color(0xffe5e5e5)
+                                    : Color(0xff6a6a6a),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  controller.fish.value
-                                      ? CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor: Color(0xffeda92e),
-                                        )
-                                      : SizedBox(
-                                          width: 0.01,
-                                        ),
-                                  SizedBox(
-                                    width: 13,
+                                  Row(
+                                    children: [
+                                      SizedBox(width: 5,),
+                                      controller.fish.value
+                                          ? CircleAvatar(
+                                        radius: 4,
+                                        backgroundColor: Color(0xffeda92e),
+                                      )
+                                          : SizedBox(
+                                        width: 0.01,
+                                      ),
+                                      SizedBox(
+                                        width: 13,
+                                      ),
+                                      Text(
+                                        controller.notes[index].title,
+                                        style: controller.fish.value
+                                            ? kTextGet4
+                                            : kTextJourney21,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
                                   ),
                                   Text(
-                                    controller.notes[index].title,
-                                    style: controller.fish.value
-                                        ? kTextGet4
-                                        : kTextJourney21,
+                                    controller.notes[index].description,
                                     textAlign: TextAlign.center,
+                                    style: controller.fish.value
+                                        ? kTextGet7
+                                        : kTextJourney3,
                                   ),
+                                  SizedBox(
+                                    height: 20,
+                                  )
                                 ],
                               ),
-                              SizedBox(
-                                width: 252,
-                                child: Text(
-                                  controller.notes[index].description,
-                                  textAlign: TextAlign.start,
-                                  style: controller.fish.value
-                                      ? kTextGet7
-                                      : kTextJourney3,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              )
+
                             ],
                           ),
                           Text(

@@ -18,7 +18,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  Call selectedCall;
+  Call selectedCall = Call.phone;
 
   var currentFocus;
 

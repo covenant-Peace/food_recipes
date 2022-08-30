@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipes/homescreen.dart';
 import 'package:food_recipes/landing_page.dart';
 
 import 'journey.dart';
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:
-      // LandingPage()
-      JourneyScreen(),
+      home: HomeScreen()
     );
   }
 }

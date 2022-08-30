@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
+import 'package:food_recipes/notification.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
@@ -44,11 +45,15 @@ class _LandingPageState extends State<LandingPage> {
                     ),
                   ],
                 ),
-                CircleAvatar(
-                  child: Icon(Icons.notifications_outlined),
-                  backgroundColor: Colors.transparent,
-                  radius: 26,
-                  foregroundColor: Colors.white,
+                GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Going())),
+                  child: CircleAvatar(
+                    child: Icon(Icons.notifications_outlined),
+                    backgroundColor: Colors.transparent,
+                    radius: 26,
+                    foregroundColor: Colors.white,
+                  ),
                 )
               ],
             ),

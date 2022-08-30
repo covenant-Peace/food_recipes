@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../model/notify.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NotifyController extends GetxController {
   // ignore: prefer_collection_literals
@@ -17,7 +15,6 @@ class NotifyController extends GetxController {
     super.onInit();
     fetchFoods();
   }
-
 
   void fetchFoods() async {
     await Future.delayed(Duration(seconds: 1));

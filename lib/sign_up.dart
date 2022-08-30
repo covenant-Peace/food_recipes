@@ -8,6 +8,7 @@ import 'package:food_recipes/view/description.dart';
 import 'package:food_recipes/view/place_order.dart';
 
 import 'constants.dart';
+import 'landing_page.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String id = 'sign_up';
@@ -147,7 +148,7 @@ class SignUpScreen extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PlaceOrder()));
+                    MaterialPageRoute(builder: (context) => LandingPage()));
               },
               child: Container(
                 height: 56.0,

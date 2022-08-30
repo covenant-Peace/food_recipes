@@ -242,3 +242,30 @@ const kTextGet10 = TextStyle(
   fontStyle: FontStyle.normal,
 );
 
+const kTextJourney23 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFF2F2F2),
+  fontWeight: FontWeight.w700,
+  fontSize: 14.0,
+);
+
+const kTextJourney24 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFFFFFFF),
+  fontWeight: FontWeight.w600,
+  fontSize: 12.0,
+);
+
+const kTextJourney25 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFe5e5e5),
+  fontWeight: FontWeight.w600,
+  fontSize: 10.0,
+);
+
+const kTextJourney26 = TextStyle(
+  fontFamily: 'Poppins',
+  // color: Color(0xFFFFFFFF),
+  fontWeight: FontWeight.w600,
+  fontSize: 16.0,
+);

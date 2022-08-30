@@ -1,8 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:food_recipes/bottom_navigation.dart';
-import 'journey.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
-import 'package:splash_screen_view/splash_screen_view.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'home_screen';

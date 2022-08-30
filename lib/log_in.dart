@@ -25,47 +25,47 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 47.0,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Color(0xFF222222),
-                  border: Border(
-                    top: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    bottom: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    left: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    right: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                  )),
-              child: ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    labelStyle: kTextJourney5,
-                    border: InputBorder.none,
+            SizedBox(
+              height: 56,
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text(
+                    " Email ",
+                    style: kTextJourney5,
                   ),
-                  style: kTextJourney5,
-                  obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
+                  //enabled: true,
+                  fillColor: Colors.orange,
+                  hoverColor: Colors.orange,
+                  focusColor: Colors.orange,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(11)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(11)
+                  ),
                 ),
+                obscureText: false,
+                style: kTextJourney5,
+                keyboardType: TextInputType.emailAddress,
               ),
             ),
             SizedBox(
               height: 14.0,
             ),
             Container(
+              height: 56,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(11.0),
                   color: Color(0xFF222222),
                   border: Border(
                     top: BorderSide(

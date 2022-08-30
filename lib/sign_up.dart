@@ -27,39 +27,30 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(
               height: 27.0,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Color(0xFF222222),
-                  border: Border(
-                    top: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    bottom: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    left: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    right: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                  )),
-              child: ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    label: Text('Email', style: kTextJourney5,),
-                    //labelStyle: kTextJourney5,
-                    border: InputBorder.none,
+            SizedBox(
+              height: 56,
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text(
+                    " Email ",
+                    style: kTextJourney5,
                   ),
-                  obscureText: false,
-                  style: kTextJourney5,
-                  keyboardType: TextInputType.emailAddress,
+                  fillColor: Colors.orange,
+                  hoverColor: Colors.orange,
+                  focusColor: Colors.orange,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  isDense: true,
+                  //labelStyle: kTextJourney5,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 0.5,
+                      ),
+                      borderRadius: BorderRadius.circular(11)),
                 ),
+                obscureText: false,
+                style: kTextJourney5,
+                keyboardType: TextInputType.emailAddress,
               ),
             ),
             SizedBox(
@@ -67,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(11.0),
                   color: Color(0xFF222222),
                   border: Border(
                     top: BorderSide(
@@ -99,7 +90,7 @@ class SignUpScreen extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(11),
-                  FilteringTextInputFormatter.digitsOnly
+                    FilteringTextInputFormatter.digitsOnly
                   ],
                 ),
               ),
@@ -109,7 +100,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(11.0),
                   color: Color(0xFF222222),
                   border: Border(
                     top: BorderSide(
@@ -261,10 +252,8 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: Text(
                     ' Login',

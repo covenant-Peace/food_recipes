@@ -6,7 +6,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
+import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/notification.dart';
+import 'package:food_recipes/payment_method.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
@@ -310,44 +312,66 @@ drawerDragStartBehavior: DragStartBehavior.start,
                 child: Image.asset('images/girl.png'),
               ),
               SizedBox(
-                height: 83,
+                height: MediaQuery.of(context).size.height * 0.066,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/profile.svg'),
                 title: Text('Edit Profile', style: kTextJourney27,),
               ),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height * 0.009,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/myorder.svg'),
                 title: Text('My Order', style: kTextJourney27),
               ),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height * 0.009,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/bookmark.svg'),
                 title: Text('Bookmark', style: kTextJourney27),
+                onTap: (){
+                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                  Navigator.pop(context);
+                },
               ),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height * 0.009,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/paymentmethod.svg'),
                 title: Text('Payment Method', style: kTextJourney27),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>PaymentMethod()));
+                  Navigator.pop(context);
+                },
               ),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height * 0.009,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/notificate.svg'),
                 title: Text('Notification', style: kTextJourney27),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>Going()));
+                  Navigator.pop(context);
+                },
               ),
               SizedBox(
-                height: 25,
+                height: MediaQuery.of(context).size.height * 0.234,
               ),
-
+              ListTile(
+                leading: SvgPicture.asset('images/logout.svg'),
+                title: Text('Log out', style: kTextJourney27),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                  Navigator.pop(context);
+                },
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.009,
+              ),
             ],
           ),
         ),

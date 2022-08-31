@@ -8,6 +8,8 @@ import 'package:food_recipes/model/payment_card.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
+import '../bottom_navigation.dart';
+
 enum Paymentcard {
   first,
   second,
@@ -106,7 +108,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation()));
                     FocusScope.of(context).unfocus();
                   },
                   child: Icon(

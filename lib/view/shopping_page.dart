@@ -8,6 +8,8 @@ import 'package:food_recipes/controller/shopping_controller.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:get/get.dart';
 
+import '../bottom_navigation.dart';
+
 class ShoppingPage extends StatelessWidget {
   final foodController = Get.put(ShoppingController());
   final payController = Get.put(PayController());
@@ -27,7 +29,11 @@ class ShoppingPage extends StatelessWidget {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation()));
+                    FocusScope.of(context).unfocus();
                   },
                   child: Icon(
                     Icons.keyboard_arrow_left_sharp,

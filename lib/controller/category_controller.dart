@@ -20,6 +20,10 @@ class CategoryController extends GetxController {
       CategoryModel('images/veggies.png', 'Veggies'),
       CategoryModel('images/localmeal.png', 'Local Meal'),
       CategoryModel('images/western.png', 'Western'),
+      CategoryModel('images/salad.png', 'Salad'),
+      CategoryModel('images/veggies.png', 'Veggies'),
+      CategoryModel('images/localmeal.png', 'Local Meal'),
+      CategoryModel('images/western.png', 'Western'),
     ];
     cats.value = catResult;
   }

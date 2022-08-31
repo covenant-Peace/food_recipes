@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
 import 'bottom_navigation.dart';
 import 'card_number.dart';
@@ -183,7 +184,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         border: InputBorder.none,
                       ),
                       obscureText: false,
-                      maxLength: 3,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(3),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       style: kTextJourney17,
                       keyboardType: TextInputType.phone,
                       onChanged: (newText){
@@ -255,7 +259,10 @@ class CardNumber1 extends StatelessWidget {
             border: InputBorder.none,
           ),
           obscureText: false,
-          maxLength: 2,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(2),
+            FilteringTextInputFormatter.digitsOnly
+          ],
           style: kTextJourney16,
           cursorColor: Colors.white,
           keyboardType: TextInputType.phone,

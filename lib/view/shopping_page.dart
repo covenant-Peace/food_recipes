@@ -43,10 +43,10 @@ class ShoppingPage extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
-              child: GetX<ShoppingController>(
-                builder: ((controller) {
-                  return ListView.builder(
+            GetX<ShoppingController>(
+              builder: ((controller) {
+                return Expanded(
+                  child: ListView.builder(
                       itemCount: controller.foods.length,
                       itemBuilder: (context, index) {
                         // final fill = payController.payItems[index];
@@ -181,9 +181,9 @@ class ShoppingPage extends StatelessWidget {
                             ],
                           ),
                         );
-                      });
-                }),
-              ),
+                      }),
+                );
+              }),
             ),
             SizedBox(
               height: 20.0,

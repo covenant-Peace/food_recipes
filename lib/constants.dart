@@ -269,3 +269,11 @@ const kTextJourney26 = TextStyle(
   fontWeight: FontWeight.w600,
   fontSize: 16.0,
 );
+
+const kTextJourney27 = TextStyle(
+  fontSize: 16.0,
+  fontFamily: 'Inter',
+  fontWeight: FontWeight.w500,
+  color: Color(0xFFffffff),
+  fontStyle: FontStyle.normal,
+);

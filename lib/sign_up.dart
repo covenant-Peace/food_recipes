@@ -7,6 +7,7 @@ import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/view/description.dart';
 import 'package:food_recipes/view/place_order.dart';
 
+import 'bottom_navigation.dart';
 import 'constants.dart';
 import 'landing_page.dart';
 
@@ -148,7 +149,7 @@ class SignUpScreen extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LandingPage()));
+                    MaterialPageRoute(builder: (context) => BottomNavigation()));
               },
               child: Container(
                 height: 56.0,

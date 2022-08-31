@@ -8,17 +8,18 @@ import 'package:get/get.dart';
 import '../constants.dart';
 
 class Going extends StatelessWidget {
+
   final controller = Get.put(NotifyController());
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Color(0xff222222),
         body: Padding(
           padding: const EdgeInsets.only(left: 35, right: 29, top: 35),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,20 +65,23 @@ class Going extends StatelessWidget {
                                     ? Color(0xffe5e5e5)
                                     : Color(0xff6a6a6a),
                               ),
+                              SizedBox(
+                                width: 10,
+                              ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     children: [
-                                      SizedBox(width: 5,),
                                       controller.fish.value
                                           ? CircleAvatar(
-                                        radius: 4,
-                                        backgroundColor: Color(0xffeda92e),
-                                      )
+                                              radius: 4,
+                                              backgroundColor:
+                                                  Color(0xffeda92e),
+                                            )
                                           : SizedBox(
-                                        width: 0.01,
-                                      ),
+                                              width: 0.01,
+                                            ),
                                       SizedBox(
                                         width: 13,
                                       ),
@@ -90,19 +94,21 @@ class Going extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    controller.notes[index].description,
-                                    textAlign: TextAlign.center,
-                                    style: controller.fish.value
-                                        ? kTextGet7
-                                        : kTextJourney3,
+                                  SizedBox(
+                                    width: 200,
+                                    child: Text(
+                                      controller.notes[index].description,
+                                      textAlign: TextAlign.start,
+                                      style: controller.fish.value
+                                          ? kTextGet7
+                                          : kTextJourney3,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 20,
                                   )
                                 ],
                               ),
-
                             ],
                           ),
                           Text(
@@ -114,12 +120,13 @@ class Going extends StatelessWidget {
                     );
                   },
                   itemCount: controller.notes.length,
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
                 ),
               ),
             ),
           ]),
         ),
-      ),
     );
   }
 }

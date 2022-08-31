@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/landing_page.dart';
 import 'package:food_recipes/notification.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
-import 'package:food_recipes/view/description.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
@@ -23,7 +23,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> pages = <Widget>[
-    Description(),
+    LandingPage(),
     PlaceOrder(),
     ShoppingPage(),
     Going(),

@@ -21,7 +21,7 @@ class NotifyController extends GetxController {
     var noteResult = [
       Notify(
           'Payment Unsuccessful',
-          'Card was unable to be charged from due \nto issue from the card **** **** 2317 for \nthe delivery fee',
+          'Card was unable to be charged from due to issue from the card **** **** 2317 for the delivery fee',
           'images/warn.svg',
           // CircleAvatar(
           //   radius: 4,
@@ -30,7 +30,7 @@ class NotifyController extends GetxController {
           '17:23'),
       Notify(
           'Payment successful',
-          'Order from cart was successfully \ncharged from **** **** 2317',
+          'Order from cart was successfully charged from **** **** 2317',
           'images/warn.svg',
           // SizedBox(
           //   width: 1,
@@ -38,7 +38,7 @@ class NotifyController extends GetxController {
           '17:23'),
       Notify(
           'New recipe added',
-          'Avocado Sauce recipe has been added  to the \nlist and currently has 20+ reviews \nfrom users already',
+          'Avocado Sauce recipe has been added  to the list and currently has 20+ reviews from users already',
           'images/delete.svg',
           // CircleAvatar(
           //   radius: 4,
@@ -47,7 +47,7 @@ class NotifyController extends GetxController {
           '17:23'),
       Notify(
           'New recipe added',
-          'Ofada Sauce recipe has been added \nand currently has 10+ reviews from users already',
+          'Ofada Sauce recipe has been added and currently has 10+ reviews from users already',
           'images/delete.svg',
           // CircleAvatar(
           //   radius: 4,
@@ -56,7 +56,7 @@ class NotifyController extends GetxController {
           '17:23'),
       Notify(
           'Order to be delivered',
-          'Order successfully sent out  \nand delivery will be in take 20 mins ',
+          'Order successfully sent out  and delivery will be in take 20 mins ',
           'images/bike.svg',
           // CircleAvatar(
           //   radius: 4,
@@ -65,7 +65,7 @@ class NotifyController extends GetxController {
           '6 days'),
       Notify(
           'New recipe added',
-          'Ofada Sauce recipe has been added and \ncurrently has 10+ reviews from users already',
+          'Ofada Sauce recipe has been added and currently has 10+ reviews from users already',
           'images/delete.svg',
           // CircleAvatar(
           //   radius: 4,
@@ -74,7 +74,7 @@ class NotifyController extends GetxController {
           '8 days'),
       Notify(
           'New recipe added',
-          'Avocado Sauce recipe has been added \nto the list and currently has 20+ \nreviews from users already',
+          'Avocado Sauce recipe has been added  to the list and currently has 20+ reviews from users already',
           'images/delete.svg',
           // CircleAvatar(
           //   radius: 4,

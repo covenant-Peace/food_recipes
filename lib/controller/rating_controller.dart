@@ -18,7 +18,7 @@ class RatingController extends GetxController {
     await Future.delayed(Duration(seconds: 1));
     var rateResult = [
       RatingModel('Crepes with Honey', 'NGN800', 3, 'images/crepes.png'),
-      RatingModel('Pasta with Egg Sauce', 'NGN800', 4, 'images/past.png'),
+      RatingModel('Pasta with Egg Sauce', 'NGN800', 4, 'images/fruit3.png'),
       RatingModel('Crepes with Honey', 'NGN800', 5, 'images/crepes.png'),
     ];
     rates.value = rateResult;

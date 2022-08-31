@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'constants.dart';
 
 class CardNumber extends StatelessWidget {
@@ -33,7 +34,11 @@ class CardNumber extends StatelessWidget {
             border: InputBorder.none,
           ),
           obscureText: false,
-          maxLength: 4,
+          // maxLength: 4,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(4),
+            FilteringTextInputFormatter.digitsOnly
+          ],
           style: kTextJourney17,
           cursorColor: Colors.white,
           focusNode: FocusNode(),

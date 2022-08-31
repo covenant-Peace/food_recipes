@@ -45,31 +45,34 @@ class PlaceOrder extends StatelessWidget {
           SizedBox(
             height: 20.0,
           ),
-          Container(
-            height: 56.0,
-            margin: EdgeInsets.only(left: 36.0, right: 36.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(48.0),
-                color: Color(0xFF222222),
-                border: Border(
-                  top: BorderSide(
-                      color: Colors.orange, width: 1, style: BorderStyle.solid),
-                  bottom: BorderSide(
-                      color: Colors.orange, width: 1, style: BorderStyle.solid),
-                  left: BorderSide(
-                      color: Colors.orange, width: 1, style: BorderStyle.solid),
-                  right: BorderSide(
-                      color: Colors.orange, width: 1, style: BorderStyle.solid),
-                )),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ShoppingPage()));
-              },
-              child: Center(
-                child: Text(
-                  'Place an order',
-                  style: kTextJourney19,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Container(
+              height: 56.0,
+              margin: EdgeInsets.only(left: 36.0, right: 36.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(48.0),
+                  color: Color(0xFF222222),
+                  border: Border(
+                    top: BorderSide(
+                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                    left: BorderSide(
+                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                    right: BorderSide(
+                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                  )),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShoppingPage()));
+                },
+                child: Center(
+                  child: Text(
+                    'Place an order',
+                    style: kTextJourney19,
+                  ),
                 ),
               ),
             ),

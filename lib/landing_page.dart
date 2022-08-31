@@ -10,6 +10,7 @@ import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/notification.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:food_recipes/view/place_order.dart';
+import 'package:food_recipes/view/shopping_page.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
@@ -34,7 +35,7 @@ class _LandingPageState extends State<LandingPage> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: GestureDetector(
-            onTap: ()=>_key.currentState.openDrawer(),
+            onTap: () => _key.currentState.openDrawer(),
             child: CircleAvatar(
               child: Image.asset('images/girl.png'),
             ),
@@ -48,8 +49,8 @@ class _LandingPageState extends State<LandingPage> {
               style: kTextGet8,
             ),
             GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Going())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Going())),
               child: CircleAvatar(
                 child: Icon(Icons.notifications_outlined),
                 backgroundColor: Colors.transparent,
@@ -59,7 +60,6 @@ class _LandingPageState extends State<LandingPage> {
             )
           ],
         ),
-
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
@@ -179,7 +179,9 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 13,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.189, child: Built()),
+            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.189,
+                child: Built()),
             DefaultTabController(
               length: 4,
               child: Column(
@@ -298,7 +300,7 @@ class _LandingPageState extends State<LandingPage> {
           ],
         ),
       ),
-drawerDragStartBehavior: DragStartBehavior.start,
+      drawerDragStartBehavior: DragStartBehavior.start,
       // drawerEnableOpenDragGesture: false,
       drawer: Drawer(
         backgroundColor: Colors.transparent,
@@ -316,7 +318,14 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ),
               ListTile(
                 leading: SvgPicture.asset('images/profile.svg'),
-                title: Text('Edit Profile', style: kTextJourney27,),
+                title: Text(
+                  'Edit Profile',
+                  style: kTextJourney27,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.009,
@@ -324,6 +333,11 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ListTile(
                 leading: SvgPicture.asset('images/myorder.svg'),
                 title: Text('My Order', style: kTextJourney27),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShoppingPage()));
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.009,
@@ -331,9 +345,9 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ListTile(
                 leading: SvgPicture.asset('images/bookmark.svg'),
                 title: Text('Bookmark', style: kTextJourney27),
-                onTap: (){
-                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                onTap: () {
                   Navigator.pop(context);
+                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
                 },
               ),
               SizedBox(
@@ -342,9 +356,10 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ListTile(
                 leading: SvgPicture.asset('images/paymentmethod.svg'),
                 title: Text('Payment Method', style: kTextJourney27),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>PaymentMethod()));
+                onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PaymentMethod()));
                 },
               ),
               SizedBox(
@@ -353,9 +368,10 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ListTile(
                 leading: SvgPicture.asset('images/notificate.svg'),
                 title: Text('Notification', style: kTextJourney27),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>Going()));
+                onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Going()));
                 },
               ),
               SizedBox(
@@ -364,9 +380,10 @@ drawerDragStartBehavior: DragStartBehavior.start,
               ListTile(
                 leading: SvgPicture.asset('images/logout.svg'),
                 title: Text('Log out', style: kTextJourney27),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               ),
               SizedBox(

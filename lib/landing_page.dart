@@ -21,15 +21,21 @@ class _LandingPageState extends State<LandingPage> {
   final controller = Get.put(CategoryController());
   final controllers = Get.put(RatingController());
 
+  final GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff222222),
+      key: _key,
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
-          child: CircleAvatar(
-            child: Image.asset('images/girl.png'),
+          child: GestureDetector(
+            onTap: ()=>_key.currentState.openDrawer(),
+            child: CircleAvatar(
+              child: Image.asset('images/girl.png'),
+            ),
           ),
         ),
         title: Row(
@@ -293,11 +299,12 @@ class _LandingPageState extends State<LandingPage> {
 drawerDragStartBehavior: DragStartBehavior.start,
       // drawerEnableOpenDragGesture: false,
       drawer: Drawer(
-        backgroundColor: Color(0xff202020),
+        backgroundColor: Colors.transparent,
         width: MediaQuery.of(context).size.width * 0.64,
         child: Padding(
-          padding: const EdgeInsets.only(top: 41),
+          padding: const EdgeInsets.only(top: 41, left: 25),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
                 child: Image.asset('images/girl.png'),

@@ -5,11 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/view/description.dart';
-import 'package:food_recipes/view/place_order.dart';
 
 import 'bottom_navigation.dart';
 import 'constants.dart';
-import 'landing_page.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String id = 'sign_up';
@@ -48,15 +46,13 @@ class SignUpScreen extends StatelessWidget {
                         color: Colors.orange,
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(11)
-                  ),
+                      borderRadius: BorderRadius.circular(11)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.orange,
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(11)
-                  ),
+                      borderRadius: BorderRadius.circular(11)),
                 ),
                 obscureText: false,
                 style: kTextJourney5,
@@ -148,8 +144,10 @@ class SignUpScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BottomNavigation()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BottomNavigation(0)));
               },
               child: Container(
                 height: 56.0,

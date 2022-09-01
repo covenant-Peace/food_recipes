@@ -111,7 +111,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BottomNavigation()));
+                            builder: (context) => BottomNavigation(2)));
                     FocusScope.of(context).unfocus();
                   },
                   child: Icon(
@@ -228,7 +228,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                 );
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ShoppingPage()));
+                    MaterialPageRoute(builder: (context) => BottomNavigation(2)));
               },
               child: Container(
                 width: 341.0,

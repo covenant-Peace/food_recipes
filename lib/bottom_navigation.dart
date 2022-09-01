@@ -9,16 +9,20 @@ import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
 class BottomNavigation extends StatefulWidget {
+  int selectedIndex;
+
+  BottomNavigation(this.selectedIndex);
+
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int selectedIndex = 0;
+  // int  = widget.index;
 
   void _onItemTapped(int index) {
     setState(() {
-      selectedIndex = index;
+      widget.selectedIndex = index;
     });
   }
 
@@ -75,12 +79,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 color: Colors.orange,
               )),
         ],
-        currentIndex: selectedIndex,
+        currentIndex: widget.selectedIndex,
         onTap: _onItemTapped,
       ),
       body: IndexedStack(
         children: pages,
-        index: selectedIndex,
+        index: widget.selectedIndex,
       ),
     );
   }

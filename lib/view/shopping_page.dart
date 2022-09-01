@@ -32,7 +32,7 @@ class ShoppingPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BottomNavigation()));
+                            builder: (context) => BottomNavigation(0)));
                     FocusScope.of(context).unfocus();
                   },
                   child: Icon(

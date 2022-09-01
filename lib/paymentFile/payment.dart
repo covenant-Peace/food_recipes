@@ -227,8 +227,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         : foodWidget.removeAt(1);
                   },
                 );
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BottomNavigation(2)));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => BottomNavigation(2)));
               },
               child: Container(
                 width: 341.0,

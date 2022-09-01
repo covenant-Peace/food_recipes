@@ -206,7 +206,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PaymentScreen()));
+                    MaterialPageRoute(builder: (context) => BottomNavigation(4)));
               },
               child: Container(
                 height: 56.0,

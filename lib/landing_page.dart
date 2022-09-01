@@ -13,6 +13,7 @@ import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 import 'package:get/get.dart';
 
+import 'bottom_navigation.dart';
 import 'constants.dart';
 
 class LandingPage extends StatefulWidget {
@@ -336,7 +337,7 @@ class _LandingPageState extends State<LandingPage> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ShoppingPage()));
+                      MaterialPageRoute(builder: (context) => BottomNavigation(2)));
                 },
               ),
               SizedBox(
@@ -371,7 +372,7 @@ class _LandingPageState extends State<LandingPage> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Going()));
+                      MaterialPageRoute(builder: (context) => BottomNavigation(3)));
                 },
               ),
               SizedBox(

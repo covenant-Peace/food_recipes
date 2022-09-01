@@ -8,6 +8,8 @@ import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
+import 'category_file.dart';
+
 class BottomNavigation extends StatefulWidget {
   int selectedIndex;
 
@@ -28,7 +30,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   List<Widget> pages = <Widget>[
     LandingPage(),
-    PlaceOrder(),
+    Categories(),
     ShoppingPage(),
     Going(),
     PaymentScreen(),

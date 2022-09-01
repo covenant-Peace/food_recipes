@@ -10,11 +10,11 @@ import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/notification.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:food_recipes/view/place_order.dart';
-import 'package:food_recipes/view/shopping_page.dart';
 import 'package:get/get.dart';
 
 import 'bottom_navigation.dart';
 import 'constants.dart';
+import 'drawer.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -303,97 +303,7 @@ class _LandingPageState extends State<LandingPage> {
       ),
       drawerDragStartBehavior: DragStartBehavior.start,
       // drawerEnableOpenDragGesture: false,
-      drawer: Drawer(
-        backgroundColor: Colors.transparent,
-        width: MediaQuery.of(context).size.width * 0.64,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 41, left: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                child: Image.asset('images/girl.png'),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.066,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/profile.svg'),
-                title: Text(
-                  'Edit Profile',
-                  style: kTextJourney27,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.009,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/myorder.svg'),
-                title: Text('My Order', style: kTextJourney27),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(2)));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.009,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/bookmark.svg'),
-                title: Text('Bookmark', style: kTextJourney27),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.009,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/paymentmethod.svg'),
-                title: Text('Payment Method', style: kTextJourney27),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PaymentMethod()));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.009,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/notificate.svg'),
-                title: Text('Notification', style: kTextJourney27),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(3)));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.234,
-              ),
-              ListTile(
-                leading: SvgPicture.asset('images/logout.svg'),
-                title: Text('Log out', style: kTextJourney27),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.009,
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: App(),
     );
   }
 }

@@ -277,3 +277,7 @@ const kTextJourney27 = TextStyle(
   color: Color(0xFFffffff),
   fontStyle: FontStyle.normal,
 );
+
+const String google_api_key = "API_KEY";
+const Color primaryColor = Color(0xff7b61ff);
+const double defaultPadding = 16.0;

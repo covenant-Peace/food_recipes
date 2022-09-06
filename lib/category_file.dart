@@ -3,11 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/drawer.dart';
+import 'package:get/get.dart';
 
 import 'constants.dart';
+import 'controller/salad2_controller.dart';
+import 'controller/salad_controller.dart';
 
 class Categories extends StatelessWidget {
   // const Categories({Key? key}) : super(key: key);
+  final controllers = Get.put(SaladController());
+  final controllerss = Get.put(Salad2Controller());
 
   final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
 
@@ -58,7 +63,66 @@ class Categories extends StatelessWidget {
               'Choose from the category to select a desired meal',
               style: kTextJourney9,
             ),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GetX<SaladController>(
+                        builder: ((controllers) =>
+                            ListView.builder(
+                                itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 20, right: 10, top: 14),
+                                child: Stack(
+                                  children: [
+                                    Image.asset(controllers.sals[index].pict),
+                                    Positioned(
+                                      child: Text(
+                                        controllers.sals[index].tit,
+                                        style: kTextJourney11,
+                                      ),
+                                      bottom: 15,
+                                      left: 15,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                              itemCount: controllers.sals.length,
+                            )
+                        )
+                    ),
+                  ),
 
+                  Expanded(
+                    child: GetX<Salad2Controller>(
+                        builder: ((controllerss) =>
+                            ListView.builder(itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Stack(
+                                  children: [
+                                    Image.asset(controllerss.sals[index].pict),
+                                    Positioned(
+                                      child: Text(
+                                        controllerss.sals[index].tit,
+                                        style: kTextJourney11,
+                                      ),
+                                      bottom: 15,
+                                      left: 15,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                              itemCount: controllerss.sals.length,
+                            )
+                        )
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

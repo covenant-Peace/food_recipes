@@ -3,16 +3,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
-import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/notification.dart';
-import 'package:food_recipes/payment_method.dart';
 import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
-import 'bottom_navigation.dart';
 import 'constants.dart';
 import 'drawer.dart';
 
@@ -149,7 +146,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
                 GestureDetector(
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PlaceOrder())),
+                      MaterialPageRoute(builder: (context) => BottomNavigation(1))),
                   child: Text(
                     'See all',
                     style: kTextJourney22,

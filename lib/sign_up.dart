@@ -27,6 +27,95 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(
               height: 27.0,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 140,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(11.0),
+                      color: Color(0xFF222222),
+                      border: Border(
+                        top: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        bottom: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        left: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        right: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                      )),
+                  child: ListTile(
+                    title: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Enter First name',
+                        labelStyle: kTextJourney3,
+                        border: InputBorder.none,
+                      ),
+                      obscureText: false,
+                      style: kTextJourney3,
+                      keyboardType: TextInputType.text,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(11),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 130,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(11.0),
+                      color: Color(0xFF222222),
+                      border: Border(
+                        top: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        bottom: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        left: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                        right: BorderSide(
+                            color: Color(0xFF6A6A6A),
+                            width: 1,
+                            style: BorderStyle.solid),
+                      )),
+                  child: ListTile(
+                    title: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Enter Last name',
+                        labelStyle: kTextJourney3,
+                        border: InputBorder.none,
+                      ),
+                      obscureText: false,
+                      style: kTextJourney3,
+                      keyboardType: TextInputType.text,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(11),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+            SizedBox(
+              height: 14.0,
+            ),
             SizedBox(
               height: 56,
               child: TextField(
@@ -60,7 +149,7 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 14.0,
+              height: 5.0,
             ),
             Container(
               decoration: BoxDecoration(
@@ -139,6 +228,46 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 14.0,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(11.0),
+                  color: Color(0xFF222222),
+                  border: Border(
+                    top: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    left: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                    right: BorderSide(
+                        color: Color(0xFF6A6A6A),
+                        width: 1,
+                        style: BorderStyle.solid),
+                  )),
+              child: ListTile(
+                title: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Confirm password',
+                    labelStyle: kTextJourney3,
+                    border: InputBorder.none,
+                  ),
+                  obscureText: true,
+                  style: kTextJourney3,
+                  keyboardType: TextInputType.text,
+                ),
+              ),
+            ),
+
+
             SizedBox(
               height: 23.0,
             ),
@@ -220,34 +349,34 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 12.0,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 56.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(48.0),
-                  color: Color(0xFF3B5998),
-                ),
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('images/facebook.png'),
-                    SizedBox(
-                      width: 8.0,
-                    ),
-                    Text(
-                      'Sign up with Facebook',
-                      style: kTextJourney7,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // SizedBox(
+            //   height: 12.0,
+            // ),
+            // GestureDetector(
+            //   onTap: () {},
+            //   child: Container(
+            //     height: 56.0,
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(48.0),
+            //       color: Color(0xFF3B5998),
+            //     ),
+            //     alignment: Alignment.center,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         Image.asset('images/facebook.png'),
+            //         SizedBox(
+            //           width: 8.0,
+            //         ),
+            //         Text(
+            //           'Sign up with Facebook',
+            //           style: kTextJourney7,
+            //           textAlign: TextAlign.center,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 30.0,
             ),

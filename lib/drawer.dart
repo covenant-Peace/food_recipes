@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/map.dart';
 import 'package:food_recipes/payment_method.dart';
 
 import 'bottom_navigation.dart';
 import 'constants.dart';
 import 'log_in.dart';
+import 'maps.dart';
 
 class App extends StatelessWidget {
   // const App({Key? key}) : super(key: key);
@@ -35,7 +37,7 @@ class App extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
-                // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>Maps()));
               },
             ),
             SizedBox(

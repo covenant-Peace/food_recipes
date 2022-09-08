@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.transparent.withOpacity(0.5),
       width: MediaQuery.of(context).size.width * 0.64,
       child: Padding(
         padding: const EdgeInsets.only(top: 41, left: 25),

@@ -37,7 +37,7 @@ class App extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder:(context)=>Maps()));
+                // Navigator.push(context, MaterialPageRoute(builder:(context)=>Maps()));
               },
             ),
             SizedBox(

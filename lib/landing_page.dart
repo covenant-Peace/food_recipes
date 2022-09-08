@@ -7,7 +7,6 @@ import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
 import 'package:food_recipes/notification.dart';
-import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
@@ -145,8 +144,10 @@ class _LandingPageState extends State<LandingPage> {
                   style: kTextGet8,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(1))),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(1))),
                   child: Text(
                     'See all',
                     style: kTextJourney22,
@@ -178,8 +179,9 @@ class _LandingPageState extends State<LandingPage> {
               height: 13,
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height * 0.189,
-                child: Built()),
+                height: MediaQuery.of(context).size.height * 0.24,
+                child: Built(),
+            ),
             DefaultTabController(
               length: 4,
               child: Column(

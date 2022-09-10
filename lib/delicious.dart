@@ -11,8 +11,14 @@ enum Food {
   soup,
 }
 
-class Delicious extends StatelessWidget {
+class Delicious extends StatefulWidget {
   // const Delicious({Key? key}) : super(key: key);
+
+  @override
+  State<Delicious> createState() => _DeliciousState();
+}
+
+class _DeliciousState extends State<Delicious> {
   final GlobalKey<ScaffoldState> _gkey = GlobalKey<ScaffoldState>();
 
   @override
@@ -24,7 +30,6 @@ class Delicious extends StatelessWidget {
     double getW(double j) {
       return (j / 428) * MediaQuery.of(context).size.width;
     }
-
     return Scaffold(
       key: _gkey,
       appBar: AppBar(
@@ -82,6 +87,11 @@ class Delicious extends StatelessWidget {
                     //         builder: (context) => BottomNavigation(0)));
                   },
                   child: Container(
+                    padding: EdgeInsets.only(
+                        left: getW(18),
+                        right: getW(21),
+                        top: getH(4),
+                        bottom: getH(7)),
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -90,10 +100,13 @@ class Delicious extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'Salads',
-                      style: kTextJourney4,
+                      style: kTextJourney29,
                       textAlign: TextAlign.center,
                     ),
                   ),
+                ),
+                SizedBox(
+                  width: getW(5),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -103,6 +116,11 @@ class Delicious extends StatelessWidget {
                     //         builder: (context) => BottomNavigation(0)));
                   },
                   child: Container(
+                    padding: EdgeInsets.only(
+                        left: getW(18),
+                        right: getW(21),
+                        top: getH(4),
+                        bottom: getH(7)),
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -111,10 +129,13 @@ class Delicious extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'Vegetables',
-                      style: kTextJourney4,
+                      style: kTextJourney29,
                       textAlign: TextAlign.center,
                     ),
                   ),
+                ),
+                SizedBox(
+                  width: getW(5),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -124,6 +145,11 @@ class Delicious extends StatelessWidget {
                     //         builder: (context) => BottomNavigation(0)));
                   },
                   child: Container(
+                    padding: EdgeInsets.only(
+                        left: getW(18),
+                        right: getW(21),
+                        top: getH(4),
+                        bottom: getH(7)),
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -132,11 +158,15 @@ class Delicious extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'Soup',
-                      style: kTextJourney4,
+                      style: kTextJourney29,
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: getW(20),
+                ),
+                SvgPicture.asset('images/filt.svg')
               ],
             )
           ],
@@ -145,3 +175,4 @@ class Delicious extends StatelessWidget {
     );
   }
 }
+

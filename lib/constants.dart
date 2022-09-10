@@ -293,6 +293,29 @@ const kTextJourney29 = TextStyle(
   fontSize: 14.0,
 );
 
+const kTextJourney30 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFe5e5e5),
+  fontWeight: FontWeight.w400,
+  fontSize: 10.0,
+);
+
+const kTextJourney31 = TextStyle(
+  fontSize: 12.0,
+  fontFamily: 'Inter',
+  fontWeight: FontWeight.w700,
+  color: Color(0xFFf2f2f2),
+  fontStyle: FontStyle.normal,
+);
+
+const kTextJourney32 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFEDA92E),
+  fontWeight: FontWeight.w600,
+  fontSize: 12.0,
+);
+
+
 const String google_api_key = "AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI";
 const Color primaryColor = Color(0xff7b61ff);
 const double defaultPadding = 16.0;

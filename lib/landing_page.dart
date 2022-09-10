@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, avoid_print
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'package:food_recipes/notification.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
+import 'delicious.dart';
 import 'drawer.dart';
 
 class LandingPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _LandingPageState extends State<LandingPage> {
   final controller = Get.put(CategoryController());
   final controllers = Get.put(RatingController());
 
-  final GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -169,9 +170,15 @@ class _LandingPageState extends State<LandingPage> {
                   'Saved',
                   style: kTextGet8,
                 ),
-                Text(
-                  'See all',
-                  style: kTextJourney22,
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Delicious())),
+                  child: Text(
+                    'See all',
+                    style: kTextJourney22,
+                  ),
                 )
               ],
             ),
@@ -245,7 +252,7 @@ class _LandingPageState extends State<LandingPage> {
                                       SizedBox(
                                         height: 20,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         child:
                                             Image.asset('images/eggless.png'),
                                         width: 120,
@@ -257,14 +264,14 @@ class _LandingPageState extends State<LandingPage> {
                                   ),
                                   Column(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         child: Image.asset('images/fruit2.png'),
                                         width: 120,
                                       ),
                                       SizedBox(
                                         height: 20,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         child: Image.asset('images/past.png'),
                                         width: 120,
                                       )

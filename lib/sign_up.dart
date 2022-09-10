@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipes/journey.dart';
@@ -11,6 +12,9 @@ import 'constants.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String id = 'sign_up';
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +114,6 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ],
             ),
             SizedBox(
@@ -146,6 +149,9 @@ class SignUpScreen extends StatelessWidget {
                 obscureText: false,
                 style: kTextJourney5,
                 keyboardType: TextInputType.emailAddress,
+                onChanged: (value) {
+                  email = value;
+                },
               ),
             ),
             SizedBox(
@@ -225,58 +231,69 @@ class SignUpScreen extends StatelessWidget {
                   obscureText: true,
                   style: kTextJourney3,
                   keyboardType: TextInputType.text,
+                  onChanged: (value) {
+                    password = value;
+                  },
                 ),
               ),
             ),
             SizedBox(
               height: 14.0,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(11.0),
-                  color: Color(0xFF222222),
-                  border: Border(
-                    top: BorderSide(
-                        color: Color(0xFF6A6A6A),
-                        width: 1,
-                        style: BorderStyle.solid),
-                    bottom: BorderSide(
-                        color: Color(0xFF6A6A6A),
-                        width: 1,
-                        style: BorderStyle.solid),
-                    left: BorderSide(
-                        color: Color(0xFF6A6A6A),
-                        width: 1,
-                        style: BorderStyle.solid),
-                    right: BorderSide(
-                        color: Color(0xFF6A6A6A),
-                        width: 1,
-                        style: BorderStyle.solid),
-                  )),
-              child: ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Confirm password',
-                    labelStyle: kTextJourney3,
-                    border: InputBorder.none,
-                  ),
-                  obscureText: true,
-                  style: kTextJourney3,
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-            ),
-
+            // Container(
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(11.0),
+            //       color: Color(0xFF222222),
+            //       border: Border(
+            //         top: BorderSide(
+            //             color: Color(0xFF6A6A6A),
+            //             width: 1,
+            //             style: BorderStyle.solid),
+            //         bottom: BorderSide(
+            //             color: Color(0xFF6A6A6A),
+            //             width: 1,
+            //             style: BorderStyle.solid),
+            //         left: BorderSide(
+            //             color: Color(0xFF6A6A6A),
+            //             width: 1,
+            //             style: BorderStyle.solid),
+            //         right: BorderSide(
+            //             color: Color(0xFF6A6A6A),
+            //             width: 1,
+            //             style: BorderStyle.solid),
+            //       )),
+            //   child: ListTile(
+            //     title: TextField(
+            //       decoration: InputDecoration(
+            //         labelText: 'Confirm password',
+            //         labelStyle: kTextJourney3,
+            //         border: InputBorder.none,
+            //       ),
+            //       obscureText: true,
+            //       style: kTextJourney3,
+            //       keyboardType: TextInputType.text,
+            //     ),
+            //   ),
+            // ),
 
             SizedBox(
               height: 23.0,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BottomNavigation(0)));
+              onTap: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  if(newUser!=null){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation(0)));
+                  }
+                } catch (e) {
+                  print(e);
+                }
+
               },
               child: Container(
                 height: 56.0,
@@ -349,34 +366,34 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: 12.0,
-            // ),
-            // GestureDetector(
-            //   onTap: () {},
-            //   child: Container(
-            //     height: 56.0,
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(48.0),
-            //       color: Color(0xFF3B5998),
-            //     ),
-            //     alignment: Alignment.center,
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         Image.asset('images/facebook.png'),
-            //         SizedBox(
-            //           width: 8.0,
-            //         ),
-            //         Text(
-            //           'Sign up with Facebook',
-            //           style: kTextJourney7,
-            //           textAlign: TextAlign.center,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            SizedBox(
+              height: 12.0,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 56.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(48.0),
+                  color: Color(0xFF3B5998),
+                ),
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('images/facebook.png'),
+                    SizedBox(
+                      width: 8.0,
+                    ),
+                    Text(
+                      'Sign up with Facebook',
+                      style: kTextJourney7,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(
               height: 30.0,
             ),

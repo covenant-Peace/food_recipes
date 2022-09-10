@@ -1,15 +1,19 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/bottom_navigation.dart';
-import 'package:food_recipes/landing_page.dart';
-import 'package:food_recipes/passwordFile/forgot_password.dart';
 import 'package:food_recipes/journey.dart';
-import 'package:food_recipes/paymentFile/payment.dart';
+import 'package:food_recipes/passwordFile/forgot_password.dart';
+
 import 'constants.dart';
 import 'sign_up.dart';
 
 class LoginScreen extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,19 +49,20 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.orange,
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(11)
-                  ),
+                      borderRadius: BorderRadius.circular(11)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.orange,
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(11)
-                  ),
+                      borderRadius: BorderRadius.circular(11)),
                 ),
                 obscureText: false,
                 style: kTextJourney5,
                 keyboardType: TextInputType.emailAddress,
+                onChanged: (value) {
+                  email = value;
+                },
               ),
             ),
             SizedBox(
@@ -98,6 +103,9 @@ class LoginScreen extends StatelessWidget {
                   obscureText: true,
                   style: kTextJourney5,
                   keyboardType: TextInputType.text,
+                  onChanged: (value) {
+                    password = value;
+                  },
                 ),
               ),
             ),
@@ -106,10 +114,8 @@ class LoginScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ForgotPassword()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ForgotPassword()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,9 +134,18 @@ class LoginScreen extends StatelessWidget {
               height: 11.0,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+              onTap: () async {
+                try {
+                  final user = await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  if(user != null){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));}
+                } catch (e) {
+                  print(e);
+                }
               },
               child: Container(
                 height: 56.0,

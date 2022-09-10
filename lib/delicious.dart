@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,7 +7,7 @@ import 'constants.dart';
 
 class Delicious extends StatelessWidget {
   // const Delicious({Key? key}) : super(key: key);
-  final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _gkey =  GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

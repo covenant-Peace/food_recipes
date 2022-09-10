@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/passwordFile/forgot_password.dart';
@@ -155,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BottomNavigation(0)));}
+                              builder: (context) => AUthService().handleAuthState()));}
                     setState(() {
                       showSpinner = false;
                     });
@@ -223,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 8.0,
                       ),
                       Text(
-                        'Sign up with Google',
+                        'Continue with Google',
                         style: kTextJourney7,
                       ),
                     ],
@@ -249,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 8.0,
                       ),
                       Text(
-                        'Sign up with Facebook',
+                        'Continue with Facebook',
                         style: kTextJourney7,
                       ),
                     ],

@@ -57,7 +57,7 @@ class _DeliciousState extends State<Delicious> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 35),
           child: GestureDetector(
-              onTap: () => _gkey.currentState.openDrawer(),
+              onTap: () => _gkey.currentState?.openDrawer(),
               child: SvgPicture.asset(
                 'images/look.svg',
                 height: 4,

@@ -64,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Welcome Hafeez!',
+              'Welcome ${_auth.currentUser.displayName}!',
               style: kTextGet8,
             ),
             GestureDetector(

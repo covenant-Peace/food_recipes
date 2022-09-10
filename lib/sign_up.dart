@@ -3,9 +3,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
 import 'package:food_recipes/view/description.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'bottom_navigation.dart';
@@ -355,9 +357,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Description()));
+                onTap: () async{
+                  AUthService service;
+                  await service.signInWithGoogle();
+                  // GoogleSignIn().signIn();
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => Description()));
                 },
                 child: Container(
                   height: 56.0,

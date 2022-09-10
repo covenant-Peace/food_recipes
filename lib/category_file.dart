@@ -24,7 +24,7 @@ class Categories extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: GestureDetector(
-              onTap: () => _gkey.currentState.openDrawer(),
+              onTap: () => _gkey.currentState?.openDrawer(),
               child: SvgPicture.asset(
                 'images/look.svg',
                 height: 4,

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/map.dart';
@@ -12,6 +13,7 @@ import 'maps.dart';
 
 class App extends StatelessWidget {
   // const App({Key? key}) : super(key: key);
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +100,7 @@ class App extends StatelessWidget {
               leading: SvgPicture.asset('images/logout.svg'),
               title: Text('Log out', style: kTextJourney27),
               onTap: () {
+                _auth.signOut();
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginScreen()));

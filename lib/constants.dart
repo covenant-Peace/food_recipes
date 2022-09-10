@@ -278,6 +278,14 @@ const kTextJourney27 = TextStyle(
   fontStyle: FontStyle.normal,
 );
 
+const kTextJourney28 = TextStyle(
+  fontSize: 14.0,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w400,
+  color: Color(0xFFffffff),
+  fontStyle: FontStyle.normal,
+);
+
 const String google_api_key = "AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI";
 const Color primaryColor = Color(0xff7b61ff);
 const double defaultPadding = 16.0;

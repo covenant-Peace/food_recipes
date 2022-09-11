@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
+import 'package:get/get.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'bottom_navigation.dart';
@@ -17,10 +18,10 @@ class SignUpScreen extends StatefulWidget {
   // const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUpScreen> createState() => SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class SignUpScreenState extends State<SignUpScreen> {
   static const String id = 'sign_up';
   final _auth = FirebaseAuth.instance;
   String email;
@@ -28,7 +29,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool showSpinner = false;
   User user;
   Timer timer;
-
+TextEditingController text = TextEditingController();
+bool validate = false;
   // @override
   // void initState() {
   //   user = _auth.currentUser;
@@ -74,90 +76,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 height: 27.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 140,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11.0),
-                        color: Color(0xFF222222),
-                        border: Border(
-                          top: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          bottom: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          left: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          right: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                        )),
-                    child: ListTile(
-                      title: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Enter First name',
-                          labelStyle: kTextJourney3,
-                          border: InputBorder.none,
-                        ),
-                        obscureText: false,
-                        style: kTextJourney3,
-                        keyboardType: TextInputType.text,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(11),
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
+              Container(
+                height: 56,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(11.0),
+                    color: Color(0xFF222222),
+                    border: Border(
+                      top: BorderSide(
+                          color: Color(0xFF6A6A6A),
+                          width: 1,
+                          style: BorderStyle.solid),
+                      bottom: BorderSide(
+                          color: Color(0xFF6A6A6A),
+                          width: 1,
+                          style: BorderStyle.solid),
+                      left: BorderSide(
+                          color: Color(0xFF6A6A6A),
+                          width: 1,
+                          style: BorderStyle.solid),
+                      right: BorderSide(
+                          color: Color(0xFF6A6A6A),
+                          width: 1,
+                          style: BorderStyle.solid),
+                    )),
+                child: ListTile(
+                  title: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Enter Full name',
+                      labelStyle: kTextJourney3,
+                      errorText: validate == false? 'Please, Enter your name': null,
+                      border: InputBorder.none,
                     ),
+                    obscureText: false,
+                    style: kTextJourney3,
+                    keyboardType: TextInputType.text,
+                    controller: text,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(11),
+                      // FilteringTextInputFormatter.digitsOnly
+                    ],
                   ),
-                  Container(
-                    width: 130,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11.0),
-                        color: Color(0xFF222222),
-                        border: Border(
-                          top: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          bottom: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          left: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                          right: BorderSide(
-                              color: Color(0xFF6A6A6A),
-                              width: 1,
-                              style: BorderStyle.solid),
-                        )),
-                    child: ListTile(
-                      title: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Enter Last name',
-                          labelStyle: kTextJourney3,
-                          border: InputBorder.none,
-                        ),
-                        obscureText: false,
-                        style: kTextJourney3,
-                        keyboardType: TextInputType.text,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(11),
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
               SizedBox(
                 height: 14.0,
@@ -326,8 +285,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onTap: () async {
                   setState(() {
                     showSpinner = true;
+                    text.text.isEmpty? validate = false: validate=true;
                   });
+                  if(validate==true){
+
                   try {
+
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
 
@@ -346,7 +309,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // setState(() {
                     //   showSpinner = false;
                     // });
-                  }
+                  }}
                   setState(() {
                     showSpinner = false;
                   });

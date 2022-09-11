@@ -99,8 +99,8 @@ class App extends StatelessWidget {
             ListTile(
               leading: SvgPicture.asset('images/logout.svg'),
               title: Text('Log out', style: kTextJourney27),
-              onTap: () {
-                _auth.signOut();
+              onTap: () async {
+                await _auth.signOut();
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginScreen()));

@@ -83,6 +83,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
     if (!isVerified) {
       sendVerify();
     }
+    else{
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BottomNavigation(0)));
+    }
   }
 
   Future sendVerify() async {

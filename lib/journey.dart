@@ -68,7 +68,7 @@ class JourneyScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AUthService().handleAuthState()));
+                              builder: (context) => SignUpScreen()));
                     },
                     child: CircleAvatar(
                       backgroundColor: Color(0xFFEDA92E),

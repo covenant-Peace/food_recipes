@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
-import 'package:food_recipes/view/description.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'bottom_navigation.dart';
@@ -26,6 +26,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String email;
   String password;
   bool showSpinner = false;
+  User user;
+  Timer timer;
+
+  // @override
+  // void initState() {
+  //   user = _auth.currentUser;
+  //   user.sendEmailVerification();
+  //
+  //   timer = Timer.periodic(Duration(seconds: 5), (timer) {
+  //     checkVerify();
+  //   });
+  //   super.initState();
+  // }
+  //
+  // @override
+  // dispose() {
+  //   timer.cancel();
+  //   super.dispose();
+  // }
+
+  Future<void> checkVerify() async {
+    user = _auth.currentUser;
+    user.sendEmailVerification();
+    await user.reload();
+    if (user.emailVerified) {
+      timer.cancel();
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -300,17 +330,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
+                    // await _auth.currentUser.sendEmailVerification();
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text('Email Sent'),
+                    //   duration: Duration(seconds: 6),
+                    // ));
                     if (newUser != null) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BottomNavigation(0)));
+                      // checkVerify();
+                      user = _auth.currentUser;
+                      user.sendEmailVerification();
+                      await user.reload();
+                      if (user.emailVerified) {
+                        timer.cancel();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                      }
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => BottomNavigation(0)));
                       setState(() {
                         showSpinner = false;
                       });
                     }
                   } catch (e) {
                     print(e);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('$e'),
+                      duration: Duration(seconds: 6),
+                    ));
+                    setState(() {
+                      showSpinner = false;
+                    });
                   }
                 },
                 child: Container(
@@ -357,7 +408,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () async{
+                onTap: () async {
                   AUthService service;
                   await service.signInWithGoogle();
                   // GoogleSignIn().signIn();

@@ -152,6 +152,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   try {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
+                    if(!_auth.currentUser.emailVerified){
+                      await _auth.currentUser.sendEmailVerification();
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Email Sent'),
+                        duration: Duration(seconds: 6),
+                      ));
+                    }
                     if(user != null){
                       Navigator.push(
                           context,
@@ -162,6 +169,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   } catch (e) {
                     print(e);
+                    // await _auth.currentUser.sendEmailVerification();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('$e'),
+                      duration: Duration(seconds: 6),
+                    ));
+                    setState(() {
+                      showSpinner = false;
+                    });
                   }
                 },
                 child: Container(

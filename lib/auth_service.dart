@@ -13,7 +13,7 @@ class AUthService {
     return StreamBuilder(
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
-          return BottomNavigation(0);
+          return VerifyEmail();
         } else {
           return SignUpScreen();
         }

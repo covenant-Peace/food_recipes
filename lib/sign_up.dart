@@ -330,29 +330,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
-                    // await _auth.currentUser.sendEmailVerification();
-                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    //   content: Text('Email Sent'),
-                    //   duration: Duration(seconds: 6),
-                    // ));
+
                     if (newUser != null) {
-                      // checkVerify();
-                      user = _auth.currentUser;
-                      user.sendEmailVerification();
-                      await user.reload();
-                      if (user.emailVerified) {
-                        timer.cancel();
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => BottomNavigation(0)));
-                      }
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => BottomNavigation(0)));
-                      setState(() {
-                        showSpinner = false;
+                      Future.delayed(Duration.zero, () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyEmail()));
                       });
                     }
+                    setState(() {
+                      showSpinner = false;
+                    });
                   } catch (e) {
                     print(e);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -332,26 +332,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         email: email, password: password);
 
                     if (newUser != null) {
-                      Future.delayed(Duration.zero, () async {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VerifyEmail()));
-                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyEmail()));
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
                   } catch (e) {
                     print(e);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text('$e'),
                       duration: Duration(seconds: 6),
                     ));
-                    setState(() {
-                      showSpinner = false;
-                    });
+                    // setState(() {
+                    //   showSpinner = false;
+                    // });
                   }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: Container(
                   height: 56.0,
@@ -399,10 +397,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               GestureDetector(
                 onTap: () async {
                   AUthService service;
-                  await service.signInWithGoogle();
+                  await AUthService().googleSignIn(context);
                   // GoogleSignIn().signIn();
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Description()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
                 },
                 child: Container(
                   height: 56.0,

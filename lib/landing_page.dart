@@ -56,7 +56,8 @@ class _LandingPageState extends State<LandingPage> {
           child: GestureDetector(
             onTap: () => _key.currentState.openDrawer(),
             child: CircleAvatar(
-              child: Image.asset('images/girl.png'),
+              child: Image.network(_auth.currentUser.photoURL),
+              // Image.asset('images/girl.png'),
             ),
           ),
         ),
@@ -64,7 +65,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Welcome ${_auth.currentUser.email}!',
+              'Welcome ${_auth.currentUser.displayName}!',
               style: kTextGet8,
             ),
             GestureDetector(

@@ -36,6 +36,34 @@ class AUthService {
       return await FirebaseAuth.instance.signInWithCredential(credential);
     }
   }
+
+  Future<void> googleSignIn(BuildContext context) async {
+    try {
+      final GoogleSignInAccount googleuser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleuser.authentication;
+
+      if(googleAuth.accessToken != null && googleAuth.idToken!=null){
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+
+        UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+        // if(userCredential.user != null){
+        //   if(userCredential.additionalUserInfo.isNewUser){
+        //
+        //   }
+        // }
+      }
+
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('$e'),
+        duration: Duration(seconds: 6),
+      ));
+    }
+  }
 }
 
 class VerifyEmail extends StatefulWidget {
@@ -72,14 +100,24 @@ class _VerifyEmailState extends State<VerifyEmail> {
   @override
   Widget build(BuildContext context) => isVerified
       ? BottomNavigation(0)
-      : showDialog(
-          context: context,
-          builder: (context) => Dialog(
-                backgroundColor: Colors.transparent,
-                child: Text(
-                  'An email link has been sent to your mail. Please verify!.',
-                  style: kTextJourney31,
-                  textAlign: TextAlign.center,
-                ),
-              ));
+      : Scaffold(
+          backgroundColor: Color(0xff222222),
+          body: Center(
+            child: Text(
+              'An email link has been sent to your mail. Please verify!.',
+              style: kTextJourney31,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+// ()=>showDialog(
+//     context: context,
+//     builder: (context) => Dialog(
+//           backgroundColor: Colors.transparent,
+//           child: Text(
+//             'An email link has been sent to your mail. Please verify!.',
+//             style: kTextJourney31,
+//             textAlign: TextAlign.center,
+//           ),
+//         ));
 }

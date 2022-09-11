@@ -223,7 +223,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async{
+                  await AUthService().googleSignIn(context);
+                  // GoogleSignIn().signIn();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                },
                 child: Container(
                   height: 56.0,
                   decoration: BoxDecoration(

@@ -8,7 +8,6 @@ import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
 import 'package:food_recipes/notification.dart';
-import 'package:food_recipes/sign_up.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
@@ -43,6 +42,7 @@ class _LandingPageState extends State<LandingPage> {
       print(e);
     }
   }
+
   // String namee(){
   //   if(_auth.currentUser.displayName != null){
   //     return _auth.currentUser.displayName;
@@ -51,14 +51,14 @@ class _LandingPageState extends State<LandingPage> {
   //     return SignUpScreenState().text.text;
   //   }
   // }
-Widget pic(){
-    if(_auth.currentUser.photoURL != null){
+  Widget pic() {
+    if (_auth.currentUser.photoURL != null) {
       return Image.network(_auth.currentUser.photoURL);
-    }
-    else{
+    } else {
       return Image.asset('images/girl.png');
     }
-}
+  }
+
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override

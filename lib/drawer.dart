@@ -14,6 +14,13 @@ import 'maps.dart';
 class App extends StatelessWidget {
   // const App({Key? key}) : super(key: key);
   final _auth = FirebaseAuth.instance;
+  Widget pic() {
+    if (_auth.currentUser.photoURL != null) {
+      return Image.network(_auth.currentUser.photoURL);
+    } else {
+      return Image.asset('images/girl.png');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,7 @@ class App extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              child: Image.asset('images/girl.png'),
+              child: pic(),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.066,

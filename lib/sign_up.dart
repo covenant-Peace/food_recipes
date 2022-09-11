@@ -392,7 +392,11 @@ bool validate = false;
                 height: 12.0,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await AUthService().signInWithFacebook(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                },
                 child: Container(
                   height: 56.0,
                   decoration: BoxDecoration(

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">Food Recipes</string>
     <string name="facebook_app_id">765993644677281</string>
     <string name="fb_login_protocol_scheme">fb765993644677281</string>
     <string name="facebook_client_token">93a2fc07f286de16b85b9e2c5764e053</string>

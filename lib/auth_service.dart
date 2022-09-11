@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/sign_up.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -43,20 +44,36 @@ class AUthService {
       final GoogleSignInAuthentication googleAuth =
           await googleuser.authentication;
 
-      if(googleAuth.accessToken != null && googleAuth.idToken!=null){
+      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
         );
 
-        UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
         // if(userCredential.user != null){
         //   if(userCredential.additionalUserInfo.isNewUser){
         //
         //   }
         // }
       }
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('$e'),
+        duration: Duration(seconds: 6),
+      ));
+    }
+  }
 
+  Future<void> signInWithFacebook(BuildContext context) async {
+
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken.token);
+
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('$e'),
@@ -82,12 +99,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
     isVerified = FirebaseAuth.instance.currentUser.emailVerified;
     if (!isVerified) {
       sendVerify();
-    }
-    else{
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BottomNavigation(0)));
+    } else {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => BottomNavigation(0)));
     }
   }
 

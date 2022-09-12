@@ -164,9 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => AUthService().handleAuthState()));}
-                    setState(() {
-                      showSpinner = false;
-                    });
                   } catch (e) {
                     print(e);
                     // await _auth.currentUser.sendEmailVerification();
@@ -174,10 +171,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       content: Text('$e'),
                       duration: Duration(seconds: 6),
                     ));
-                    setState(() {
-                      showSpinner = false;
-                    });
                   }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: Container(
                   height: 56.0,

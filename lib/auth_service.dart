@@ -23,21 +23,6 @@ class AUthService {
     );
   }
 
-  signInWithGoogle() async {
-    final GoogleSignInAccount googleUser =
-        await GoogleSignIn(scopes: <String>["email"]).signIn();
-    if (googleUser != null) {
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    }
-  }
-
   Future<void> googleSignIn(BuildContext context) async {
     try {
       final GoogleSignInAccount googleuser = await GoogleSignIn().signIn();

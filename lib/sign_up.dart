@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
-import 'package:get/get.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'bottom_navigation.dart';
@@ -29,24 +28,8 @@ class SignUpScreenState extends State<SignUpScreen> {
   bool showSpinner = false;
   User user;
   Timer timer;
-TextEditingController text = TextEditingController();
-bool validate = false;
-  // @override
-  // void initState() {
-  //   user = _auth.currentUser;
-  //   user.sendEmailVerification();
-  //
-  //   timer = Timer.periodic(Duration(seconds: 5), (timer) {
-  //     checkVerify();
-  //   });
-  //   super.initState();
-  // }
-  //
-  // @override
-  // dispose() {
-  //   timer.cancel();
-  //   super.dispose();
-  // }
+  TextEditingController text = TextEditingController();
+  bool validate = false;
 
   Future<void> checkVerify() async {
     user = _auth.currentUser;
@@ -104,7 +87,8 @@ bool validate = false;
                     decoration: InputDecoration(
                       labelText: 'Enter Full name',
                       labelStyle: kTextJourney3,
-                      errorText: validate == false? 'Please, Enter your name': null,
+                      errorText:
+                          validate == false ? 'Please, Enter your name' : null,
                       border: InputBorder.none,
                     ),
                     obscureText: false,
@@ -285,31 +269,27 @@ bool validate = false;
                 onTap: () async {
                   setState(() {
                     showSpinner = true;
-                    text.text.isEmpty? validate = false: validate=true;
+                    text.text.isEmpty ? validate = false : validate = true;
                   });
-                  if(validate==true){
+                  if (validate == true) {
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
 
-                  try {
-
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-
-                    if (newUser != null) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyEmail()));
+                      if (newUser != null) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyEmail()));
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('$e'),
+                        duration: Duration(seconds: 6),
+                      ));
                     }
-                  } catch (e) {
-                    print(e);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('$e'),
-                      duration: Duration(seconds: 6),
-                    ));
-                    // setState(() {
-                    //   showSpinner = false;
-                    // });
-                  }}
+                  }
                   setState(() {
                     showSpinner = false;
                   });
@@ -359,11 +339,11 @@ bool validate = false;
               ),
               GestureDetector(
                 onTap: () async {
-                  AUthService service;
                   await AUthService().googleSignIn(context);
-                  // GoogleSignIn().signIn();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));
                 },
                 child: Container(
                   height: 56.0,
@@ -394,8 +374,10 @@ bool validate = false;
               GestureDetector(
                 onTap: () async {
                   await AUthService().signInWithFacebook(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));
                 },
                 child: Container(
                   height: 56.0,

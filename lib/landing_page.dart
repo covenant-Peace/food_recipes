@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, avoid_print, missing_return
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class _LandingPageState extends State<LandingPage> {
     getCurrentUser();
   }
 
+  String name;
+
   void getCurrentUser() async {
     try {
       final user = await _auth.currentUser;
@@ -43,6 +46,19 @@ class _LandingPageState extends State<LandingPage> {
     }
   }
 
+  DocumentSnapshot snapshot;
+
+  void getData() async {
+    final data = FirebaseFirestore.instance
+        .collection('account details')
+        .doc('Full name')
+        .get();
+    // for (var info in data.d) {
+    //   name = info.data().toString();
+    //   print(name);
+    snapshot = data as DocumentSnapshot<Object>;
+  }
+
   // String namee(){
   //   if(_auth.currentUser.displayName != null){
   //     return _auth.currentUser.displayName;
@@ -51,6 +67,41 @@ class _LandingPageState extends State<LandingPage> {
   //     return SignUpScreenState().text.text;
   //   }
   // }
+  void dataInfo() {
+    FirebaseFirestore.instance
+        .collection('account details')
+        .doc('xsajAansjdna')
+        .get()
+        .then((value) {
+      value.get('Full name');
+    });
+    // FirebaseFirestore.instance
+    //     .collection('account details')
+    //     .get()
+    //     .then((value) {
+    //   value.docs.forEach((element) {
+    //     print(element.data());
+    //   });
+    // });
+
+    // StreamBuilder<QuerySnapshot>(
+    //     stream: FirebaseFirestore.instance.collection('books').snapshots(),
+    // builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+    // if (snapshot.hasError)
+    // return Text('Error: ${snapshot.error}');
+    // switch (snapshot.connectionState) {
+    // case ConnectionState.waiting: return Text('Loading...');
+    // default:
+    // return ListView(
+    // children: snapshot.data.docs.map((DocumentSnapshot document) {
+    // return ListTile(
+    // title: Text(document['title']),
+    // subtitle: Text(document['author']),
+    // );
+    // }).toList(),
+    // );
+  }
+
   Widget pic() {
     if (_auth.currentUser.photoURL != null) {
       return Image.network(_auth.currentUser.photoURL);
@@ -86,8 +137,9 @@ class _LandingPageState extends State<LandingPage> {
               style: kTextGet8,
             ),
             GestureDetector(
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Going())),
+              onTap: () => dataInfo(),
+                  // Navigator.push(
+                  // context, MaterialPageRoute(builder: (context) => Going())),
               child: CircleAvatar(
                 child: Icon(Icons.notifications_outlined),
                 backgroundColor: Colors.transparent,

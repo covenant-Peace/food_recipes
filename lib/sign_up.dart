@@ -9,9 +9,9 @@ import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
 import 'bottom_navigation.dart';
 import 'constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -22,6 +22,7 @@ class SignUpScreen extends StatefulWidget {
 class SignUpScreenState extends State<SignUpScreen> {
   static const String id = 'sign_up';
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
   String email;
   String password;
   bool showSpinner = false;
@@ -29,6 +30,8 @@ class SignUpScreenState extends State<SignUpScreen> {
   Timer timer;
   TextEditingController text = TextEditingController();
   bool validate = false;
+  String name;
+  String phoneNumber;
 
   Future<void> checkVerify() async {
     user = _auth.currentUser;
@@ -94,6 +97,9 @@ class SignUpScreenState extends State<SignUpScreen> {
                     style: kTextJourney3,
                     keyboardType: TextInputType.text,
                     controller: text,
+                    onChanged: (val){
+                      name=val;
+                    },
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(11),
                       // FilteringTextInputFormatter.digitsOnly
@@ -174,6 +180,9 @@ class SignUpScreenState extends State<SignUpScreen> {
                     obscureText: false,
                     style: kTextJourney3,
                     keyboardType: TextInputType.phone,
+                    onChanged: (value){
+                      phoneNumber = value;
+                    },
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(11),
                       FilteringTextInputFormatter.digitsOnly
@@ -277,6 +286,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                               email: email, password: password);
 
                       if (newUser != null) {
+                        _firestore.collection('account details').add({
+                          'Full name': name,
+                          'email': email,
+                          'password':password,
+                          'phone number' : phoneNumber
+                        });
                         Navigator.push(
                             context,
                             MaterialPageRoute(

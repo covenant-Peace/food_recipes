@@ -6,10 +6,10 @@ import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/passwordFile/forgot_password.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'constants.dart';
 import 'sign_up.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LoginScreen extends StatefulWidget {
   // const LoginScreen({Key? key}) : super(key: key);
@@ -23,6 +23,14 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
   bool showSpinner = false;
+  // bool isVerified = false;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   isVerified = _auth.currentUser.emailVerified;
+  // }
+  // navToAttachList(BuildContext context)
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,8 +133,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ForgotPassword()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForgotPassword()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,25 +155,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 11.0,
               ),
               GestureDetector(
-                onTap: () async {
+                onTap: ()  async {
                   setState(() {
                     showSpinner = true;
                   });
                   try {
-                    final user = await _auth.signInWithEmailAndPassword(
-                        email: email, password: password);
-                    if(!_auth.currentUser.emailVerified){
-                      await _auth.currentUser.sendEmailVerification();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Email Sent'),
-                        duration: Duration(seconds: 6),
-                      ));
+                    if(_auth.currentUser != null) {
+                      if (!_auth.currentUser.emailVerified) {
+                        await _auth.currentUser.sendEmailVerification();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Email Sent'),
+                          duration: Duration(seconds: 6),
+                        ));
+                      } else {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          await Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => BottomNavigation(0)));
+                        }
+                      }
                     }
-                    if(user != null){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AUthService().handleAuthState()));}
                   } catch (e) {
                     print(e);
                     // await _auth.currentUser.sendEmailVerification();
@@ -220,11 +233,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () async{
+                onTap: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try{
                   await AUthService().googleSignIn(context);
                   // GoogleSignIn().signIn();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));}
+                      catch(e){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('$e'),
+                          duration: Duration(seconds: 6),
+                        ));
+                      }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: Container(
                   height: 56.0,
@@ -253,9 +281,24 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               GestureDetector(
                 onTap: () async {
+                  setState(() {
+                    showSpinner = false;
+                  });
+                  try{
                   await AUthService().signInWithFacebook(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));}
+                  catch(e){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('$e'),
+                      duration: Duration(seconds: 6),
+                    ));
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: Container(
                   height: 56.0,
@@ -359,4 +402,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

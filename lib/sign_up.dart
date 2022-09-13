@@ -14,7 +14,6 @@ import 'bottom_navigation.dart';
 import 'constants.dart';
 
 class SignUpScreen extends StatefulWidget {
-  // const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   State<SignUpScreen> createState() => SignUpScreenState();

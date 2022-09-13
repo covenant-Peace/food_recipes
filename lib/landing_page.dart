@@ -464,8 +464,6 @@ class Built extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: ClampingScrollPhysics(),
               shrinkWrap: true,
-              // controller: ScrollController(),
-              // padding: EdgeInsets.only(left: 10, right: 10),
             )));
   }
 }

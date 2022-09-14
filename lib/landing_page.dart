@@ -103,11 +103,15 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   Widget pic() {
+    try{
     if (_auth.currentUser.photoURL != null) {
       return Image.network(_auth.currentUser.photoURL);
     } else {
       return Image.asset('images/girl.png');
-    }
+    }}
+        catch(e){
+      print(e);
+        }
   }
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();

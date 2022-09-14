@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
   bool showSpinner = false;
+
   // bool isVerified = false;
   // @override
   // void initState() {
@@ -155,12 +156,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 11.0,
               ),
               GestureDetector(
-                onTap: ()  async {
+                onTap: () async {
                   setState(() {
                     showSpinner = true;
                   });
                   try {
-                    if(_auth.currentUser != null) {
+                    if (_auth.currentUser != null) {
                       if (!_auth.currentUser.emailVerified) {
                         await _auth.currentUser.sendEmailVerification();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -171,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
-                          await Navigator.push(context,
+                          await Navigator.push(
+                              context,
                               MaterialPageRoute(
                                   builder: (context) => BottomNavigation(0)));
                         }
@@ -237,19 +239,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   setState(() {
                     showSpinner = true;
                   });
-                  try{
-                  await AUthService().googleSignIn(context);
-                  // GoogleSignIn().signIn();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BottomNavigation(0)));}
-                      catch(e){
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('$e'),
-                          duration: Duration(seconds: 6),
-                        ));
-                      }
+                  try {
+                    await AUthService().googleSignIn(context);
+                    // GoogleSignIn().signIn();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation(0)));
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('$e'),
+                      duration: Duration(seconds: 6),
+                    ));
+                  }
                   setState(() {
                     showSpinner = false;
                   });
@@ -284,13 +286,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   setState(() {
                     showSpinner = false;
                   });
-                  try{
-                  await AUthService().signInWithFacebook(context);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BottomNavigation(0)));}
-                  catch(e){
+                  try {
+                    await AUthService().signInWithFacebook(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation(0)));
+                  } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text('$e'),
                       duration: Duration(seconds: 6),

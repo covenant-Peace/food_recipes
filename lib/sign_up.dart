@@ -299,7 +299,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('$e'),
+                        content: Text(e.message.toString()),
                         duration: Duration(seconds: 6),
                       ));
                     }

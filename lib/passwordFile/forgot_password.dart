@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/log_in.dart';
@@ -29,7 +30,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       currentFocus.unfocus();
     }
   }
+final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
 
+  @override
+  dispose(){
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async{
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+          email: _emailController.text.trim());
+    }
+    on FirebaseAuthException catch(e){
+      print(e);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -166,6 +184,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                     style: kTextJourney5,
                     obscureText: false,
+                    controller: selectedCall == Call.email ? _emailController : _phoneController,
                     keyboardType: selectedCall == Call.email
                         ? TextInputType.emailAddress
                         : TextInputType.phone,

@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     print(e);
                     // await _auth.currentUser.sendEmailVerification();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('$e'),
+                      content: Text(e.message.toString()),
                       duration: Duration(seconds: 6),
                     ));
                   }
@@ -248,7 +248,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => BottomNavigation(0)));
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('$e'),
+                      content: Text(e.message.toString()),
                       duration: Duration(seconds: 6),
                     ));
                   }

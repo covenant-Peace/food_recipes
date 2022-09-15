@@ -43,9 +43,16 @@ final _emailController = TextEditingController();
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(
           email: _emailController.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Password Reset email sent. Please, check your mail'),
+        duration: Duration(seconds: 6),
+      ));
     }
     on FirebaseAuthException catch(e){
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message.toString()),
+        duration: Duration(seconds: 6),
+      ));
     }
   }
   @override
@@ -196,6 +203,7 @@ final _emailController = TextEditingController();
               ),
               GestureDetector(
                 onTap: () {
+                  passwordReset();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 },

@@ -7,6 +7,7 @@ import 'package:food_recipes/paymentFile/payment.dart';
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
+import 'package:pay/pay.dart';
 
 class PaymentMethod extends StatefulWidget {
   @override
@@ -25,6 +26,16 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
   Paymentcard selectedCard;
 
+  final _paymentItems = [
+    PaymentItem(
+      label: 'Total',
+      amount: '99.99',
+      status: PaymentItemStatus.final_price,
+    )
+  ];
+  void onGooglePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,7 +212,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
               ],
             ),
             SizedBox(
-              height: 140.0,
+              height: 70.0,
             ),
             GestureDetector(
               onTap: () {
@@ -222,6 +233,21 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+
+            // GooglePayButton(
+            //   width: 300,
+            //   paymentConfigurationAsset: 'gpay.json',
+            //   paymentItems: _paymentItems,
+            //   type: GooglePayButtonType.pay,
+            //   margin: const EdgeInsets.only(top: 15.0),
+            //   onPaymentResult: onGooglePayResult,
+            //   loadingIndicator: const Center(
+            //     child: CircularProgressIndicator(),
+            //   ),
+            // ),
           ],
         ),
       ),

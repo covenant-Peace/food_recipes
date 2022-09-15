@@ -161,23 +161,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     showSpinner = true;
                   });
                   try {
-                    if (_auth.currentUser != null) {
-                      if (!_auth.currentUser.emailVerified) {
-                        await _auth.currentUser.sendEmailVerification();
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Email Sent'),
-                          duration: Duration(seconds: 6),
-                        ));
-                      } else {
+                    // if (_auth.currentUser != null) {
+                    //   if (!_auth.currentUser.emailVerified) {
+                    //     await _auth.currentUser.sendEmailVerification();
+                    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //       content: Text('Email Sent'),
+                    //       duration: Duration(seconds: 6),
+                    //     ));
+                    //   } else {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
                           await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BottomNavigation(0)));
-                        }
-                      }
+                                  builder: (context) => AUthService().handleAuthState()));
+                    //     }
+                    //   }
                     }
                   } catch (e) {
                     print(e);
@@ -283,24 +283,17 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               GestureDetector(
                 onTap: () async {
-                  setState(() {
-                    showSpinner = false;
-                  });
-                  try {
+                  // setState(() {
+                  //   showSpinner = false;
+                  // });
                     await AUthService().signInWithFacebook(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => BottomNavigation(0)));
-                  } catch (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('$e'),
-                      duration: Duration(seconds: 6),
-                    ));
-                  }
-                  setState(() {
-                    showSpinner = false;
-                  });
+                  // setState(() {
+                  //   showSpinner = false;
+                  // });
                 },
                 child: Container(
                   height: 56.0,

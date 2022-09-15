@@ -8,12 +8,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
-import 'package:food_recipes/notification.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
 import 'delicious.dart';
 import 'drawer.dart';
+import 'notification.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _LandingPageState extends State<LandingPage> {
     getCurrentUser();
   }
 
-  String name;
+  String name = 'Welcome!';
 
   void getCurrentUser() async {
     try {
@@ -103,21 +103,26 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   Widget pic() {
-    try{
-    if (_auth.currentUser.photoURL != null) {
-      return Image.network(_auth.currentUser.photoURL);
-    } else {
-      return Image.asset('images/girl.png');
-    }}
-        catch(e){
+    try {
+      if (_auth.currentUser.photoURL != null) {
+        return Image.network(_auth.currentUser.photoURL);
+      } else {
+        return Image.asset('images/girl.png');
+      }
+    } catch (e) {
       print(e);
-        }
+    }
   }
+
+  // String display=
+  //
+  //     ;
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    // name = _auth.currentUser.displayName;
     return Scaffold(
       backgroundColor: Color(0xff222222),
       key: _key,
@@ -141,9 +146,10 @@ class _LandingPageState extends State<LandingPage> {
               style: kTextGet8,
             ),
             GestureDetector(
-              onTap: () => dataInfo(),
-                  // Navigator.push(
-                  // context, MaterialPageRoute(builder: (context) => Going())),
+              onTap: () =>
+                  // dataInfo(),
+              Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Going())),
               child: CircleAvatar(
                 child: Icon(Icons.notifications_outlined),
                 backgroundColor: Colors.transparent,

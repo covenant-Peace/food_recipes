@@ -10,7 +10,6 @@ import 'controller/salad2_controller.dart';
 import 'controller/salad_controller.dart';
 
 class Categories extends StatelessWidget {
-  // const Categories({Key? key}) : super(key: key);
   final controllers = Get.put(SaladController());
   final controllerss = Get.put(Salad2Controller());
 
@@ -68,57 +67,53 @@ class Categories extends StatelessWidget {
                 children: [
                   Expanded(
                     child: GetX<SaladController>(
-                        builder: ((controllers) =>
-                            ListView.builder(
-                                itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 20, right: 10, top: 14),
-                                child: Stack(
-                                  children: [
-                                    Image.asset(controllers.sals[index].pict),
-                                    Positioned(
-                                      child: Text(
-                                        controllers.sals[index].tit,
-                                        style: kTextJourney11,
+                        builder: ((controllers) => ListView.builder(
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 20, right: 10, top: 14),
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(controllers.sals[index].pict),
+                                      Positioned(
+                                        child: Text(
+                                          controllers.sals[index].tit,
+                                          style: kTextJourney11,
+                                        ),
+                                        bottom: 15,
+                                        left: 15,
                                       ),
-                                      bottom: 15,
-                                      left: 15,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                                    ],
+                                  ),
+                                );
+                              },
                               itemCount: controllers.sals.length,
-                            )
-                        )
-                    ),
+                            ))),
                   ),
-
                   Expanded(
                     child: GetX<Salad2Controller>(
-                        builder: ((controllerss) =>
-                            ListView.builder(itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: Stack(
-                                  children: [
-                                    Image.asset(controllerss.sals[index].pict),
-                                    Positioned(
-                                      child: Text(
-                                        controllerss.sals[index].tit,
-                                        style: kTextJourney11,
+                        builder: ((controllerss) => ListView.builder(
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                          controllerss.sals[index].pict),
+                                      Positioned(
+                                        child: Text(
+                                          controllerss.sals[index].tit,
+                                          style: kTextJourney11,
+                                        ),
+                                        bottom: 15,
+                                        left: 15,
                                       ),
-                                      bottom: 15,
-                                      left: 15,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                                    ],
+                                  ),
+                                );
+                              },
                               itemCount: controllerss.sals.length,
-                            )
-                        )
-                    ),
+                            ))),
                   ),
                 ],
               ),

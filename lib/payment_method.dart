@@ -190,8 +190,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   child: ListTile(
                     title: TextField(
                       decoration: InputDecoration(
-                        // hintText: '1234',
-                        // hintStyle: kTextJourney16,
                         border: InputBorder.none,
                       ),
                       obscureText: false,

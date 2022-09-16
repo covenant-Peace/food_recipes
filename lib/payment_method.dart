@@ -45,7 +45,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
         padding:
             const EdgeInsets.only(left: 36, right: 36, top: 26, bottom: 36),
         child: ListView(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

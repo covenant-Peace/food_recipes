@@ -114,14 +114,4 @@ class _VerifyEmailState extends State<VerifyEmail> {
             ),
           ),
         );
-// ()=>showDialog(
-//     context: context,
-//     builder: (context) => Dialog(
-//           backgroundColor: Colors.transparent,
-//           child: Text(
-//             'An email link has been sent to your mail. Please verify!.',
-//             style: kTextJourney31,
-//             textAlign: TextAlign.center,
-//           ),
-//         ));
 }

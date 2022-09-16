@@ -69,7 +69,6 @@ class AUthService {
 }
 
 class VerifyEmail extends StatefulWidget {
-  // const VerifyEmail({Key? key}) : super(key: key);
 
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();

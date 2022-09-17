@@ -395,7 +395,7 @@ class _HomePageState extends State<HomePage> {
       _updateStatus(
           reference,
           'There was a problem getting a new access code form'
-          ' the backend: $e');
+          ' the backend: ${e.message}');
     }
 
     return accessCode;

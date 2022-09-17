@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
+import 'package:food_recipes/paystack.dart';
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
@@ -214,7 +215,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BottomNavigation(4)));
+                    MaterialPageRoute(builder: (context) => HomePage()
+                        // BottomNavigation(4)
+                    )
+                );
               },
               child: Container(
                 height: 56.0,

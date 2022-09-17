@@ -10,7 +10,7 @@ class CardNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 65.0,
+      width: MediaQuery.of(context).size.width,
       height: 56.0,
       // margin: EdgeInsets.only(left: 36.0, right: 38.0),
       decoration: BoxDecoration(
@@ -27,7 +27,7 @@ class CardNumber extends StatelessWidget {
                 color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
           )),
       child: ListTile(
-        title: TextField(
+        title: TextFormField(
           decoration: InputDecoration(
             hintText: '1234',
             hintStyle: kTextJourney16,
@@ -36,16 +36,17 @@ class CardNumber extends StatelessWidget {
           obscureText: false,
           // maxLength: 4,
           inputFormatters: [
-            LengthLimitingTextInputFormatter(4),
+            // LengthLimitingTextInputFormatter(4),
             FilteringTextInputFormatter.digitsOnly
           ],
           style: kTextJourney17,
           cursorColor: Colors.white,
           focusNode: FocusNode(),
           keyboardType: TextInputType.phone,
+          onSaved: (String value) => _cardNumber = value,
           onChanged: (newText) {
             cpNumber = newText;
-            if(newText.length == 4){
+            if(newText.length == 16){
               FocusScope.of(context).nextFocus();
             }
           },

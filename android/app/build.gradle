@@ -60,6 +60,9 @@ android {
             crunchPngs false
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 flutter {

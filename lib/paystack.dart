@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                     labelText: 'Card number',
                   ),
                   onSaved: (String value) => _cardNumber = value,
+                  keyboardType: TextInputType.number,
                 ),
                 _verticalSizeBox,
                 Row(
@@ -108,6 +109,7 @@ class _HomePageState extends State<HomePage> {
                           labelText: 'CVV',
                         ),
                         onSaved: (String value) => _cvv = value,
+                        keyboardType: TextInputType.number,
                       ),
                     ),
                     _horizontalSizeBox,
@@ -119,6 +121,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         onSaved: (String value) =>
                             _expiryMonth = int.tryParse(value ?? ""),
+                        keyboardType: TextInputType.number,
                       ),
                     ),
                     _horizontalSizeBox,
@@ -130,6 +133,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         onSaved: (String value) =>
                             _expiryYear = int.tryParse(value ?? ""),
+                        keyboardType: TextInputType.number,
                       ),
                     )
                   ],
@@ -412,7 +416,7 @@ class _HomePageState extends State<HomePage> {
       _updateStatus(
           reference,
           'There was a problem verifying %s on the backend: '
-          '$reference $e');
+          '$reference ${e.message}');
     }
     setState(() => _inProgress = false);
   }

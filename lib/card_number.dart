@@ -43,7 +43,7 @@ class CardNumber extends StatelessWidget {
           cursorColor: Colors.white,
           focusNode: FocusNode(),
           keyboardType: TextInputType.phone,
-          onSaved: (String value) => _cardNumber = value,
+          // onSaved: (String value) => _cardNumber = value,
           onChanged: (newText) {
             cpNumber = newText;
             if(newText.length == 16){

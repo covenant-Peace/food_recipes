@@ -351,7 +351,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                             style: BorderStyle.solid),
                       )),
                   child: ListTile(
-                    title: TextField(
+                    title: TextFormField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
                       ),
@@ -362,6 +362,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       ],
                       style: kTextJourney17,
                       keyboardType: TextInputType.phone,
+                      onSaved: (String value) => _cvv = value,
                       onChanged: (newText) {
                         if (newText.length == 3) {
                           FocusScope.of(context).unfocus();

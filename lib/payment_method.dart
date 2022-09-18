@@ -137,7 +137,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         color: Colors.orange,
                         width: 1,
                         style: BorderStyle.solid),
-                  )),
+                  )
+              ),
               child: ListTile(
                 title: TextField(
                   decoration: InputDecoration(
@@ -164,7 +165,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 56.0,
-              // margin: EdgeInsets.only(left: 36.0, right: 38.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   color: Color(0xFF222222),

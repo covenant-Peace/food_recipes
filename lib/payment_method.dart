@@ -194,7 +194,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     border: InputBorder.none,
                   ),
                   obscureText: false,
-                  // maxLength: 4,
                   inputFormatters: [
                     // LengthLimitingTextInputFormatter(4),
                     FilteringTextInputFormatter.digitsOnly

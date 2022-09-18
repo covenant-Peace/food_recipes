@@ -37,8 +37,6 @@ class AUthService {
 
         UserCredential userCredential =
             await FirebaseAuth.instance.signInWithCredential(credential);
-        //   }
-        // }
       }
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

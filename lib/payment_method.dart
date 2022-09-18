@@ -204,7 +204,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   keyboardType: TextInputType.phone,
                   onSaved: (String value) => _cardNumber = value,
                   onChanged: (newText) {
-                    // cpNumber = newText;
                     if (newText.length == 16) {
                       FocusScope.of(context).nextFocus();
                     }

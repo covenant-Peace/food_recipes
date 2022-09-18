@@ -37,7 +37,6 @@ class AUthService {
 
         UserCredential userCredential =
             await FirebaseAuth.instance.signInWithCredential(credential);
-        // if(userCredential.user != null){
         //   if(userCredential.additionalUserInfo.isNewUser){
         //
         //   }

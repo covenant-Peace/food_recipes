@@ -90,7 +90,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
       await user.sendEmailVerification();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('$e'),
+        content: Text(e.message),
         duration: Duration(seconds: 6),
       ));
     }

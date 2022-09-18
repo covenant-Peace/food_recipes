@@ -195,7 +195,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   ),
                   obscureText: false,
                   inputFormatters: [
-                    // LengthLimitingTextInputFormatter(4),
                     FilteringTextInputFormatter.digitsOnly
                   ],
                   style: kTextJourney17,

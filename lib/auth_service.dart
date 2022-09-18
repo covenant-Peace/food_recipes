@@ -40,7 +40,7 @@ class AUthService {
       }
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('$e'),
+        content: Text(e.message),
         duration: Duration(seconds: 6),
       ));
     }
@@ -56,7 +56,7 @@ class AUthService {
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('$e'),
+        content: Text(e.message),
         duration: Duration(seconds: 6),
       ));
     }

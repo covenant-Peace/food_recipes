@@ -24,13 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   String password;
   bool showSpinner = false;
 
-  // bool isVerified = false;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   isVerified = _auth.currentUser.emailVerified;
-  // }
-  // navToAttachList(BuildContext context)
 
   @override
   Widget build(BuildContext context) {

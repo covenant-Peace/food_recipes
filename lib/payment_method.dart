@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
+
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
@@ -135,8 +137,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         color: Colors.orange,
                         width: 1,
                         style: BorderStyle.solid),
-                  )
-              ),
+                  )),
               child: ListTile(
                 title: TextField(
                   decoration: InputDecoration(
@@ -192,9 +193,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     border: InputBorder.none,
                   ),
                   obscureText: false,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   style: kTextJourney17,
                   cursorColor: Colors.white,
                   focusNode: FocusNode(),
@@ -242,13 +241,21 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       color: Color(0xFF222222),
                       border: Border(
                         top: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         bottom: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         left: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         right: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                       )),
                   child: ListTile(
                     title: TextFormField(
@@ -266,7 +273,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       cursorColor: Colors.white,
                       keyboardType: TextInputType.phone,
                       onSaved: (String value) =>
-                      _expiryMonth = int.tryParse(value ?? ""),
+                          _expiryMonth = int.tryParse(value ?? ""),
                       onChanged: (newText) {
                         // cpNumber = newText;
                         if (newText.length == 2) {
@@ -284,13 +291,21 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       color: Color(0xFF222222),
                       border: Border(
                         top: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         bottom: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         left: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                         right: BorderSide(
-                            color: Color(0xFFBDBDBD), width: 1, style: BorderStyle.solid),
+                            color: Color(0xFFBDBDBD),
+                            width: 1,
+                            style: BorderStyle.solid),
                       )),
                   child: ListTile(
                     title: TextFormField(
@@ -308,7 +323,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       cursorColor: Colors.white,
                       keyboardType: TextInputType.phone,
                       onSaved: (String value) =>
-                      _expiryYear = int.tryParse(value ?? ""),
+                          _expiryYear = int.tryParse(value ?? ""),
                       onChanged: (newText) {
                         // cpNumber = newText;
                         if (newText.length == 2) {

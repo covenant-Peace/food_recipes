@@ -12,7 +12,6 @@ class CardNumber extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 56.0,
-      // margin: EdgeInsets.only(left: 36.0, right: 38.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           color: Color(0xFF222222),

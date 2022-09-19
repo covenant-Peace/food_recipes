@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +9,6 @@ import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
-
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';

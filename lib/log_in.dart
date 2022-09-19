@@ -41,7 +41,6 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.only(left: 38.0, right: 36.0),
           child: ListView(
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 'Log In',

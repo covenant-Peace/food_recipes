@@ -24,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   String password;
   bool showSpinner = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,15 +160,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     //       duration: Duration(seconds: 6),
                     //     ));
                     //   } else {
-                        final user = await _auth.signInWithEmailAndPassword(
-                            email: email, password: password);
-                        if (user != null) {
-                          await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AUthService().handleAuthState()));
-                    //     }
-                    //   }
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  AUthService().handleAuthState()));
+                      //     }
+                      //   }
                     }
                   } catch (e) {
                     print(e);
@@ -278,11 +278,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   // setState(() {
                   //   showSpinner = false;
                   // });
-                    await AUthService().signInWithFacebook(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BottomNavigation(0)));
+                  await AUthService().signInWithFacebook(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomNavigation(0)));
                   // setState(() {
                   //   showSpinner = false;
                   // });

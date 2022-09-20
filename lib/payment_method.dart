@@ -10,7 +10,7 @@ import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
@@ -31,6 +31,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
   ];
 
   Paymentcard selectedCard;
+  TextEditingController contNum = TextEditingController();
+  TextEditingController contCvv = TextEditingController();
+  // final contNum = TextEditingController();
 
   final _paymentItems = [
     PaymentItem(
@@ -458,7 +461,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     _formKey.currentState?.save();
     Charge charge = Charge()
       ..amount = 10000 // In base currency
-      ..email = 'customer@email.com'
+      ..email = FirebaseAuth.instance.currentUser.email
       ..card = _getCardFromUI();
 
     if (!_isLocal) {

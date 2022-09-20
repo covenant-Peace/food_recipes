@@ -57,7 +57,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     color: Colors.red,
   );
   int _radioValue = 0;
-  CheckoutMethod _method = CheckoutMethod.selectable;
+  CheckoutMethod _method = CheckoutMethod.card;
   bool _inProgress = false;
   String _cardNumber;
   String _cvv;
@@ -388,11 +388,12 @@ class _PaymentMethodState extends State<PaymentMethod> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()
-                        // BottomNavigation(4)
-                        ));
+                _handleCheckout(context);
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => HomePage()
+                //         // BottomNavigation(4)
+                //         ));
               },
               child: Container(
                 height: 56.0,
@@ -401,10 +402,25 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   color: Color(0xFFEDA92E),
                 ),
                 alignment: Alignment.center,
-                child: Text(
-                  'Add card',
-                  style: kTextJourney4,
-                  textAlign: TextAlign.center,
+                child: Builder(
+                  builder: (context) {
+                    return _inProgress
+                        ? Container(
+                            alignment: Alignment.center,
+                            height: 50.0,
+                            child: Platform.isIOS
+                                ? const CupertinoActivityIndicator()
+                                : const CircularProgressIndicator(),
+                          )
+                        : Flexible(
+                            flex: 2,
+                            child: Text(
+                              'Add card',
+                              style: kTextJourney4,
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                  },
                 ),
               ),
             ),
@@ -435,7 +451,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
   _handleCheckout(BuildContext context) async {
     if (_method != CheckoutMethod.card && _isLocal) {
-      _showMessage('Select server initialization method at the top');
+      // _showMessage('Select server initialization method at the top');
       return;
     }
     setState(() => _inProgress = true);
@@ -465,7 +481,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
       _updateStatus(response.reference, '$response');
     } catch (e) {
       setState(() => _inProgress = false);
-      _showMessage("Check console for error");
+      // _showMessage("Check console for error");
       rethrow;
     }
   }
@@ -621,8 +637,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
   }
 
   _updateStatus(String reference, String message) {
-    _showMessage('Reference: $reference \n Response: $message',
-        const Duration(seconds: 7));
+    // _showMessage('Reference: $reference \n Response: $message',
+    //     const Duration(seconds: 7));
   }
 
   _showMessage(String message,

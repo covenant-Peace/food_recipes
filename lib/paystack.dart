@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     color: Colors.red,
   );
   int _radioValue = 0;
-  CheckoutMethod _method = CheckoutMethod.selectable;
+  CheckoutMethod _method = CheckoutMethod.card;
   bool _inProgress = false;
   String _cardNumber;
   String _cvv;
@@ -60,84 +60,6 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    const Expanded(
-                      child: Text('Initalize transaction from:'),
-                    ),
-                    Expanded(
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            RadioListTile<int>(
-                              value: 0,
-                              groupValue: _radioValue,
-                              onChanged: _handleRadioValueChanged,
-                              title: const Text('Local'),
-                            ),
-                            RadioListTile<int>(
-                              value: 1,
-                              groupValue: _radioValue,
-                              onChanged: _handleRadioValueChanged,
-                              title: const Text('Server'),
-                            ),
-                          ]),
-                    )
-                  ],
-                ),
-                _border,
-                _verticalSizeBox,
-                TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Card number',
-                  ),
-                  onSaved: (String value) => _cardNumber = value,
-                  keyboardType: TextInputType.number,
-                ),
-                _verticalSizeBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(),
-                          labelText: 'CVV',
-                        ),
-                        onSaved: (String value) => _cvv = value,
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                    _horizontalSizeBox,
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(),
-                          labelText: 'Expiry Month',
-                        ),
-                        onSaved: (String value) =>
-                            _expiryMonth = int.tryParse(value ?? ""),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                    _horizontalSizeBox,
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(),
-                          labelText: 'Expiry Year',
-                        ),
-                        onSaved: (String value) =>
-                            _expiryYear = int.tryParse(value ?? ""),
-                        keyboardType: TextInputType.number,
-                      ),
-                    )
-                  ],
-                ),
                 _verticalSizeBox,
                 Theme(
                   data: Theme.of(context).copyWith(
@@ -163,59 +85,19 @@ class _HomePageState extends State<HomePage> {
                           : Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                _getPlatformButton(
-                                    'Charge Card', () => _startAfreshCharge()),
-                                _verticalSizeBox,
                                 _border,
                                 const SizedBox(
                                   height: 40.0,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Flexible(
-                                      flex: 3,
-                                      child: DropdownButtonHideUnderline(
-                                        child: InputDecorator(
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            isDense: true,
-                                            hintText: 'Checkout method',
-                                          ),
-                                          child: DropdownButton<CheckoutMethod>(
-                                            value: _method,
-                                            isDense: true,
-                                            onChanged: (CheckoutMethod value) {
-                                              if (value != null) {
-                                                setState(() => _method = value);
-                                              }
-                                            },
-                                            items: banks.map((String value) {
-                                              return DropdownMenuItem<
-                                                  CheckoutMethod>(
-                                                value:
-                                                    _parseStringToMethod(value),
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                      ),
+                                Flexible(
+                                  flex: 2,
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: _getPlatformButton(
+                                      'Checkout',
+                                      () => _handleCheckout(context),
                                     ),
-                                    _horizontalSizeBox,
-                                    Flexible(
-                                      flex: 2,
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: _getPlatformButton(
-                                          'Checkout',
-                                          () => _handleCheckout(context),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 )
                               ],
                             );
@@ -236,7 +118,7 @@ class _HomePageState extends State<HomePage> {
 
   _handleCheckout(BuildContext context) async {
     if (_method != CheckoutMethod.card && _isLocal) {
-      _showMessage('Select server initialization method at the top');
+      // _showMessage('Select server initialization method at the top');
       return;
     }
     setState(() => _inProgress = true);
@@ -266,7 +148,7 @@ class _HomePageState extends State<HomePage> {
       _updateStatus(response.reference, '$response');
     } catch (e) {
       setState(() => _inProgress = false);
-      _showMessage("Check console for error");
+      // _showMessage("Check console for error");
       rethrow;
     }
   }
@@ -422,8 +304,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   _updateStatus(String reference, String message) {
-    _showMessage('Reference: $reference \n Response: $message',
-        const Duration(seconds: 7));
+    // _showMessage('Reference: $reference \n Response: $message',
+    //     const Duration(seconds: 7));
   }
 
   _showMessage(String message,

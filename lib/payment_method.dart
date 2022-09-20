@@ -37,6 +37,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   TextEditingController contCvv = TextEditingController();
   TextEditingController contMon = TextEditingController();
   TextEditingController contYear = TextEditingController();
+  TextEditingController contName= TextEditingController();
 
   // final contNum = TextEditingController();
 
@@ -154,6 +155,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     border: InputBorder.none,
                   ),
                   obscureText: false,
+                  controller: contName,
                   style: kTextJourney5,
                   keyboardType: TextInputType.text,
                   onEditingComplete: () {
@@ -208,12 +210,12 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   style: kTextJourney17,
                   cursorColor: Colors.white,
                   controller: contNum,
-                  focusNode: FocusNode(),
+                  // focusNode: FocusNode(),
                   keyboardType: TextInputType.number,
                   // onSaved: (String value) => _cardNumber = value,
                   onChanged: (newText) {
                     if (newText.length == 16) {
-                      FocusScope.of(context).unfocus();
+                      FocusScope.of(context).nextFocus();
                     }
                   },
                   onEditingComplete: () {

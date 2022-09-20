@@ -155,7 +155,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   ),
                   obscureText: false,
                   style: kTextJourney5,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
+                  onEditingComplete: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
                 ),
               ),
             ),
@@ -206,11 +209,11 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   cursorColor: Colors.white,
                   controller: contNum,
                   focusNode: FocusNode(),
-                  keyboardType: TextInputType.phone,
-                  onSaved: (String value) => _cardNumber = value,
+                  keyboardType: TextInputType.number,
+                  // onSaved: (String value) => _cardNumber = value,
                   onChanged: (newText) {
                     if (newText.length == 16) {
-                      FocusScope.of(context).nextFocus();
+                      FocusScope.of(context).unfocus();
                     }
                   },
                   onEditingComplete: () {

@@ -89,8 +89,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                     decoration: InputDecoration(
                       labelText: 'Enter Full name',
                       labelStyle: kTextJourney3,
-                      errorText:
-                          validate == false ? 'Please, Enter your name' : null,
+                      // errorText:
+                      //     validate == false ? 'Please, Enter your name' : null,
                       border: InputBorder.none,
                     ),
                     obscureText: false,

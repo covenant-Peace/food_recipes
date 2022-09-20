@@ -8,6 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
+import 'package:food_recipes/view/shopping_page.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,6 +35,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
   Paymentcard selectedCard;
   TextEditingController contNum = TextEditingController();
   TextEditingController contCvv = TextEditingController();
+  TextEditingController contMon = TextEditingController();
+  TextEditingController contYear = TextEditingController();
+
   // final contNum = TextEditingController();
 
   final _paymentItems = [
@@ -199,6 +204,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   style: kTextJourney17,
                   cursorColor: Colors.white,
+                  controller: contNum,
                   focusNode: FocusNode(),
                   keyboardType: TextInputType.phone,
                   onSaved: (String value) => _cardNumber = value,
@@ -274,6 +280,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       ],
                       style: kTextJourney16,
                       cursorColor: Colors.white,
+                      controller: contMon,
                       keyboardType: TextInputType.phone,
                       onSaved: (String value) =>
                           _expiryMonth = int.tryParse(value ?? ""),
@@ -324,6 +331,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       ],
                       style: kTextJourney16,
                       cursorColor: Colors.white,
+                      controller: contYear,
                       keyboardType: TextInputType.phone,
                       onSaved: (String value) =>
                           _expiryYear = int.tryParse(value ?? ""),
@@ -375,6 +383,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       ],
                       style: kTextJourney17,
                       keyboardType: TextInputType.phone,
+                      controller: contCvv,
                       onSaved: (String value) => _cvv = value,
                       onChanged: (newText) {
                         if (newText.length == 3) {
@@ -460,7 +469,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
     setState(() => _inProgress = true);
     _formKey.currentState?.save();
     Charge charge = Charge()
-      ..amount = 10000 // In base currency
+      ..amount = 10000
+          // ShoppingPage().debin // In base currency
       ..email = FirebaseAuth.instance.currentUser.email
       ..card = _getCardFromUI();
 
@@ -550,10 +560,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
   PaymentCard _getCardFromUI() {
     // Using just the must-required parameters.
     return PaymentCard(
-      number: _cardNumber,
-      cvc: _cvv,
-      expiryMonth: _expiryMonth,
-      expiryYear: _expiryYear,
+      number: contNum.text.trim(),
+      cvc: contCvv.text.trim(),
+      expiryMonth: int.parse(contMon.text.trim()),
+      expiryYear: int.parse(contYear.text.trim()),
     );
 
     // Using Cascade notation (similar to Java's builder pattern)

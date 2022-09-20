@@ -13,7 +13,7 @@ import '../bottom_navigation.dart';
 class ShoppingPage extends StatelessWidget {
   final foodController = Get.put(ShoppingController());
   final payController = Get.put(PayController());
-
+  int debin;
   @override
   Widget build(BuildContext context) {
     int deliveryFee = 499;
@@ -276,8 +276,9 @@ class ShoppingPage extends StatelessWidget {
                   style: kTextGet1,
                 ),
                 GetX<PayController>(builder: ((controller) {
+                  debin = deliveryFee + controller.totalPrice.toInt();
                   return Text(
-                    'NGN ${deliveryFee + controller.totalPrice}',
+                    'NGN $debin',
                     style: kTextGet2,
                   );
                 })),

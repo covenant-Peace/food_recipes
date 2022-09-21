@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
+import 'package:food_recipes/controller/location_controller.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Maps extends StatefulWidget {
@@ -15,44 +17,62 @@ class Maps extends StatefulWidget {
 
 class _MapsState extends State<Maps> {
   final Completer<GoogleMapController> _controller = Completer();
-
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(6.4512539, 3.429894),
+    zoom: 10,
+  );
   static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
   static const LatLng destination = LatLng(37.33429383, -122.06600055);
+  final locationController = Get.put(LocationController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white70,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Enter Address',
-          style: kTextJourney33,
-          textAlign: TextAlign.center,
+    return GetBuilder<LocationController>(
+        // stream: null,
+        builder: (locationController) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white70,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Enter Address',
+            style: kTextJourney33,
+            textAlign: TextAlign.center,
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: Stack(
-        children: [
+        body: Stack(children: [
+          // GoogleMap(
+          //   initialCameraPosition:
+          //       CameraPosition(target: sourceLocation, zoom: 10)
+          // ),
           GoogleMap(
-            initialCameraPosition:
-                CameraPosition(target: sourceLocation, zoom: 10)
+            mapType: MapType.normal,
+            initialCameraPosition: _kGooglePlex,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 478),
+            padding: const EdgeInsets.only(top: 420),
             child: Container(
               height: 354,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40))
-              ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40))),
               child: Padding(
-                padding: const EdgeInsets.only(left: 35, right: 35, top: 50, bottom: 50),
+                padding: const EdgeInsets.only(
+                    left: 35, right: 35, top: 50, bottom: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Enter preferred Location', style: kTextJourney4,),
+                    Text(
+                      'Enter preferred Location',
+                      style: kTextJourney4,
+                    ),
                     SizedBox(
                       height: 20,
                     ),
@@ -92,7 +112,7 @@ class _MapsState extends State<Maps> {
                           style: kTextJourney3,
                           keyboardType: TextInputType.text,
                           // controller: text,
-                          onChanged: (val){
+                          onChanged: (val) {
                             // name=val;
                           },
                           inputFormatters: [
@@ -102,12 +122,29 @@ class _MapsState extends State<Maps> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      height: 56.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(48.0),
+                        color: Color(0xFFEDA92E),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Confirm Address',
+                        style: kTextJourney4,
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
           )
-      ]),
-    );
+        ]),
+      );
+    });
   }
 }

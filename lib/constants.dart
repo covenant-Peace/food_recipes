@@ -324,6 +324,13 @@ const kTextJourney33 = TextStyle(
   fontSize: 16.0,
 );
 
+const kTextJourney34 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xff0c0c0c),
+  fontWeight: FontWeight.w400,
+  fontSize: 16.0,
+);
+
 const String google_api_key = "AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI";
 const Color primaryColor = Color(0xff7b61ff);
 const double defaultPadding = 16.0;

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:async';
 
@@ -38,12 +38,73 @@ class _MapsState extends State<Maps> {
             initialCameraPosition:
                 CameraPosition(target: sourceLocation, zoom: 10)
           ),
-          Container(
-            height: 354,
-            child: Column(
-              children: [
-
-              ],
+          Padding(
+            padding: const EdgeInsets.only(top: 478),
+            child: Container(
+              height: 354,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40))
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 35, right: 35, top: 50, bottom: 50),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Enter preferred Location', style: kTextJourney4,),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 56,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11.0),
+                          color: Colors.transparent,
+                          border: Border(
+                            top: BorderSide(
+                                color: Color(0xFF6A6A6A),
+                                width: 1,
+                                style: BorderStyle.solid),
+                            bottom: BorderSide(
+                                color: Color(0xFF6A6A6A),
+                                width: 1,
+                                style: BorderStyle.solid),
+                            left: BorderSide(
+                                color: Color(0xFF6A6A6A),
+                                width: 1,
+                                style: BorderStyle.solid),
+                            right: BorderSide(
+                                color: Color(0xFF6A6A6A),
+                                width: 1,
+                                style: BorderStyle.solid),
+                          )),
+                      child: ListTile(
+                        title: TextField(
+                          decoration: InputDecoration(
+                            hintText: '13, Alfred Rewane , Lagos state',
+                            hintStyle: kTextJourney34,
+                            // errorText:
+                            //     validate == false ? 'Please, Enter your name' : null,
+                            border: InputBorder.none,
+                          ),
+                          obscureText: false,
+                          style: kTextJourney3,
+                          keyboardType: TextInputType.text,
+                          // controller: text,
+                          onChanged: (val){
+                            // name=val;
+                          },
+                          inputFormatters: [
+                            // LengthLimitingTextInputFormatter(11),
+                            // FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           )
       ]),

@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:food_recipes/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Maps extends StatefulWidget {
@@ -21,9 +22,31 @@ class _MapsState extends State<Maps> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-          initialCameraPosition:
-              CameraPosition(target: sourceLocation, zoom: 10)),
+      appBar: AppBar(
+        backgroundColor: Colors.white70,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Enter Address',
+          style: kTextJourney33,
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true,
+      ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            initialCameraPosition:
+                CameraPosition(target: sourceLocation, zoom: 10)
+          ),
+          Container(
+            height: 354,
+            child: Column(
+              children: [
+
+              ],
+            ),
+          )
+      ]),
     );
   }
 }

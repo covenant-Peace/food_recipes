@@ -317,6 +317,12 @@ const kTextJourney32 = TextStyle(
   fontSize: 12.0,
 );
 
+const kTextJourney33 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Colors.black,
+  fontWeight: FontWeight.w700,
+  fontSize: 16.0,
+);
 
 const String google_api_key = "AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI";
 const Color primaryColor = Color(0xff7b61ff);

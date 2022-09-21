@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/controller/pay_controller.dart';
 import 'package:food_recipes/controller/shopping_controller.dart';
+import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:get/get.dart';
 
@@ -290,7 +291,9 @@ class ShoppingPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PaymentMethod()));
+                    MaterialPageRoute(builder: (context) => Maps()
+                        // PaymentMethod()
+                    ));
               },
               child: Container(
                 height: 56.0,

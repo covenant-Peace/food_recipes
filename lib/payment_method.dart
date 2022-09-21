@@ -482,6 +482,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
       ..amount = 10000
       // ShoppingPage().debin // In base currency
       ..email = FirebaseAuth.instance.currentUser.email
+      ..reference = _getReference()
+      ..putCustomField('Charged by', 'Food Recipe Team')
       ..card = _getCardFromUI();
 
     if (!_isLocal) {
@@ -494,7 +496,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     try {
       CheckoutResponse response = await plugin.checkout(
         context,
-        method: _method,
+        method: CheckoutMethod.card,
         charge: charge,
         fullscreen: false,
         logo: MyLogo(),
@@ -524,7 +526,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
       charge
         ..amount = 10000 // In base currency
-        ..email = 'customer@email.com'
+        ..email = FirebaseAuth.instance.currentUser.email
         ..reference = _getReference()
         ..putCustomField('Charged From', 'Flutter SDK');
       _chargeCard(charge);

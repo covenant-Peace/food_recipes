@@ -14,11 +14,16 @@ import 'log_in.dart';
 class App extends StatelessWidget {
   // const App({Key? key}) : super(key: key);
   final _auth = FirebaseAuth.instance;
+
   Widget pic() {
-    if (_auth.currentUser.photoURL != null) {
-      return Image.network(_auth.currentUser.photoURL);
-    } else {
-      return Image.asset('images/girl.png');
+    try {
+      if (_auth.currentUser.photoURL != null) {
+        return Image.network(_auth.currentUser.photoURL);
+      } else {
+        return Image.asset('images/girl.png');
+      }
+    } catch (e) {
+      print(e);
     }
   }
 

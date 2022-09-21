@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,11 +10,9 @@ import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
-import 'package:food_recipes/view/shopping_page.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
@@ -38,7 +37,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   TextEditingController contCvv = TextEditingController();
   TextEditingController contMon = TextEditingController();
   TextEditingController contYear = TextEditingController();
-  TextEditingController contName= TextEditingController();
+  TextEditingController contName = TextEditingController();
 
   // final contNum = TextEditingController();
 
@@ -408,11 +407,14 @@ class _PaymentMethodState extends State<PaymentMethod> {
               onTap: () async {
                 await _handleCheckout(context);
                 Future.delayed(Duration(seconds: 5));
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Payment made, Now Enter your address'), duration: Duration(seconds: 5),));
-                Navigator.push(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Payment made, Now Enter your address'),
+                  duration: Duration(seconds: 5),
+                ));
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => Maps()
-                //         // BottomNavigation(4)
+                        //         // BottomNavigation(4)
                         ));
               },
               child: Container(
@@ -478,7 +480,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     _formKey.currentState?.save();
     Charge charge = Charge()
       ..amount = 10000
-          // ShoppingPage().debin // In base currency
+      // ShoppingPage().debin // In base currency
       ..email = FirebaseAuth.instance.currentUser.email
       ..card = _getCardFromUI();
 

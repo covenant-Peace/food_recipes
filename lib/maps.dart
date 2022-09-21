@@ -7,6 +7,7 @@ import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/controller/location_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location_geocoder/location_geocoder.dart';
 
 class Maps extends StatefulWidget {
   // const Maps({Key? key}) : super(key: key);
@@ -16,17 +17,24 @@ class Maps extends StatefulWidget {
 }
 
 class _MapsState extends State<Maps> {
+
   final Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(6.4512539, 3.429894),
-    zoom: 10,
-  );
+
   static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
   static const LatLng destination = LatLng(37.33429383, -122.06600055);
   final locationController = Get.put(LocationController());
 
+  String conti;
+  static const _apiKey = 'AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI';
+
+
+
   @override
   Widget build(BuildContext context) {
+    final CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(emire, longre),
+      zoom: 10,
+    );
     return GetBuilder<LocationController>(
         // stream: null,
         builder: (locationController) {
@@ -51,6 +59,13 @@ class _MapsState extends State<Maps> {
             initialCameraPosition: _kGooglePlex,
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
+            },
+            markers: {
+              Marker(
+                markerId: MarkerId('_kGooglePlex'),
+                position: _kGooglePlex.target,
+                icon: BitmapDescriptor.defaultMarker
+              )
             },
           ),
           Padding(
@@ -113,7 +128,7 @@ class _MapsState extends State<Maps> {
                           keyboardType: TextInputType.text,
                           // controller: text,
                           onChanged: (val) {
-                            // name=val;
+                            conti=val;
                           },
                           inputFormatters: [
                             // LengthLimitingTextInputFormatter(11),
@@ -146,5 +161,20 @@ class _MapsState extends State<Maps> {
         ]),
       );
     });
+
   }
+  double emire;
+  double longre;
+
+  latin() async{
+    final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
+    final address = await geocoder.findAddressesFromQuery(conti);
+    emire = address.first.coordinates.latitude;
+  }
+  longin() async{
+    final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
+    final address = await geocoder.findAddressesFromQuery(conti);
+    longre= address.first.coordinates.longitude;
+  }
+
 }

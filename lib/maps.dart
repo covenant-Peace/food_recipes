@@ -30,12 +30,13 @@ class _MapsState extends State<Maps> {
   Widget build(BuildContext context) {
     final CameraPosition _kGooglePlex = CameraPosition(
       target: LatLng(emire, longre),
-      zoom: 10,
+      zoom: 9,
     );
     return GetBuilder<LocationController>(
         // stream: null,
         builder: (locationController) {
       return Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           backgroundColor: Colors.white70,
           automaticallyImplyLeading: false,
@@ -63,7 +64,7 @@ class _MapsState extends State<Maps> {
           Padding(
             padding: const EdgeInsets.only(top: 420),
             child: Container(
-              height: 354,
+              height: MediaQuery.of(context).size.height * 0.8,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -73,8 +74,8 @@ class _MapsState extends State<Maps> {
               child: Padding(
                 padding: const EdgeInsets.only(
                     left: 35, right: 35, top: 50, bottom: 50),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Enter preferred Location',
@@ -134,8 +135,8 @@ class _MapsState extends State<Maps> {
                     ),
                     GestureDetector(
                       onTap: () {
-                          latin();
-                        },
+                        latin();
+                      },
                       child: Container(
                         height: 56.0,
                         decoration: BoxDecoration(
@@ -169,6 +170,7 @@ class _MapsState extends State<Maps> {
     setState(() {
       emire = address.first.coordinates.latitude;
       longre = address.first.coordinates.longitude;
+      // _controller..moveCamera(CameraUpdate.newLatLng(LatLng(emire, longre)));
     });
 
     print('$conti $emire $longre');

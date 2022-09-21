@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/controller/pay_controller.dart';
 import 'package:food_recipes/controller/shopping_controller.dart';
-import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/payment_method.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +14,7 @@ class ShoppingPage extends StatelessWidget {
   final foodController = Get.put(ShoppingController());
   final payController = Get.put(PayController());
   int debin;
+
   @override
   Widget build(BuildContext context) {
     int deliveryFee = 499;
@@ -291,9 +291,7 @@ class ShoppingPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Maps()
-                        // PaymentMethod()
-                    ));
+                    MaterialPageRoute(builder: (context) => PaymentMethod()));
               },
               child: Container(
                 height: 56.0,

@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
+import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
 import 'package:food_recipes/paystack.dart';
 import 'package:food_recipes/view/shopping_page.dart';
@@ -404,13 +405,15 @@ class _PaymentMethodState extends State<PaymentMethod> {
               height: 70.0,
             ),
             GestureDetector(
-              onTap: () {
-                _handleCheckout(context);
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => HomePage()
+              onTap: () async {
+                await _handleCheckout(context);
+                Future.delayed(Duration(seconds: 5));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Payment made, Now Enter your address'), duration: Duration(seconds: 5),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Maps()
                 //         // BottomNavigation(4)
-                //         ));
+                        ));
               },
               child: Container(
                 height: 56.0,

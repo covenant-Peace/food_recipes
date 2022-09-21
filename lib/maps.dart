@@ -17,7 +17,6 @@ class Maps extends StatefulWidget {
 }
 
 class _MapsState extends State<Maps> {
-
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
@@ -26,8 +25,6 @@ class _MapsState extends State<Maps> {
 
   String conti;
   static const _apiKey = 'AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI';
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +47,6 @@ class _MapsState extends State<Maps> {
           centerTitle: true,
         ),
         body: Stack(children: [
-          // GoogleMap(
-          //   initialCameraPosition:
-          //       CameraPosition(target: sourceLocation, zoom: 10)
-          // ),
           GoogleMap(
             mapType: MapType.normal,
             initialCameraPosition: _kGooglePlex,
@@ -62,10 +55,9 @@ class _MapsState extends State<Maps> {
             },
             markers: {
               Marker(
-                markerId: MarkerId('_kGooglePlex'),
-                position: _kGooglePlex.target,
-                icon: BitmapDescriptor.defaultMarker
-              )
+                  markerId: MarkerId('_kGooglePlex'),
+                  position: _kGooglePlex.target,
+                  icon: BitmapDescriptor.defaultMarker)
             },
           ),
           Padding(
@@ -128,7 +120,7 @@ class _MapsState extends State<Maps> {
                           keyboardType: TextInputType.text,
                           // controller: text,
                           onChanged: (val) {
-                            conti=val;
+                            conti = val;
                           },
                           inputFormatters: [
                             // LengthLimitingTextInputFormatter(11),
@@ -140,17 +132,22 @@ class _MapsState extends State<Maps> {
                     SizedBox(
                       height: 30,
                     ),
-                    Container(
-                      height: 56.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(48.0),
-                        color: Color(0xFFEDA92E),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Confirm Address',
-                        style: kTextJourney4,
-                        textAlign: TextAlign.center,
+                    GestureDetector(
+                      onTap: () {
+                          latin();
+                        },
+                      child: Container(
+                        height: 56.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(48.0),
+                          color: Color(0xFFEDA92E),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Confirm Address',
+                          style: kTextJourney4,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     )
                   ],
@@ -161,20 +158,25 @@ class _MapsState extends State<Maps> {
         ]),
       );
     });
-
   }
-  double emire;
-  double longre;
 
-  latin() async{
+  double emire = 6.6278996;
+  double longre = 3.3710233;
+
+  void latin() async {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
     final address = await geocoder.findAddressesFromQuery(conti);
-    emire = address.first.coordinates.latitude;
-  }
-  longin() async{
-    final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
-    final address = await geocoder.findAddressesFromQuery(conti);
-    longre= address.first.coordinates.longitude;
+    setState(() {
+      emire = address.first.coordinates.latitude;
+      longre = address.first.coordinates.longitude;
+    });
+
+    print('$conti $emire $longre');
   }
 
+  longin() async {
+    final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
+    final address = await geocoder.findAddressesFromQuery(conti);
+    longre = address.first.coordinates.longitude;
+  }
 }

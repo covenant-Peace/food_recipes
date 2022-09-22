@@ -30,9 +30,10 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     super.initState();
     getCurrentUser();
+    dataInfo();
   }
 
-  String name = 'Welcome!';
+  String name = ' ';
 
   void getCurrentUser() {
     try {
@@ -49,57 +50,25 @@ class _LandingPageState extends State<LandingPage> {
   DocumentSnapshot snapshot;
 
   void getData() async {
-    final data = FirebaseFirestore.instance
+    DocumentReference docref = await FirebaseFirestore.instance
         .collection('account details')
-        .doc('Full name')
-        .get();
-    // for (var info in data.d) {
-    //   name = info.data().toString();
-    //   print(name);
-    snapshot = data as DocumentSnapshot<Object>;
+        .doc(_auth.currentUser.uid);
+    var him = docref.id;
+    // snapshot = data as DocumentSnapshot<Object>;
   }
-
-  // String namee(){
-  //   if(_auth.currentUser.displayName != null){
-  //     return _auth.currentUser.displayName;
-  //   }
-  //   else{
-  //     return SignUpScreenState().text.text;
-  //   }
-  // }
-  void dataInfo() {
-    FirebaseFirestore.instance
+  void dataInfo() async {
+    var uid = (await _auth.currentUser).uid;
+    var docSnapshot = await FirebaseFirestore.instance
         .collection('account details')
-        .doc('xsajAansjdna')
-        .get()
-        .then((value) {
-      value.get('Full name');
+        .doc(uid)
+        .get();
+    if(docSnapshot.exists){
+    Map<String, dynamic> data = docSnapshot.data();
+    setState(() {
+      name = data['Full name'];
     });
-    // FirebaseFirestore.instance
-    //     .collection('account details')
-    //     .get()
-    //     .then((value) {
-    //   value.docs.forEach((element) {
-    //     print(element.data());
-    //   });
-    // });
-
-    // StreamBuilder<QuerySnapshot>(
-    //     stream: FirebaseFirestore.instance.collection('books').snapshots(),
-    // builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-    // if (snapshot.hasError)
-    // return Text('Error: ${snapshot.error}');
-    // switch (snapshot.connectionState) {
-    // case ConnectionState.waiting: return Text('Loading...');
-    // default:
-    // return ListView(
-    // children: snapshot.data.docs.map((DocumentSnapshot document) {
-    // return ListTile(
-    // title: Text(document['title']),
-    // subtitle: Text(document['author']),
-    // );
-    // }).toList(),
-    // );
+    }
+    print(uid);
   }
 
   // String imageUrl = ' ';
@@ -132,11 +101,8 @@ class _LandingPageState extends State<LandingPage> {
     }
   }
 
-  // String display=
-  //
-  //     ;
-
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +137,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Welcome ${_auth.currentUser.displayName}!',
+              'Welcome $name!',
               style: kTextGet8,
             ),
             GestureDetector(

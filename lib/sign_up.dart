@@ -353,11 +353,24 @@ class SignUpScreenState extends State<SignUpScreen> {
               ),
               GestureDetector(
                 onTap: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try{
                   await AUthService().googleSignIn(context);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BottomNavigation(0)));
+                          builder: (context) => BottomNavigation(0)));}
+                  catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(e.message.toString()),
+                      duration: Duration(seconds: 6),
+                    ));
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: Container(
                   height: 56.0,

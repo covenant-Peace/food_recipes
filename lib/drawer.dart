@@ -1,27 +1,62 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 // import 'package:food_recipes/map.dart';
 
 import 'package:food_recipes/payment_method.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'bottom_navigation.dart';
 import 'constants.dart';
 import 'log_in.dart';
+String imageUrl = ' ';
+Reference ref = FirebaseStorage.instance.ref().child('profilepic.jpg');
 
-class App extends StatelessWidget {
+
+
+class App extends StatefulWidget {
   // const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   final _auth = FirebaseAuth.instance;
+
+
+  void pickUploadImage() async {
+    final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 512,
+        maxHeight: 512,
+        imageQuality: 75);
+
+    await ref.putFile(File(image.path));
+    ref.getDownloadURL().then((value) {
+      print(value);
+      setState(() {
+        imageUrl = value;
+      });
+    });
+  }
 
   Widget pic() {
     try {
-      if (_auth.currentUser.photoURL != null) {
-        return Image.network(_auth.currentUser.photoURL);
-      } else {
-        return Image.asset('images/girl.png');
-      }
+      // if (_auth.currentUser.photoURL != null) {
+      //   return Image.network(_auth.currentUser.photoURL);
+      // }
+       imageUrl == ' '? Icon(
+          Icons.person,
+          color: Colors.white,
+          size: 20,
+        ): Image.network(imageUrl);
+
     } catch (e) {
       print(e);
     }
@@ -37,8 +72,17 @@ class App extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              child: pic(),
+            GestureDetector(
+              onTap: () {
+                pickUploadImage();
+              },
+              child: CircleAvatar(
+                child: imageUrl == ' '? Icon(
+                  Icons.person,
+                  color: Colors.white,
+                  size: 20,
+                ): Image.network(imageUrl),
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.066,

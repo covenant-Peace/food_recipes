@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
 
   void getCurrentUser() {
     try {
-      final user =  _auth.currentUser;
+      final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
         print(loggedInUser.email);
@@ -102,12 +102,30 @@ class _LandingPageState extends State<LandingPage> {
     // );
   }
 
+  // String imageUrl = ' ';
+  void changeProfile()async{
+    ref.getDownloadURL().then((value) {
+      print(value);
+      setState(() {
+        imageUrl = value;
+      });
+    });
+  }
+
   Widget pic() {
     try {
-      if (_auth.currentUser.photoURL != null) {
-        return Image.network(_auth.currentUser.photoURL);
+      // if (_auth.currentUser.photoURL != null) {
+      //   return Image.network(_auth.currentUser.photoURL);
+      // }
+      if (imageUrl == ' ') {
+        return Icon(
+          Icons.person,
+          color: Colors.white,
+          size: 20,
+        );
       } else {
-        return Image.asset('images/girl.png');
+        setState(() {});
+        return Image.network(imageUrl);
       }
     } catch (e) {
       print(e);
@@ -130,9 +148,18 @@ class _LandingPageState extends State<LandingPage> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: GestureDetector(
-            onTap: () => _key.currentState.openDrawer(),
+            onTap: () {
+              _key.currentState.openDrawer();
+
+            },
             child: CircleAvatar(
-              child: pic(),
+              child: imageUrl == ' '
+                  ? Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 20,
+                    )
+                  : Image.network(imageUrl),
               // Image.network(_auth.currentUser.photoURL),
               // Image.asset('images/girl.png'),
             ),
@@ -148,8 +175,8 @@ class _LandingPageState extends State<LandingPage> {
             GestureDetector(
               onTap: () =>
                   // dataInfo(),
-              Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Going())),
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Going())),
               child: CircleAvatar(
                 child: Icon(Icons.notifications_outlined),
                 backgroundColor: Colors.transparent,

@@ -39,6 +39,8 @@ dependencies:
   flutter_typeahead: ^4.1.1
   location: ^4.4.0
   location_geocoder: ^1.0.5
+  firebase_storage: ^10.3.9
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:

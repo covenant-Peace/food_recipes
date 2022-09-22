@@ -74,7 +74,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   String _cvv;
   int _expiryMonth;
   int _expiryYear;
-  String paystackPublicKey = '{pk_test_52eb73e1b35453adf5f002dda6fe77262beca85b}';
+  String paystackPublicKey = 'pk_test_52eb73e1b35453adf5f002dda6fe77262beca85b';
 
   @override
   void initState() {

@@ -126,55 +126,44 @@ class _PaymentMethodState extends State<PaymentMethod> {
               height: 35.0,
             ),
             Text(
-              'Saved payment card',
+              'Pay With Card',
               style: kTextJourney9,
             ),
             SizedBox(
               height: 34.0,
             ),
-            Container(
-              width: 354.0,
-              height: 56.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Color(0xFF222222),
-                  border: Border(
-                    top: BorderSide(
+            SizedBox(
+              height: 60,
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text('Cardholder\'s name', style: kTextJourney5),
+                  //enabled: true,
+                  fillColor: Colors.orange,
+                  hoverColor: Colors.orange,
+                  focusColor: Colors.orange,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
                         color: Colors.orange,
                         width: 1,
-                        style: BorderStyle.solid),
-                    bottom: BorderSide(
+                      ),
+                      borderRadius: BorderRadius.circular(11)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
                         color: Colors.orange,
                         width: 1,
-                        style: BorderStyle.solid),
-                    left: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    right: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                  )),
-              child: ListTile(
-                title: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Cardholder\'s name',
-                    labelStyle: kTextJourney5,
-                    border: InputBorder.none,
-                  ),
-                  obscureText: false,
-                  controller: contName,
-                  style: kTextJourney5,
-                  keyboardType: TextInputType.text,
-                  onEditingComplete: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
+                      ),
+                      borderRadius: BorderRadius.circular(11)),
                 ),
+                obscureText: false,
+                style: kTextJourney5,
+                controller: contName,
+                keyboardType: TextInputType.text,
               ),
             ),
             SizedBox(
-              height: 24.0,
+              height: 20.0,
             ),
             Text(
               'Card Number',
@@ -210,7 +199,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
               child: ListTile(
                 title: TextFormField(
                   decoration: InputDecoration(
-                    hintText: '1234',
+                    hintText: '16-digit ATM card number',
                     hintStyle: kTextJourney16,
                     border: InputBorder.none,
                   ),
@@ -295,7 +284,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       style: kTextJourney16,
                       cursorColor: Colors.white,
                       controller: contMon,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
                       onSaved: (String value) =>
                           _expiryMonth = int.tryParse(value ?? ""),
                       onChanged: (newText) {
@@ -346,7 +335,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       style: kTextJourney16,
                       cursorColor: Colors.white,
                       controller: contYear,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
                       onSaved: (String value) =>
                           _expiryYear = int.tryParse(value ?? ""),
                       onChanged: (newText) {
@@ -396,7 +385,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         FilteringTextInputFormatter.digitsOnly
                       ],
                       style: kTextJourney17,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
                       controller: contCvv,
                       onSaved: (String value) => _cvv = value,
                       onChanged: (newText) {
@@ -446,7 +435,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         : Flexible(
                             flex: 2,
                             child: Text(
-                              'Add card',
+                              'Charge card',
                               style: kTextJourney4,
                               textAlign: TextAlign.center,
                             ),
@@ -488,8 +477,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     setState(() => _inProgress = true);
     _formKey.currentState?.save();
     Charge charge = Charge()
-      ..amount = debin*100
-      // ShoppingPage().debin // In base currency
+      ..amount = debin * 100 // In base currency
       ..email = FirebaseAuth.instance.currentUser.email
       ..reference = _getReference()
       ..putCustomField('Charged by', 'Food Recipe Team')
@@ -728,7 +716,7 @@ class CardNumber1 extends StatelessWidget {
           ],
           style: kTextJourney16,
           cursorColor: Colors.white,
-          keyboardType: TextInputType.phone,
+          keyboardType: TextInputType.number,
           onChanged: (newText) {
             // cpNumber = newText;
             if (newText.length == 2) {

@@ -97,7 +97,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               )),
           BottomNavigationBarItem(
               icon: SvgPicture.asset('images/account.svg'),
-              label: 'Account',
+              label: 'History',
               activeIcon: SvgPicture.asset(
                 'images/account.svg',
                 color: Colors.orange,

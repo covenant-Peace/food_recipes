@@ -9,11 +9,11 @@ import 'package:food_recipes/payment_method.dart';
 import 'package:get/get.dart';
 
 import '../bottom_navigation.dart';
+int debin;
 
 class ShoppingPage extends StatelessWidget {
   final foodController = Get.put(ShoppingController());
   final payController = Get.put(PayController());
-  int debin;
 
   @override
   Widget build(BuildContext context) {

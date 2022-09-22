@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
+import 'package:food_recipes/view/shopping_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
 
@@ -487,7 +488,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     setState(() => _inProgress = true);
     _formKey.currentState?.save();
     Charge charge = Charge()
-      ..amount = 10000
+      ..amount = debin*100
       // ShoppingPage().debin // In base currency
       ..email = FirebaseAuth.instance.currentUser.email
       ..reference = _getReference()

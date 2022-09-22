@@ -9,13 +9,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:food_recipes/maps.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
-import 'package:food_recipes/paystack.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart';
 
 import 'bottom_navigation.dart';
 import 'card_number.dart';
 import 'constants.dart';
+
+String backendUrl = '{https://whispering-refuge-14773.herokuapp.com}';
+// Set this to a public key that matches the secret key you supplied while creating the heroku instance
 
 class PaymentMethod extends StatefulWidget {
   @override
@@ -72,6 +74,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
   String _cvv;
   int _expiryMonth;
   int _expiryYear;
+  String paystackPublicKey = '{pk_test_52eb73e1b35453adf5f002dda6fe77262beca85b}';
 
   @override
   void initState() {
@@ -104,9 +107,14 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     color: Colors.white,
                   ),
                 ),
-                Text(
-                  'Payment Method',
-                  style: kTextJourney11,
+                GestureDetector(
+                  onTap: () {
+                    print(paystackPublicKey);
+                  },
+                  child: Text(
+                    'Payment Method',
+                    style: kTextJourney11,
+                  ),
                 ),
                 SizedBox(
                   width: 10.0,

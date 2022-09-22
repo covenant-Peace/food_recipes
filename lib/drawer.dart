@@ -77,11 +77,13 @@ class _AppState extends State<App> {
                 pickUploadImage();
               },
               child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: NetworkImage(imageUrl),
                 child: imageUrl == ' '? Icon(
                   Icons.person,
                   color: Colors.white,
                   size: 20,
-                ): Image.network(imageUrl),
+                ): Text(' '),
               ),
             ),
             SizedBox(

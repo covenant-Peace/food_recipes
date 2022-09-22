@@ -103,7 +103,7 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   // String imageUrl = ' ';
-  void changeProfile()async{
+  void changeProfile() async {
     ref.getDownloadURL().then((value) {
       print(value);
       setState(() {
@@ -150,16 +150,18 @@ class _LandingPageState extends State<LandingPage> {
           child: GestureDetector(
             onTap: () {
               _key.currentState.openDrawer();
-
+              changeProfile();
             },
             child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              backgroundImage: NetworkImage(imageUrl),
               child: imageUrl == ' '
                   ? Icon(
                       Icons.person,
                       color: Colors.white,
                       size: 20,
                     )
-                  : Image.network(imageUrl),
+                  : Text(' '),
               // Image.network(_auth.currentUser.photoURL),
               // Image.asset('images/girl.png'),
             ),

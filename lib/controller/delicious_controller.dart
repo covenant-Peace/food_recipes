@@ -21,32 +21,46 @@ class DeliciousController extends GetxController {
     await Future.delayed(Duration(seconds: 1));
     var delResult = [
       Deli(
-        id: 'images/del.png',
+        id: 'images/del.svg',
         foodDescription:
         'Get fresh prepared fruit salad with different flavours..',
         foodName: 'Fruit Salad',
         price: 800.00,
       ),
       Deli(
-        id: 'images/del.png',
+        id: 'images/del.svg',
         foodDescription:
         'Get fresh prepared fruit salad with different flavours..',
         foodName: 'Fruit Salad',
         price: 500.00,
       ),
       Deli(
-        id: 'images/del.png',
+        id: 'images/del.svg',
         foodDescription:
         'Get fresh prepared fruit salad with different flavours',
         foodName: 'Fruit Salad',
         price: 200.00,
       ),
       Deli(
-        id: 'images/del.png',
+        id: 'images/del.svg',
         foodDescription:
         'Get fresh prepared fruit salad with different flavours',
         foodName: 'Fruit Salad',
         price: 600.00,
+      ),
+      Deli(
+        id: 'images/del.svg',
+        foodDescription:
+        'Get fresh prepared igbo made bitter leaf soup',
+        foodName: 'Ofe Onugbu',
+        price: 2000.00,
+      ),
+      Deli(
+        id: 'images/del.svg',
+        foodDescription:
+        'Get fresh prepared fruit salad with different flavours',
+        foodName: 'Fruit Salad',
+        price: 1600.00,
       ),
     ];
     dels.value = delResult;

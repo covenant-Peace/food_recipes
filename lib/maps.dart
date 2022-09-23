@@ -53,6 +53,16 @@ class _MapsState extends State<Maps> {
       target: LatLng(emire, longre),
       zoom: 9,
     );
+
+    double getH(double i) {
+      return (i / 926) * MediaQuery.of(context).size.height;
+    }
+
+    double getW(double j) {
+      return (j / 428) * MediaQuery.of(context).size.width;
+    }
+
+
     return GetBuilder<LocationController>(
         // stream: null,
         builder: (locationController) {
@@ -88,7 +98,7 @@ class _MapsState extends State<Maps> {
               return SingleChildScrollView(
                 controller: snapshot,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 420),
+                  padding: EdgeInsets.only(top: getH(420)),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.8,
                     width: MediaQuery.of(context).size.width,
@@ -98,8 +108,8 @@ class _MapsState extends State<Maps> {
                             topLeft: Radius.circular(40),
                             topRight: Radius.circular(40))),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 35, right: 35, top: 50, bottom: 50),
+                      padding: EdgeInsets.only(
+                          left: getW(35), right: getW(35), top: getH(50), bottom: getH(50)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -108,10 +118,10 @@ class _MapsState extends State<Maps> {
                             style: kTextJourney4,
                           ),
                           SizedBox(
-                            height: 20,
+                            height: getH(20),
                           ),
                           Container(
-                            height: 56,
+                            height: getH(56),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(11.0),
                                 color: Colors.transparent,
@@ -157,7 +167,7 @@ class _MapsState extends State<Maps> {
                             ),
                           ),
                           SizedBox(
-                            height: 30,
+                            height: getH(30),
                           ),
                           GestureDetector(
                             onTap: () {
@@ -174,7 +184,7 @@ class _MapsState extends State<Maps> {
                               //     });
                             },
                             child: Container(
-                              height: 56.0,
+                              height: getH(56),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(48.0),
                                 color: Color(0xFFEDA92E),
@@ -212,7 +222,7 @@ class _MapsState extends State<Maps> {
       // _controller..moveCamera(CameraUpdate.newLatLng(LatLng(emire, longre)));
     });
 
-    print('$conti $emire $longre');
+    // print('$conti $emire $longre');
   }
 
   longin() async {

@@ -55,13 +55,21 @@ class PlaceOrder extends StatelessWidget {
                   color: Color(0xFF222222),
                   border: Border(
                     top: BorderSide(
-                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
                     bottom: BorderSide(
-                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
                     left: BorderSide(
-                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
                     right: BorderSide(
-                        color: Colors.orange, width: 1, style: BorderStyle.solid),
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
                   )),
               child: GestureDetector(
                 onTap: () {

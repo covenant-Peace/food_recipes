@@ -26,6 +26,8 @@ class Categories extends StatelessWidget {
               onTap: () => _gkey.currentState?.openDrawer(),
               child: SvgPicture.asset(
                 'images/look.svg',
+                height: 4,
+                width: 4,
               )
           ),
         ),

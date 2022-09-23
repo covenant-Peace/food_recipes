@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_recipes/view/description.dart';
-import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
@@ -15,7 +14,8 @@ enum Food {
   vegetables,
   soup,
 }
-double buyingPrice=0;
+
+double buyingPrice = 0;
 
 class Delicious extends StatefulWidget {
   // const Delicious({Key? key}) : super(key: key);
@@ -238,8 +238,9 @@ class Foden extends StatelessWidget {
           return Column(
             children: [
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Description()));
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Description()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

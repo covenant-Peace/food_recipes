@@ -9,6 +9,7 @@ import 'package:food_recipes/payment_method.dart';
 import 'package:get/get.dart';
 
 import '../bottom_navigation.dart';
+
 int debin;
 
 class ShoppingPage extends StatelessWidget {

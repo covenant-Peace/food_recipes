@@ -174,7 +174,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                     style: kTextGet,
                   ),
                   Text(
-                    'NGN$buyingPrice',
+                    'NGN${buyingPrice * _counter}',
                     style: kTextJourney10,
                   ),
                 ]),
@@ -182,10 +182,18 @@ class _ModalDescriptionState extends State<ModalDescription> {
                   onTap: () {
                     // controller.cardAdd(history)
                     // Get.to(PaymentMethod());
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ShoppingPage()));
+                    if (_counter > 0) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ShoppingPage()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content:
+                            Text('Please select a number of plate you want'),
+                        duration: Duration(seconds: 5),
+                      ));
+                    }
                   },
                   child: Container(
                     height: 38.0,

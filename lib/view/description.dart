@@ -2,14 +2,19 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/constants.dart';
-import 'package:food_recipes/view/modal_description.dart';
-import 'package:food_recipes/view/shopping_page.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/view/modal_descriptionng_page.dart';
+
+import '../drawer.dart';
 
 class Description extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _gkey,
+      drawer: App(),
       backgroundColor: Color(0xFF222222),
       body: Column(
         children: [
@@ -41,10 +46,13 @@ class Description extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.grid_view,
-                        color: Color(0xFF0C0C0C),
-                      ),
+                      GestureDetector(
+                          onTap: () => _gkey.currentState?.openDrawer(),
+                          child: SvgPicture.asset(
+                            'images/look.svg',
+                            height: 4,
+                            width: 4,
+                          )),
                       Icon(
                         Icons.search,
                         color: Color(0xFF0C0C0C),
@@ -55,7 +63,6 @@ class Description extends StatelessWidget {
               ],
             ),
           ),
-
         ],
       ),
     );

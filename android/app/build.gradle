@@ -58,6 +58,15 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
             crunchPngs false
+
+            lintOptions {
+
+                disable 'InvalidPackage'
+                disable "Instantiatable"
+                checkReleaseBuilds false
+                abortOnError false
+
+            }
         }
     }
     buildFeatures {

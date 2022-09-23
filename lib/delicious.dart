@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_recipes/view/description.dart';
+import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 
 import 'constants.dart';
@@ -13,6 +15,7 @@ enum Food {
   vegetables,
   soup,
 }
+double buyingPrice=0;
 
 class Delicious extends StatefulWidget {
   // const Delicious({Key? key}) : super(key: key);
@@ -231,59 +234,65 @@ class Foden extends StatelessWidget {
       () => ListView.builder(
         // stream: null,
         itemBuilder: (context, index) {
+          buyingPrice = controller.dels[index].price;
           return Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset(controller.dels[index].id),
-                  // SizedBox(
-                  //   width: 1,
-                  // ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.dels[index].foodName,
-                        style: kTextJourney31,
-                      ),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      SizedBox(
-                        width: 170,
-                        child: Text(
-                          controller.dels[index].foodDescription,
-                          style: kTextJourney30,
-                          textAlign: TextAlign.start,
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Description()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(controller.dels[index].id),
+                    // SizedBox(
+                    //   width: 1,
+                    // ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          controller.dels[index].foodName,
+                          style: kTextJourney31,
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'NGN${controller.dels[index].price}',
-                        style: kTextJourney32,
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        '(128)',
-                        style: kTextJourney30,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Icon(
-                        Icons.add_shopping_cart_outlined,
-                        color: Colors.white,
-                        size: 15,
-                      )
-                    ],
-                  )
-                ],
+                        SizedBox(
+                          height: 3,
+                        ),
+                        SizedBox(
+                          width: 170,
+                          child: Text(
+                            controller.dels[index].foodDescription,
+                            style: kTextJourney30,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'NGN${controller.dels[index].price}',
+                          style: kTextJourney32,
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          '(128)',
+                          style: kTextJourney30,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Icon(
+                          Icons.add_shopping_cart_outlined,
+                          color: Colors.white,
+                          size: 15,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: 14,

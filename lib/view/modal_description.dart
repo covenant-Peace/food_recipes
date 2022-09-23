@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/constants.dart';
+import 'package:food_recipes/delicious.dart';
+import 'package:food_recipes/view/shopping_page.dart';
 
 class ModalDescription extends StatefulWidget {
   @override
@@ -172,7 +174,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                     style: kTextGet,
                   ),
                   Text(
-                    'NGN800.00',
+                    'NGN$buyingPrice',
                     style: kTextJourney10,
                   ),
                 ]),
@@ -180,10 +182,10 @@ class _ModalDescriptionState extends State<ModalDescription> {
                   onTap: () {
                     // controller.cardAdd(history)
                     // Get.to(PaymentMethod());
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => PaymentMethod()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ShoppingPage()));
                   },
                   child: Container(
                     height: 38.0,

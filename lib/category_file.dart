@@ -25,7 +25,7 @@ class Categories extends StatelessWidget {
           child: GestureDetector(
               onTap: () => _gkey.currentState?.openDrawer(),
               child: SvgPicture.asset(
-                'images/category.svg',
+                'images/look.svg',
               )
           ),
         ),

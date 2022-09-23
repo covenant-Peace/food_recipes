@@ -3,9 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_recipes/view/modal_descriptionng_page.dart';
+// import 'package:food_recipes/view/modal_description_page.dart';
 
 import '../drawer.dart';
+import 'modal_description.dart';
 
 class Description extends StatelessWidget {
   final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
@@ -49,9 +50,9 @@ class Description extends StatelessWidget {
                       GestureDetector(
                           onTap: () => _gkey.currentState?.openDrawer(),
                           child: SvgPicture.asset(
-                            'images/look.svg',
-                            height: 4,
-                            width: 4,
+                            'images/looks.svg',
+                            // height: 4,
+                            // width: 4,
                           )),
                       Icon(
                         Icons.search,

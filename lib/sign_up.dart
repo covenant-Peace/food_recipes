@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +10,14 @@ import 'package:food_recipes/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+
 import 'bottom_navigation.dart';
 import 'constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+TextEditingController text = TextEditingController();
+String name = ' ';
 
 class SignUpScreen extends StatefulWidget {
-
   @override
   State<SignUpScreen> createState() => SignUpScreenState();
 }
@@ -28,9 +31,7 @@ class SignUpScreenState extends State<SignUpScreen> {
   bool showSpinner = false;
   User user;
   Timer timer;
-  TextEditingController text = TextEditingController();
   bool validate = false;
-  String name;
   String phoneNumber;
 
   Future<void> checkVerify() async {
@@ -97,8 +98,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                     style: kTextJourney3,
                     keyboardType: TextInputType.text,
                     controller: text,
-                    onChanged: (val){
-                      name=val;
+                    onChanged: (val) {
+                      name = val;
                     },
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(11),
@@ -180,7 +181,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     obscureText: false,
                     style: kTextJourney3,
                     keyboardType: TextInputType.phone,
-                    onChanged: (value){
+                    onChanged: (value) {
                       phoneNumber = value;
                     },
                     inputFormatters: [
@@ -281,6 +282,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                   });
                   if (validate == true) {
                     try {
+                      FirebaseAuth.instance.currentUser
+                          .updateDisplayName(name);
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
@@ -289,8 +292,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                         _firestore.collection('account details').add({
                           'Full name': name,
                           'email': email,
-                          'password':password,
-                          'phone number' : phoneNumber
+                          'password': password,
+                          'phone number': phoneNumber
                         });
                         Navigator.push(
                             context,
@@ -356,13 +359,13 @@ class SignUpScreenState extends State<SignUpScreen> {
                   setState(() {
                     showSpinner = true;
                   });
-                  try{
-                  await AUthService().googleSignIn(context);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BottomNavigation(0)));}
-                  catch (e) {
+                  try {
+                    await AUthService().googleSignIn(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation(0)));
+                  } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.message.toString()),
                       duration: Duration(seconds: 6),

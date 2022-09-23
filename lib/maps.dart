@@ -9,6 +9,9 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location_geocoder/location_geocoder.dart';
 
+double emire = 6.6278996;
+double longre = 3.3710233;
+
 class Maps extends StatefulWidget {
   // const Maps({Key? key}) : super(key: key);
 
@@ -17,6 +20,24 @@ class Maps extends StatefulWidget {
 }
 
 class _MapsState extends State<Maps> {
+
+  GoogleMap mMap;
+  // GoogleMapController controller;
+  Marker mMarker;
+
+  // void moveCameraToUserLocation(searchedLocation2) async {
+  //   // var location = await Geocode().getLatLng(searchedLocation2);
+  //   // print("moving to: $location");
+  //   controller.animateCamera(
+  //     CameraUpdate.newCameraPosition(
+  //       CameraPosition(
+  //         target: LatLng(emire, longre),
+  //         zoom: 10,
+  //       ),
+  //     ),
+  //   );
+  // }
+  // mMap.animateCamera();
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
@@ -61,108 +82,126 @@ class _MapsState extends State<Maps> {
                   icon: BitmapDescriptor.defaultMarker)
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 420),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40))),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 35, right: 35, top: 50, bottom: 50),
-                child: ListView(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Enter preferred Location',
-                      style: kTextJourney4,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 56,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(11.0),
-                          color: Colors.transparent,
-                          border: Border(
-                            top: BorderSide(
-                                color: Color(0xFF6A6A6A),
-                                width: 1,
-                                style: BorderStyle.solid),
-                            bottom: BorderSide(
-                                color: Color(0xFF6A6A6A),
-                                width: 1,
-                                style: BorderStyle.solid),
-                            left: BorderSide(
-                                color: Color(0xFF6A6A6A),
-                                width: 1,
-                                style: BorderStyle.solid),
-                            right: BorderSide(
-                                color: Color(0xFF6A6A6A),
-                                width: 1,
-                                style: BorderStyle.solid),
-                          )),
-                      child: ListTile(
-                        title: TextField(
-                          decoration: InputDecoration(
-                            hintText: '13, Alfred Rewane , Lagos state',
-                            hintStyle: kTextJourney34,
-                            // errorText:
-                            //     validate == false ? 'Please, Enter your name' : null,
-                            border: InputBorder.none,
+          DraggableScrollableSheet(
+            // stream: null,
+            builder: (context, snapshot) {
+              return SingleChildScrollView(
+                controller: snapshot,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 420),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 35, right: 35, top: 50, bottom: 50),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Enter preferred Location',
+                            style: kTextJourney4,
                           ),
-                          obscureText: false,
-                          style: kTextJourney3,
-                          keyboardType: TextInputType.text,
-                          // controller: text,
-                          onChanged: (val) {
-                            conti = val;
-                          },
-                          inputFormatters: [
-                            // LengthLimitingTextInputFormatter(11),
-                            // FilteringTextInputFormatter.digitsOnly
-                          ],
-                        ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            height: 56,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(11.0),
+                                color: Colors.transparent,
+                                border: Border(
+                                  top: BorderSide(
+                                      color: Color(0xFF6A6A6A),
+                                      width: 1,
+                                      style: BorderStyle.solid),
+                                  bottom: BorderSide(
+                                      color: Color(0xFF6A6A6A),
+                                      width: 1,
+                                      style: BorderStyle.solid),
+                                  left: BorderSide(
+                                      color: Color(0xFF6A6A6A),
+                                      width: 1,
+                                      style: BorderStyle.solid),
+                                  right: BorderSide(
+                                      color: Color(0xFF6A6A6A),
+                                      width: 1,
+                                      style: BorderStyle.solid),
+                                )),
+                            child: ListTile(
+                              title: TextField(
+                                decoration: InputDecoration(
+                                  hintText: '13, Alfred Rewane , Lagos state',
+                                  hintStyle: kTextJourney34,
+                                  // errorText:
+                                  //     validate == false ? 'Please, Enter your name' : null,
+                                  border: InputBorder.none,
+                                ),
+                                obscureText: false,
+                                style: kTextJourney3,
+                                keyboardType: TextInputType.text,
+                                // controller: text,
+                                onChanged: (val) {
+                                  conti = val;
+                                },
+                                inputFormatters: [
+                                  // LengthLimitingTextInputFormatter(11),
+                                  // FilteringTextInputFormatter.digitsOnly
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              latin();
+                              // _controller.animateCamera(
+                              //     CameraUpdate.newCameraPosition(
+                              //       CameraPosition(
+                              //         target: LatLng(emire, longre),
+                              //         zoom: 10,
+                              //       ),
+                              //     ));
+                              //     setState(() {
+                              //       allM
+                              //     });
+                            },
+                            child: Container(
+                              height: 56.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(48.0),
+                                color: Color(0xFFEDA92E),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Confirm Address',
+                                style: kTextJourney4,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        latin();
-                      },
-                      child: Container(
-                        height: 56.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(48.0),
-                          color: Color(0xFFEDA92E),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Confirm Address',
-                          style: kTextJourney4,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
+            minChildSize: 0.94,
+            initialChildSize: 0.95,
+            maxChildSize: 1,
           )
         ]),
       );
     });
   }
-
-  double emire = 6.6278996;
-  double longre = 3.3710233;
 
   void latin() async {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
@@ -182,3 +221,4 @@ class _MapsState extends State<Maps> {
     longre = address.first.coordinates.longitude;
   }
 }
+

@@ -14,6 +14,7 @@ import 'constants.dart';
 import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
+final uid = FirebaseAuth.instance.currentUser.uid;
 
 class LandingPage extends StatefulWidget {
   @override
@@ -31,6 +32,8 @@ class _LandingPageState extends State<LandingPage> {
     super.initState();
     getCurrentUser();
     dataInfo();
+    changeProfile();
+    // _auth.currentUser.updatePhotoURL(imageUrl);
   }
 
   String name = ' ';
@@ -57,7 +60,6 @@ class _LandingPageState extends State<LandingPage> {
     // snapshot = data as DocumentSnapshot<Object>;
   }
   void dataInfo() async {
-    var uid = (await _auth.currentUser).uid;
     var docSnapshot = await FirebaseFirestore.instance
         .collection('account details')
         .doc(uid)
@@ -73,7 +75,7 @@ class _LandingPageState extends State<LandingPage> {
 
   // String imageUrl = ' ';
   void changeProfile() async {
-    ref.getDownloadURL().then((value) {
+    await ref.getDownloadURL().then((value) {
       print(value);
       setState(() {
         imageUrl = value;
@@ -116,7 +118,7 @@ class _LandingPageState extends State<LandingPage> {
           child: GestureDetector(
             onTap: () {
               _key.currentState.openDrawer();
-              changeProfile();
+              // changeProfile();
             },
             child: CircleAvatar(
               backgroundColor: Colors.transparent,
@@ -137,7 +139,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Welcome $name!',
+              'Welcome ${_auth.currentUser.displayName}!',
               style: kTextGet8,
             ),
             GestureDetector(

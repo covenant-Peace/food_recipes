@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/paymentFile/payment.dart';
 // import 'package:food_recipes/map.dart';
 
 import 'package:food_recipes/payment_method.dart';
@@ -14,10 +15,9 @@ import 'package:image_picker/image_picker.dart';
 import 'bottom_navigation.dart';
 import 'constants.dart';
 import 'log_in.dart';
+
 String imageUrl = ' ';
 Reference ref = FirebaseStorage.instance.ref().child('profilepic.jpg');
-
-
 
 class App extends StatefulWidget {
   // const App({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final _auth = FirebaseAuth.instance;
-
 
   void pickUploadImage() async {
     final image = await ImagePicker().pickImage(
@@ -51,12 +50,13 @@ class _AppState extends State<App> {
       // if (_auth.currentUser.photoURL != null) {
       //   return Image.network(_auth.currentUser.photoURL);
       // }
-       imageUrl == ' '? Icon(
-          Icons.person,
-          color: Colors.white,
-          size: 20,
-        ): Image.network(imageUrl);
-
+      imageUrl == ' '
+          ? Icon(
+              Icons.person,
+              color: Colors.white,
+              size: 20,
+            )
+          : Image.network(imageUrl);
     } catch (e) {
       print(e);
     }
@@ -79,11 +79,13 @@ class _AppState extends State<App> {
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 backgroundImage: NetworkImage(imageUrl),
-                child: imageUrl == ' '? Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 20,
-                ): Text(' '),
+                child: imageUrl == ' '
+                    ? Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 20,
+                      )
+                    : Text(' '),
               ),
             ),
             SizedBox(
@@ -119,10 +121,11 @@ class _AppState extends State<App> {
             ),
             ListTile(
               leading: SvgPicture.asset('images/bookmark.svg'),
-              title: Text('Bookmark', style: kTextJourney27),
+              title: Text('History', style: kTextJourney27),
               onTap: () {
                 Navigator.pop(context);
-                // Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaymentScreen()));
               },
             ),
             SizedBox(

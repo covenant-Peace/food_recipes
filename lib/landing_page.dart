@@ -14,7 +14,6 @@ import 'constants.dart';
 import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
-
 final uid = FirebaseAuth.instance.currentUser.uid;
 
 class LandingPage extends StatefulWidget {
@@ -60,30 +59,28 @@ class _LandingPageState extends State<LandingPage> {
     var him = docref.id;
     // snapshot = data as DocumentSnapshot<Object>;
   }
-
   void dataInfo() async {
     var docSnapshot = await FirebaseFirestore.instance
         .collection('account details')
         .doc(uid)
         .get();
-    if (docSnapshot.exists) {
-      Map<String, dynamic> data = docSnapshot.data();
-      setState(() {
-        name = data['Full name'];
-      });
+    if(docSnapshot.exists){
+    Map<String, dynamic> data = docSnapshot.data();
+    setState(() {
+      name = data['Full name'];
+    });
     }
     print(uid);
   }
 
-  // Reference ref = FirebaseStorage.instance.ref().child(image.path);
   // String imageUrl = ' ';
   void changeProfile() async {
-    // await ref.getDownloadURL().then((value) {
-    //   print(value);
-    //   setState(() {
-    //     imageUrl = value;
-    //   });
-    // });
+    await ref.getDownloadURL().then((value) {
+      print(value);
+      setState(() {
+        imageUrl = value;
+      });
+    });
   }
 
   Widget pic() {
@@ -108,6 +105,7 @@ class _LandingPageState extends State<LandingPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
+
   @override
   Widget build(BuildContext context) {
     // name = _auth.currentUser.displayName;
@@ -120,28 +118,21 @@ class _LandingPageState extends State<LandingPage> {
           child: GestureDetector(
             onTap: () {
               _key.currentState.openDrawer();
-              // changeProfile();
+              changeProfile();
             },
             child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                // backgroundImage: NetworkImage(imageUrl),
-                child: ClipOval(
-                  child:
-                      // imageUrl == ' '
-                      //     ? Icon(
-                      //         Icons.person,
-                      //         color: Colors.white,
-                      //         size: 20,
-                      //       )
-                      //     :
-                      Image.file(
-                    filepath,
-                    fit: BoxFit.fill,
-                  ),
-                )
-                // Image.network(_auth.currentUser.photoURL),
-                // Image.asset('images/girl.png'),
-                ),
+              backgroundColor: Colors.transparent,
+              backgroundImage: NetworkImage(imageUrl),
+              child: imageUrl == ' '
+                  ? Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 20,
+                    )
+                  : Text(' '),
+              // Image.network(_auth.currentUser.photoURL),
+              // Image.asset('images/girl.png'),
+            ),
           ),
         ),
         title: Row(

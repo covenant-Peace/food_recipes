@@ -17,7 +17,7 @@ import 'constants.dart';
 import 'log_in.dart';
 
 String imageUrl = ' ';
-Reference ref = FirebaseStorage.instance.ref().child('profilepic.jpg');
+File filepath= File('');
 
 class App extends StatefulWidget {
   // const App({Key? key}) : super(key: key);
@@ -29,14 +29,17 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   final _auth = FirebaseAuth.instance;
 
+  // FirebaseStorage storage = FirebaseStorage();
+
   void pickUploadImage() async {
     final image = await ImagePicker().pickImage(
         source: ImageSource.gallery,
         maxWidth: 512,
         maxHeight: 512,
         imageQuality: 75);
-
-    await ref.putFile(File(image.path));
+    Reference ref = FirebaseStorage.instance.ref().child(image.path);
+filepath = File(image.path);
+    await ref.putFile(filepath);
     ref.getDownloadURL().then((value) {
       print(value);
       setState(() {
@@ -44,6 +47,7 @@ class _AppState extends State<App> {
       });
     });
   }
+
 
   Widget pic() {
     try {
@@ -61,7 +65,11 @@ class _AppState extends State<App> {
       print(e);
     }
   }
+@override
+  void initState() {
 
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Drawer(

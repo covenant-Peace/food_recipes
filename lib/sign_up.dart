@@ -282,11 +282,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                   });
                   if (validate == true) {
                     try {
-                      FirebaseAuth.instance.currentUser
-                          .updateDisplayName(name);
+
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
+                      FirebaseAuth.instance.currentUser
+                          .updateDisplayName(name);
 
                       if (newUser != null) {
                         _firestore.collection('account details').add({

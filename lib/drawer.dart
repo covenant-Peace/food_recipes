@@ -7,7 +7,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
-// import 'package:food_recipes/map.dart';
 
 import 'package:food_recipes/payment_method.dart';
 import 'package:image_picker/image_picker.dart';

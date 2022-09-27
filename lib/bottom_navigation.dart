@@ -21,7 +21,6 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  // int  = widget.index;
 
   final _auth = FirebaseAuth.instance;
   User loggedInUser;

@@ -28,8 +28,7 @@ class Categories extends StatelessWidget {
                 'images/look.svg',
                 height: 4,
                 width: 4,
-              )
-          ),
+              )),
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

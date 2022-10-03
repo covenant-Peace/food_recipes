@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/landing_page.dart';
 import 'package:food_recipes/notification.dart';
 import 'package:food_recipes/paymentFile/payment.dart';
-import 'package:food_recipes/view/place_order.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
 import 'category_file.dart';
@@ -21,7 +20,6 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-
   final _auth = FirebaseAuth.instance;
   User loggedInUser;
 

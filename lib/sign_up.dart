@@ -235,42 +235,6 @@ class SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 height: 14.0,
               ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(11.0),
-              //       color: Color(0xFF222222),
-              //       border: Border(
-              //         top: BorderSide(
-              //             color: Color(0xFF6A6A6A),
-              //             width: 1,
-              //             style: BorderStyle.solid),
-              //         bottom: BorderSide(
-              //             color: Color(0xFF6A6A6A),
-              //             width: 1,
-              //             style: BorderStyle.solid),
-              //         left: BorderSide(
-              //             color: Color(0xFF6A6A6A),
-              //             width: 1,
-              //             style: BorderStyle.solid),
-              //         right: BorderSide(
-              //             color: Color(0xFF6A6A6A),
-              //             width: 1,
-              //             style: BorderStyle.solid),
-              //       )),
-              //   child: ListTile(
-              //     title: TextField(
-              //       decoration: InputDecoration(
-              //         labelText: 'Confirm password',
-              //         labelStyle: kTextJourney3,
-              //         border: InputBorder.none,
-              //       ),
-              //       obscureText: true,
-              //       style: kTextJourney3,
-              //       keyboardType: TextInputType.text,
-              //     ),
-              //   ),
-              // ),
-
               SizedBox(
                 height: 23.0,
               ),
@@ -282,12 +246,10 @@ class SignUpScreenState extends State<SignUpScreen> {
                   });
                   if (validate == true) {
                     try {
-
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
-                      FirebaseAuth.instance.currentUser
-                          .updateDisplayName(name);
+                      FirebaseAuth.instance.currentUser.updateDisplayName(name);
 
                       if (newUser != null) {
                         _firestore.collection('account details').add({

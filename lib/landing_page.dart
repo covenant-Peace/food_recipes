@@ -14,6 +14,7 @@ import 'constants.dart';
 import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
+
 final uid = FirebaseAuth.instance.currentUser.uid;
 
 class LandingPage extends StatefulWidget {
@@ -59,16 +60,17 @@ class _LandingPageState extends State<LandingPage> {
     var him = docref.id;
     // snapshot = data as DocumentSnapshot<Object>;
   }
+
   void dataInfo() async {
     var docSnapshot = await FirebaseFirestore.instance
         .collection('account details')
         .doc(uid)
         .get();
-    if(docSnapshot.exists){
-    Map<String, dynamic> data = docSnapshot.data();
-    setState(() {
-      name = data['Full name'];
-    });
+    if (docSnapshot.exists) {
+      Map<String, dynamic> data = docSnapshot.data();
+      setState(() {
+        name = data['Full name'];
+      });
     }
     print(uid);
   }
@@ -104,7 +106,6 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-
 
   @override
   Widget build(BuildContext context) {

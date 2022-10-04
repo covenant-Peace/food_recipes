@@ -13,7 +13,7 @@ class Categories extends StatelessWidget {
   final controllers = Get.put(SaladController());
   final controllerss = Get.put(Salad2Controller());
 
-  final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _gkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

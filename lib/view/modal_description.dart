@@ -43,7 +43,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Center(
-              child: Container(
+              child: SizedBox(
                 width: 40.0,
                 child: Divider(
                   color: Color(0xFFE5E5E5),

@@ -9,7 +9,7 @@ import '../drawer.dart';
 import 'modal_description.dart';
 
 class Description extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _gkey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _gkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

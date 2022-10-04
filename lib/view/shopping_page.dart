@@ -260,7 +260,7 @@ class ShoppingPage extends StatelessWidget {
             SizedBox(
               height: 25.0,
             ),
-            Container(
+            SizedBox(
               width: 300.0,
               child: Divider(
                 thickness: 1.0,

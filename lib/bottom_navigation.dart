@@ -40,7 +40,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
         }
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 

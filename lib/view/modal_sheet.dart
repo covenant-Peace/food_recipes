@@ -112,7 +112,6 @@ class ModalSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(
                           Icons.fiber_manual_record,
@@ -205,7 +204,6 @@ class ModalSheet extends StatelessWidget {
             Column(
               children: <Widget>[
                 Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
                       Icons.fiber_manual_record,

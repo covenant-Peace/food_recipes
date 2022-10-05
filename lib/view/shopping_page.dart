@@ -57,7 +57,6 @@ class ShoppingPage extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: controller.foods.length,
                       itemBuilder: (context, index) {
-                        // final fill = payController.payItems[index];
                         return Expanded(
                           child: Column(
                             children: [

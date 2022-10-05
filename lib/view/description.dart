@@ -49,8 +49,8 @@ class Description extends StatelessWidget {
                           onTap: () => _gkey.currentState?.openDrawer(),
                           child: SvgPicture.asset(
                             'images/looks.svg',
-                            // width: 4,
-                          )),
+                          ),
+                      ),
                       Icon(
                         Icons.search,
                         color: Color(0xFF0C0C0C),

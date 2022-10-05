@@ -180,8 +180,6 @@ class _ModalDescriptionState extends State<ModalDescription> {
                 ]),
                 GestureDetector(
                   onTap: () {
-                    // controller.cardAdd(history)
-                    // Get.to(PaymentMethod());
                     if (_counter > 0) {
                       Navigator.push(
                           context,

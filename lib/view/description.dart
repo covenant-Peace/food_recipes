@@ -28,7 +28,6 @@ class Description extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  // alignment: Alignment.bottomCenter,
                   child: DraggableScrollableSheet(
                     builder: (context, scrollController) {
                       return SingleChildScrollView(
@@ -50,7 +49,6 @@ class Description extends StatelessWidget {
                           onTap: () => _gkey.currentState?.openDrawer(),
                           child: SvgPicture.asset(
                             'images/looks.svg',
-                            // height: 4,
                             // width: 4,
                           )),
                       Icon(

@@ -15,18 +15,14 @@ class PlaceOrder extends StatelessWidget {
         children: [
           Expanded(
             child: Stack(
-              // fit: StackFit.expand,
               children: <Widget>[
                 Align(
                   alignment: Alignment.topCenter,
                   child: Image.asset(
                     'images/hotdog.png',
-                    // width: 500.0,
-                    //   color: Color(0xFFC4C4C4),
                   ),
                 ),
                 Align(
-                  // alignment: Alignment.bottomCenter,
                   child: DraggableScrollableSheet(
                     builder: (context, scrollController) {
                       return SingleChildScrollView(

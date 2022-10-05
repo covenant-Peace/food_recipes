@@ -3,7 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-// import 'package:food_recipes/view/modal_description_page.dart';
 
 import '../drawer.dart';
 import 'modal_description.dart';

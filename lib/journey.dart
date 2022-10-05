@@ -52,7 +52,6 @@ class JourneyScreen extends StatelessWidget {
                   Container(
                     width: 208.0,
                     height: 42.0,
-                    // margin: EdgeInsets.only(left: 110.0, right: 110.0),
                     child: Text(
                       'Make order or read recipe of your favourite meal at a go',
                       style: kTextJourney2,

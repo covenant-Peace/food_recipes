@@ -37,6 +37,11 @@ class _LandingPageState extends State<LandingPage> {
     // _auth.currentUser.updatePhotoURL(imageUrl);
   }
 
+  void dispose(){
+    super.dispose();
+    App();
+  }
+
   String name = ' ';
 
   void getCurrentUser() {

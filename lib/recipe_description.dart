@@ -14,10 +14,19 @@ class Salad extends StatefulWidget {
 class _SaladState extends State<Salad> {
   @override
   Widget build(BuildContext context) {
+    double geth(double h) {
+      return MediaQuery.of(context).size.height * (h / 858.16);
+    }
+
+    double getw(double w) {
+      return MediaQuery.of(context).size.width * (w / 433.84);
+    }
+
     return Scaffold(
       backgroundColor: Color(0xff222222),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.only(
+            top: geth(54.54), left: getw(38.46), right: getw(36)),
         child: Column(
           children: [
             GestureDetector(
@@ -33,6 +42,10 @@ class _SaladState extends State<Salad> {
                 color: Colors.white,
               ),
             ),
+            SizedBox(
+              height: geth(26.54),
+            ),
+            Text('Salads')
           ],
         ),
       ),

@@ -18,7 +18,6 @@ String imageUrl = ' ';
 Reference ref = FirebaseStorage.instance.ref().child('profilepic.jpg');
 
 class App extends StatefulWidget {
-
   @override
   State<App> createState() => _AppState();
 }

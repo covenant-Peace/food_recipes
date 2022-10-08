@@ -38,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     App();
   }

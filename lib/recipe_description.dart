@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
 import 'bottom_navigation.dart';
+import 'constants.dart';
 
 class Salad extends StatefulWidget {
   // const Salad({Key? key}) : super(key: key);
@@ -45,7 +46,62 @@ class _SaladState extends State<Salad> {
             SizedBox(
               height: geth(26.54),
             ),
-            Text('Salads')
+            Text(
+              'Salads',
+              style: kTextJourney18,
+            ),
+            SizedBox(
+              height: geth(8),
+            ),
+            Row(
+              children: [
+                Text(
+                  '25 mins',
+                  style: kTextJourney28,
+                ),
+                Text(
+                  '3 Serving',
+                  style: kTextJourney28,
+                ),
+                Text(
+                  '106 Cal',
+                  style: kTextJourney28,
+                )
+              ],
+            ),
+            SizedBox(
+              height: geth(23.29),
+            ),
+            Text(
+              'Ingredient',
+              style: kTextJourney14,
+            ),
+            SizedBox(
+              height: geth(6),
+            ),
+            Divider(
+              height: 1,
+              thickness: 1,
+              color: Color(0xff6a6a6a),
+            ),
+            SizedBox(
+              height: geth(9),
+            ),
+            Row(
+              children: [
+                Text('2 Eggs'),
+                Text('1/2 Cup Whole Milk')
+              ],
+            ),
+            SizedBox(
+              height: geth(3),
+            ),
+            Row(
+              children: [
+                Text('2 Eggs'),
+                Text('1/2 Cup Whole Milk')
+              ],
+            )
           ],
         ),
       ),

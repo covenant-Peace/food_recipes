@@ -16,22 +16,25 @@ class _SaladState extends State<Salad> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff222222),
-      body: Column(
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => BottomNavigation(0)));
-              FocusScope.of(context).unfocus();
-            },
-            child: Icon(
-              Icons.keyboard_arrow_left_sharp,
-              color: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BottomNavigation(0)));
+                FocusScope.of(context).unfocus();
+              },
+              child: Icon(
+                Icons.keyboard_arrow_left_sharp,
+                color: Colors.white,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

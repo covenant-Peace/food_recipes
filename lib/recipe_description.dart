@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_recipes/view/shopping_page.dart';
 
 import 'bottom_navigation.dart';
 import 'constants.dart';
@@ -274,7 +275,43 @@ class _SaladState extends State<Salad> {
             SizedBox(
               height: geth(22),
             ),
-
+            Container(
+              height: 56.0,
+              margin: EdgeInsets.only(left: 36.0, right: 36.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(48.0),
+                  color: Color(0xFF222222),
+                  border: Border(
+                    top: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    left: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                    right: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                        style: BorderStyle.solid),
+                  )),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShoppingPage()));
+                },
+                child: Center(
+                  child: Text(
+                    'Place an order',
+                    style: kTextJourney19,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

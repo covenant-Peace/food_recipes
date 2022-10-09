@@ -175,6 +175,106 @@ class _SaladState extends State<Salad> {
                 SvgPicture.asset('images/instagram.svg')
               ],
             ),
+            SizedBox(
+              height: geth(30.5),
+            ),
+            Text('Review (212)'),
+            SizedBox(
+              height: geth(8),
+            ),
+            Divider(
+              height: 1,
+              thickness: 1,
+              color: Color(0xff6a6a6a),
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  child: ClipOval(
+                    child: SvgPicture.asset('images/fb.svg'),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'commodo et sit tortor dolor commodo sed. Felis id integer ut aenean ipsum ...',
+                      style: kTextJourney30,
+                    ),
+                    Row(
+                      children: [
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(11),
+                        ),
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(11),
+                        ),
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(18.1),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 17,
+                          color: Color(0xfff2f2f2),
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: geth(18),
+            ),
+            Divider(
+              height: 1,
+              thickness: 1,
+              color: Color(0xff6a6a6a),
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  child: ClipOval(
+                    child: SvgPicture.asset('images/fb.svg'),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'commodo et sit tortor dolor commodo sed. Felis id integer ut aenean ipsum ...',
+                      style: kTextJourney30,
+                    ),
+                    Row(
+                      children: [
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(11),
+                        ),
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(11),
+                        ),
+                        SvgPicture.asset('images/fb.svg'),
+                        SizedBox(
+                          width: getw(18.1),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 17,
+                          color: Color(0xfff2f2f2),
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: geth(22),
+            ),
+
           ],
         ),
       ),

@@ -124,6 +124,7 @@ class _LandingPageState extends State<LandingPage> {
     double getw(double w) {
       return MediaQuery.of(context).size.width * (w / 433.84);
     }
+
     // name = _auth.currentUser.displayName;
     return Scaffold(
       backgroundColor: Color(0xff222222),
@@ -361,8 +362,8 @@ class _LandingPageState extends State<LandingPage> {
                                       Stack(
                                         children: [
                                           ClipRRect(
-                                            child:
-                                                Image.asset('images/fruit.png'),
+                                            child: Image.asset(
+                                                'images/burger.png'),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -372,85 +373,7 @@ class _LandingPageState extends State<LandingPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Eggless Crepes',
-                                                  style: kTextJourney24,
-                                                ),
-                                                SmoothStarRating(
-                                                  starCount: 5,
-                                                  rating: 4,
-                                                  size: 10,
-                                                  color: Color(0xffffc107),
-                                                  borderColor:
-                                                      Color(0xffffc107),
-                                                ),
-                                                Text(
-                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
-                                                  style: kTextJourney35,
-                                                )
-                                              ],
-                                            ),
-                                            bottom: 15,
-                                            left: 15,
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: geth(20),
-                                      ),
-                                      Stack(
-                                        children: [
-                                          ClipRRect(
-                                            child:
-                                                Image.asset('images/fruit.png'),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          Positioned(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Eggless Crepes',
-                                                  style: kTextJourney24,
-                                                ),
-                                                SmoothStarRating(
-                                                  starCount: 5,
-                                                  rating: 4,
-                                                  size: 10,
-                                                  color: Color(0xffffc107),
-                                                  borderColor:
-                                                      Color(0xffffc107),
-                                                ),
-                                                Text(
-                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
-                                                  style: kTextJourney35,
-                                                )
-                                              ],
-                                            ),
-                                            bottom: 15,
-                                            left: 15,
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: geth(20),
-                                      ),
-                                      Stack(
-                                        children: [
-                                          ClipRRect(
-                                            child:
-                                                Image.asset('images/fruit.png'),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          Positioned(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Eggless Crepes',
+                                                  'Burger',
                                                   style: kTextJourney24,
                                                 ),
                                                 SmoothStarRating(
@@ -521,8 +444,8 @@ class _LandingPageState extends State<LandingPage> {
                                       Stack(
                                         children: [
                                           ClipRRect(
-                                            child:
-                                                Image.asset('images/past.png'),
+                                            child: Image.asset(
+                                                'images/pasta1.png'),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -532,85 +455,7 @@ class _LandingPageState extends State<LandingPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Fruits',
-                                                  style: kTextJourney24,
-                                                ),
-                                                SmoothStarRating(
-                                                  starCount: 5,
-                                                  rating: 4,
-                                                  size: 10,
-                                                  color: Color(0xffffc107),
-                                                  borderColor:
-                                                      Color(0xffffc107),
-                                                ),
-                                                Text(
-                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
-                                                  style: kTextJourney35,
-                                                )
-                                              ],
-                                            ),
-                                            bottom: 15,
-                                            left: 15,
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: geth(20),
-                                      ),
-                                      Stack(
-                                        children: [
-                                          ClipRRect(
-                                            child:
-                                                Image.asset('images/fruit.png'),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          Positioned(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Eggless Crepes',
-                                                  style: kTextJourney24,
-                                                ),
-                                                SmoothStarRating(
-                                                  starCount: 5,
-                                                  rating: 4,
-                                                  size: 10,
-                                                  color: Color(0xffffc107),
-                                                  borderColor:
-                                                      Color(0xffffc107),
-                                                ),
-                                                Text(
-                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
-                                                  style: kTextJourney35,
-                                                )
-                                              ],
-                                            ),
-                                            bottom: 15,
-                                            left: 15,
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: geth(20),
-                                      ),
-                                      Stack(
-                                        children: [
-                                          ClipRRect(
-                                            child:
-                                                Image.asset('images/fruit.png'),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          Positioned(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Eggless Crepes',
+                                                  'Pasta',
                                                   style: kTextJourney24,
                                                 ),
                                                 SmoothStarRating(
@@ -633,13 +478,191 @@ class _LandingPageState extends State<LandingPage> {
                                         ],
                                       ),
                                     ],
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                   ),
                                 ],
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
+                              ),
+                              SizedBox(
+                                height: geth(24),
+                              ),
+                              Text(
+                                'Suggested meal \nfor lunch',
+                                style: kTextJourney26,
+                              ),
+                              SizedBox(
+                                height: geth(37),
+                              ),
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child:
+                                            Image.asset('images/burger1.png'),
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Burger',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                  Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: geth(20),
+                                      ),
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child: Image.asset(
+                                                'images/burger2.png'),
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Burger',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                  Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child:
+                                            Image.asset('images/burger3.png'),
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Burger',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                  Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: geth(20),
+                                      ),
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child: Image.asset(
+                                                'images/burger4.png'),
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Burger',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                  Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                  ),
+                                ],
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                               ),
                             ],
                           ),
@@ -687,7 +710,7 @@ class _LandingPageState extends State<LandingPage> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height:geth( 20),
+                                        height: geth(20),
                                       ),
                                       Stack(
                                         children: [
@@ -964,13 +987,12 @@ class _LandingPageState extends State<LandingPage> {
                                         ],
                                       ),
                                     ],
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                   ),
                                 ],
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
                               ),
                             ],
                           ),
@@ -1696,6 +1718,7 @@ class Built extends StatelessWidget {
     double getw(double w) {
       return MediaQuery.of(context).size.width * (w / 433.84);
     }
+
     return GetX<RatingController>(
         builder: ((controllers) => ListView.builder(
               itemBuilder: (context, index) => Row(
@@ -1740,9 +1763,8 @@ class Built extends StatelessWidget {
                                 onRatingUpdate: (rating) {
                                   print(rating);
                                 },
-                                initialRating: controllers
-                                    .rates[index].rating
-                                    .toDouble(),
+                                initialRating:
+                                    controllers.rates[index].rating.toDouble(),
                               ),
                               SizedBox(
                                 width: getw(10),

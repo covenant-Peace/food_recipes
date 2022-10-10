@@ -9,6 +9,7 @@ import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
 import 'package:get/get.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'constants.dart';
 import 'delicious.dart';
@@ -34,6 +35,7 @@ class _LandingPageState extends State<LandingPage> {
     getCurrentUser();
     dataInfo();
     changeProfile();
+    pic();
     // _auth.currentUser.updatePhotoURL(imageUrl);
   }
 
@@ -93,6 +95,7 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget pic() {
     try {
+      setState(() {});
       // if (_auth.currentUser.photoURL != null) {
       //   return Image.network(_auth.currentUser.photoURL);
       // }
@@ -103,7 +106,6 @@ class _LandingPageState extends State<LandingPage> {
           size: 20,
         );
       } else {
-        setState(() {});
         return Image.network(imageUrl);
       }
     } catch (e) {
@@ -166,7 +168,7 @@ class _LandingPageState extends State<LandingPage> {
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 39, right: 30),
+        padding: const EdgeInsets.only(left: 29, right: 30),
         child: ListView(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -342,23 +344,76 @@ class _LandingPageState extends State<LandingPage> {
                                 children: [
                                   Column(
                                     children: [
-                                      Container(
-                                        child: Image.asset('images/fruit.png'),
-                                        width: 120,
-                                        // height: 100,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          // image: DecorationImage(image: ImageProvider)
-                                        ),
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child: Image.asset('images/past.png'),
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Fruits',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                      Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
                                       ),
                                       SizedBox(
                                         height: 20,
                                       ),
-                                      SizedBox(
-                                        child:
-                                            Image.asset('images/eggless.png'),
-                                        width: 120,
+                                      Stack(
+                                        children: [
+                                          ClipRRect(
+                                            child: Image.asset('images/fruit.png'),
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          Positioned(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Eggless Crepes',
+                                                  style: kTextJourney24,
+                                                ),
+                                                SmoothStarRating(
+                                                  starCount: 5,
+                                                  rating: 4,
+                                                  size: 10,
+                                                  color: Color(0xffffc107),
+                                                  borderColor:
+                                                  Color(0xffffc107),
+                                                ),
+                                                Text(
+                                                  'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
+                                                  style: kTextJourney35,
+                                                )
+                                              ],
+                                            ),
+                                            bottom: 15,
+                                            left: 15,
+                                          )
+                                        ],
                                       ),
                                     ],
                                     crossAxisAlignment:
@@ -368,7 +423,7 @@ class _LandingPageState extends State<LandingPage> {
                                   Column(
                                     children: [
                                       SizedBox(
-                                        child: Image.asset('images/fruit2.png'),
+                                        child: Image.asset('images/past.png'),
                                         width: 120,
                                       ),
                                       SizedBox(

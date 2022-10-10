@@ -74,7 +74,11 @@ class Categories extends StatelessWidget {
                                       bottom: 20, right: 10, top: 14),
                                   child: Stack(
                                     children: [
-                                      Image.asset(controllers.sals[index].pict),
+                                      ClipRRect(
+                                        child: Image.asset(
+                                            controllers.sals[index].pict),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                       Positioned(
                                         child: Text(
                                           controllers.sals[index].tit,
@@ -98,8 +102,11 @@ class Categories extends StatelessWidget {
                                   padding: const EdgeInsets.only(bottom: 20),
                                   child: Stack(
                                     children: [
-                                      Image.asset(
-                                          controllerss.sals[index].pict),
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                            controllerss.sals[index].pict),
+                                      ),
                                       Positioned(
                                         child: Text(
                                           controllerss.sals[index].tit,

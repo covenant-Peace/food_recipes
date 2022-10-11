@@ -338,6 +338,13 @@ const kTextJourney35 = TextStyle(
   fontSize: 6.0,
 );
 
+const kTextJourney36 = TextStyle(
+  fontFamily: 'Poppins',
+  color: Color(0xFFFFFFFF),
+  fontWeight: FontWeight.w600,
+  fontSize: 16.0,
+);
+
 
 
 const String google_api_key = "AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI";

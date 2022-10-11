@@ -35,6 +35,39 @@ class PlaceOrder extends StatelessWidget {
                     maxChildSize: 0.93,
                   ),
                 ),
+                Positioned(
+                    top: 50,
+                    left: 30,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                      color: Colors.white,
+                      size: 17,
+                    )),
+                Positioned(
+                    top: 50,
+                    right: 30,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.circular(11)),
+                      padding: EdgeInsets.all(11),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: Colors.black,
+                            size: 17,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            '182',
+                            style: kTextJourney29,
+                          )
+                        ],
+                      ),
+                    ))
               ],
             ),
           ),

@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/controller/category_controller.dart';
 import 'package:food_recipes/controller/rating_controller.dart';
+import 'package:food_recipes/view/place_order.dart';
 import 'package:get/get.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -1070,12 +1071,12 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/past.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                               Positioned(
                                                 child: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       'Fruits',
@@ -1087,7 +1088,7 @@ class _LandingPageState extends State<LandingPage> {
                                                       size: 10,
                                                       color: Color(0xffffc107),
                                                       borderColor:
-                                                      Color(0xffffc107),
+                                                          Color(0xffffc107),
                                                     ),
                                                     Text(
                                                       'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1113,13 +1114,13 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/burger.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Burger',
@@ -1131,7 +1132,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1146,9 +1147,9 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                   Flexible(
@@ -1160,12 +1161,12 @@ class _LandingPageState extends State<LandingPage> {
                                               child: Image.asset(
                                                   'images/fruit.png'),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Eggless Crepes',
@@ -1177,7 +1178,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1199,12 +1200,12 @@ class _LandingPageState extends State<LandingPage> {
                                               child: Image.asset(
                                                   'images/pasta1.png'),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Pasta',
@@ -1216,7 +1217,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1231,14 +1232,14 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.end,
+                                          CrossAxisAlignment.end,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                 ],
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                               ),
                               SizedBox(
                                 height: geth(24),
@@ -1264,13 +1265,13 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/burger1.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Burger',
@@ -1282,7 +1283,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1307,13 +1308,13 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/burger2.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Burger',
@@ -1325,7 +1326,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1340,9 +1341,9 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                   Flexible(
@@ -1355,12 +1356,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/burger3.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Burger',
@@ -1372,7 +1373,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1395,12 +1396,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/burger4.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Burger',
@@ -1412,7 +1413,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1427,14 +1428,14 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.end,
+                                          CrossAxisAlignment.end,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                 ],
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                               ),
                             ],
                           ),
@@ -1454,12 +1455,12 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/past.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                               Positioned(
                                                 child: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       'Fruits',
@@ -1471,7 +1472,7 @@ class _LandingPageState extends State<LandingPage> {
                                                       size: 10,
                                                       color: Color(0xffffc107),
                                                       borderColor:
-                                                      Color(0xffffc107),
+                                                          Color(0xffffc107),
                                                     ),
                                                     Text(
                                                       'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1497,12 +1498,12 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/fruit.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                               Positioned(
                                                 child: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       'Eggless Crepes',
@@ -1514,7 +1515,7 @@ class _LandingPageState extends State<LandingPage> {
                                                       size: 10,
                                                       color: Color(0xffffc107),
                                                       borderColor:
-                                                      Color(0xffffc107),
+                                                          Color(0xffffc107),
                                                     ),
                                                     Text(
                                                       'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1540,12 +1541,12 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/fruit.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                               Positioned(
                                                 child: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       'Eggless Crepes',
@@ -1557,7 +1558,7 @@ class _LandingPageState extends State<LandingPage> {
                                                       size: 10,
                                                       color: Color(0xffffc107),
                                                       borderColor:
-                                                      Color(0xffffc107),
+                                                          Color(0xffffc107),
                                                     ),
                                                     Text(
                                                       'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1583,12 +1584,12 @@ class _LandingPageState extends State<LandingPage> {
                                                     'images/fruit.png',
                                                     fit: BoxFit.contain),
                                                 borderRadius:
-                                                BorderRadius.circular(10),
+                                                    BorderRadius.circular(10),
                                               ),
                                               Positioned(
                                                 child: Column(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
                                                       'Eggless Crepes',
@@ -1600,7 +1601,7 @@ class _LandingPageState extends State<LandingPage> {
                                                       size: 10,
                                                       color: Color(0xffffc107),
                                                       borderColor:
-                                                      Color(0xffffc107),
+                                                          Color(0xffffc107),
                                                     ),
                                                     Text(
                                                       'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1616,9 +1617,9 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                   Flexible(
@@ -1631,12 +1632,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/fruit.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Eggless Crepes',
@@ -1648,7 +1649,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1671,12 +1672,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/past.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Fruits',
@@ -1688,7 +1689,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1711,12 +1712,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/fruit.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Eggless Crepes',
@@ -1728,7 +1729,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1751,12 +1752,12 @@ class _LandingPageState extends State<LandingPage> {
                                                   'images/fruit.png',
                                                   fit: BoxFit.contain),
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             Positioned(
                                               child: Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Eggless Crepes',
@@ -1768,7 +1769,7 @@ class _LandingPageState extends State<LandingPage> {
                                                     size: 10,
                                                     color: Color(0xffffc107),
                                                     borderColor:
-                                                    Color(0xffffc107),
+                                                        Color(0xffffc107),
                                                   ),
                                                   Text(
                                                     'Lorem ipsum dolor sit amet,\nconsectetur adipiscing \nelit. Aliquam ',
@@ -1783,14 +1784,14 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                       ],
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.end,
+                                          CrossAxisAlignment.end,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                     ),
                                   ),
                                 ],
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                               ),
                             ],
                           ),
@@ -1861,66 +1862,75 @@ class Built extends StatelessWidget {
         builder: ((controllers) => ListView.builder(
               itemBuilder: (context, index) => Row(
                 children: [
-                  Container(
-                    // height: 160,
-                    // width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Color(0xff0c0c0c),
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(9.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(controllers.rates[index].pic)),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            controllers.rates[index].title,
-                            style: kTextJourney23,
-                          ),
-                          SizedBox(
-                            height: getw(10),
-                          ),
-                          Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              RatingBar.builder(
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star,
-                                  color: Colors.orange,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlaceOrder()));
+                    },
+                    child: Container(
+                      // height: 160,
+                      // width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Color(0xff0c0c0c),
+                        borderRadius: BorderRadius.circular(9),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(9.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child:
+                                    Image.asset(controllers.rates[index].pic)),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              controllers.rates[index].title,
+                              style: kTextJourney23,
+                            ),
+                            SizedBox(
+                              height: getw(10),
+                            ),
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                RatingBar.builder(
+                                  itemBuilder: (context, _) => Icon(
+                                    Icons.star,
+                                    color: Colors.orange,
+                                  ),
+                                  itemCount: 5,
+                                  ignoreGestures: true,
+                                  unratedColor: Color(0xffc4c4c4),
+                                  itemSize: 15,
+                                  onRatingUpdate: (rating) {
+                                    print(rating);
+                                  },
+                                  initialRating: controllers.rates[index].rating
+                                      .toDouble(),
                                 ),
-                                itemCount: 5,
-                                ignoreGestures: true,
-                                unratedColor: Color(0xffc4c4c4),
-                                itemSize: 15,
-                                onRatingUpdate: (rating) {
-                                  print(rating);
-                                },
-                                initialRating:
-                                    controllers.rates[index].rating.toDouble(),
-                              ),
-                              SizedBox(
-                                width: getw(10),
-                              ),
-                              Text(
-                                '(100)',
-                                style: kTextJourney25,
-                              ),
-                              SizedBox(
-                                width: getw(70),
-                              ),
-                              Text(
-                                controllers.rates[index].amount,
-                                style: kTextJourney24,
-                              )
-                            ],
-                          )
-                        ],
+                                SizedBox(
+                                  width: getw(10),
+                                ),
+                                Text(
+                                  '(100)',
+                                  style: kTextJourney25,
+                                ),
+                                SizedBox(
+                                  width: getw(70),
+                                ),
+                                Text(
+                                  controllers.rates[index].amount,
+                                  style: kTextJourney24,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

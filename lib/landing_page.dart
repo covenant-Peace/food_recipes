@@ -1871,7 +1871,6 @@ class Built extends StatelessWidget {
                     },
                     child: Container(
                       // height: 160,
-                      // width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         color: Color(0xff0c0c0c),
                         borderRadius: BorderRadius.circular(9),

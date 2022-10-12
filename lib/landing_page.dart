@@ -1870,7 +1870,6 @@ class Built extends StatelessWidget {
                               builder: (context) => PlaceOrder()));
                     },
                     child: Container(
-                      // height: 160,
                       decoration: BoxDecoration(
                         color: Color(0xff0c0c0c),
                         borderRadius: BorderRadius.circular(9),

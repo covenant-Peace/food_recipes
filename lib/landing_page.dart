@@ -1807,7 +1807,6 @@ class _LandingPageState extends State<LandingPage> {
         ),
       ),
       drawerDragStartBehavior: DragStartBehavior.start,
-      // drawerEnableOpenDragGesture: false,
       drawer: App(),
     );
   }
@@ -1841,9 +1840,9 @@ class Buit extends StatelessWidget {
               itemCount: controller.cats.length,
               scrollDirection: Axis.horizontal,
               physics: ClampingScrollPhysics(),
-              // controller: ScrollController(),
-              // padding: EdgeInsets.only(left: 10, right: 10),
-            )));
+            )
+        ),
+    );
   }
 }
 

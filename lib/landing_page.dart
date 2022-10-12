@@ -1818,30 +1818,29 @@ class Buit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<CategoryController>(
-        builder: ((controller) => ListView.builder(
-              shrinkWrap: true,
-              itemBuilder: (context, index) => Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(controller.cats[index].imgae),
-                      Text(
-                        controller.cats[index].textImage,
-                        style: kTextGet10,
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 30,
-                  )
-                ],
-              ),
-              itemCount: controller.cats.length,
-              scrollDirection: Axis.horizontal,
-              physics: ClampingScrollPhysics(),
-            )
-        ),
+      builder: ((controller) => ListView.builder(
+            shrinkWrap: true,
+            itemBuilder: (context, index) => Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(controller.cats[index].imgae),
+                    Text(
+                      controller.cats[index].textImage,
+                      style: kTextGet10,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 30,
+                )
+              ],
+            ),
+            itemCount: controller.cats.length,
+            scrollDirection: Axis.horizontal,
+            physics: ClampingScrollPhysics(),
+          )),
     );
   }
 }

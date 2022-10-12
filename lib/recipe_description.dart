@@ -279,26 +279,19 @@ class _SaladState extends State<Salad> {
               height: 56.0,
               margin: EdgeInsets.only(left: 36.0, right: 36.0),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(48.0),
-                  color: Color(0xFF222222),
-                  border: Border(
-                    top: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    bottom: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    left: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                    right: BorderSide(
-                        color: Colors.orange,
-                        width: 1,
-                        style: BorderStyle.solid),
-                  )),
+                borderRadius: BorderRadius.circular(48.0),
+                color: Color(0xFF222222),
+                border: Border(
+                  top: BorderSide(
+                      color: Colors.orange, width: 1, style: BorderStyle.solid),
+                  bottom: BorderSide(
+                      color: Colors.orange, width: 1, style: BorderStyle.solid),
+                  left: BorderSide(
+                      color: Colors.orange, width: 1, style: BorderStyle.solid),
+                  right: BorderSide(
+                      color: Colors.orange, width: 1, style: BorderStyle.solid),
+                ),
+              ),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context,

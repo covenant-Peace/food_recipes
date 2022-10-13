@@ -332,7 +332,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.message.toString()),
                       duration: Duration(seconds: 6),
-                    ));
+                    )
+                    );
                   }
                   setState(() {
                     showSpinner = false;

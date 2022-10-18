@@ -574,27 +574,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
       expiryMonth: int.parse(contMon.text.trim()),
       expiryYear: int.parse(contYear.text.trim()),
     );
-
-    // Using Cascade notation (similar to Java's builder pattern)
-//    return PaymentCard(
-//        number: cardNumber,
-//        cvc: cvv,
-//        expiryMonth: expiryMonth,
-//        expiryYear: expiryYear)
-//      ..name = 'Segun Chukwuma Adamu'
-//      ..country = 'Nigeria'
-//      ..addressLine1 = 'Ikeja, Lagos'
-//      ..addressPostalCode = '100001';
-
-    // Using optional parameters
-//    return PaymentCard(
-//        number: cardNumber,
-//        cvc: cvv,
-//        expiryMonth: expiryMonth,
-//        expiryYear: expiryYear,
-//        name: 'Ismail Adebola Emeka',
-//        addressCountry: 'Nigeria',
-//        addressLine1: '90, Nnebisi Road, Asaba, Deleta State');
   }
 
   Widget _getPlatformButton(String string, Function() function) {

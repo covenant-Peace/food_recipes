@@ -16,6 +16,8 @@ class ShoppingPage extends StatelessWidget {
   final foodController = Get.put(ShoppingController());
   final payController = Get.put(PayController());
 
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     int deliveryFee = 499;
@@ -51,13 +53,13 @@ class ShoppingPage extends StatelessWidget {
                 ),
               ],
             ),
-            GetX<ShoppingController>(
-              builder: ((controller) {
-                return Expanded(
-                  child: ListView.builder(
+            Expanded(
+              child: GetX<ShoppingController>(
+                builder: ((controller) {
+                  return ListView.builder(
                       itemCount: controller.foods.length,
                       itemBuilder: (context, index) {
-                        return Expanded(
+                        return GestureDetector(
                           child: Column(
                             children: [
                               Row(
@@ -188,9 +190,9 @@ class ShoppingPage extends StatelessWidget {
                             ],
                           ),
                         );
-                      }),
-                );
-              }),
+                      });
+                }),
+              ),
             ),
             SizedBox(
               height: 20.0,

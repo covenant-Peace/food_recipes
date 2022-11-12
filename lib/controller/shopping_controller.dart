@@ -17,32 +17,24 @@ class ShoppingController extends GetxController {
     await Future.delayed(Duration(seconds: 1));
     var foodResult = [
       Food(
-        id: 1,
-        foodDescription:
+        description:
             'Get fresh prepared fruit salad with different flavours..',
-        foodName: 'Fruit Salad',
-        price: 800,
+        name: 'Fruit Salad',
       ),
       Food(
-        id: 2,
-        foodDescription:
+        description:
             'Get fresh prepared fruit salad with different flavours..',
-        foodName: 'Fruit Salad',
-        price: 500,
+        name: 'Fruit Salad',
       ),
       Food(
-        id: 3,
-        foodDescription:
+        description:
             'Get fresh prepared fruit salad with different flavours',
-        foodName: 'Fruit Salad',
-        price: 200,
+        name: 'Fruit Salad',
       ),
       Food(
-        id: 4,
-        foodDescription:
+        description:
             'Get fresh prepared fruit salad with different flavours',
-        foodName: 'Fruit Salad',
-        price: 600,
+        name: 'Fruit Salad',
       ),
     ];
     foods.value = foodResult;

@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/auth_service.dart';
+import 'package:food_recipes/services/auth_service.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/passwordFile/forgot_password.dart';

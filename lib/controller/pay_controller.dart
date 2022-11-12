@@ -26,10 +26,9 @@ class PayController extends GetxController {
   removeFromCart1(
       int id1, String foodName1, String foodDescription1, double price1) {
     final foodie = Food(
-        id: id1,
-        foodDescription: foodDescription1,
-        foodName: foodName1,
-        price: price1);
+        description: foodDescription1,
+        name: foodName1,
+    );
     payItems.remove(foodie);
   }
 

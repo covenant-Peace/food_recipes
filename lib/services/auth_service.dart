@@ -7,7 +7,7 @@ import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/sign_up.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'bottom_navigation.dart';
+import '../bottom_navigation.dart';
 
 class AUthService {
   handleAuthState() {

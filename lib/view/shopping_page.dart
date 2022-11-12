@@ -78,7 +78,7 @@ class ShoppingPage extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              '${controller.foods[index].foodName}',
+                                              '${controller.foods[index].name}',
                                               style: kTextGet4,
                                             ),
                                             GestureDetector(
@@ -97,7 +97,7 @@ class ShoppingPage extends StatelessWidget {
                                           height: 7.0,
                                         ),
                                         Text(
-                                          '${controller.foods[index].foodDescription}',
+                                          '${controller.foods[index].description}',
                                           style: kTextGet5,
                                         ),
                                         SizedBox(

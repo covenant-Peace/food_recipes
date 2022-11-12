@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -8,8 +9,13 @@ import 'package:food_recipes/sign_up.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../bottom_navigation.dart';
+import '../model/user_model.dart';
 
 class AUthService {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
   handleAuthState() {
     return StreamBuilder(
       builder: (BuildContext context, snapshot) {
@@ -44,6 +50,15 @@ class AUthService {
         duration: Duration(seconds: 6),
       ));
     }
+  }
+
+  Future<UserModel> getUserDetails() async {
+    User currentUser = _auth.currentUser;
+
+    DocumentSnapshot snap =
+    await _firestore.collection('account details').doc(currentUser.uid).get();
+
+    return UserModel.fromSnap(snap);
   }
 
   Future<void> signInWithFacebook(BuildContext context) async {

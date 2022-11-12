@@ -252,7 +252,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                       FirebaseAuth.instance.currentUser.updateDisplayName(name);
 
                       if (newUser != null) {
-                        _firestore.collection('account details').add({
+                        _firestore.collection('account details').doc(newUser.user.uid).set({
                           'Full name': name,
                           'email': email,
                           'password': password,

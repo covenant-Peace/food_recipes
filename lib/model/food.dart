@@ -8,10 +8,11 @@ class Food {
   final int kcal;
   final int ratings;
   final int servingNumber;
+  final String servingTime;
   final int typeOfFood;
   final String toServe;
 
-  const Food({
+  const Food({this.servingTime,
     this.name,
     this.description,
     this.direction,
@@ -36,6 +37,7 @@ class Food {
       servingNumber: map['servingNumber'],
       typeOfFood: map['typeOfFood'],
       toServe: map['toServe'],
+      servingTime: map['servingTime']
     );
   }
 
@@ -49,6 +51,7 @@ class Food {
     int kcal,
     int ratings,
     int servingNumber,
+    String servingTime,
     int typeOfFood,
     String toServe,
   }) {
@@ -63,6 +66,7 @@ class Food {
       servingNumber: servingNumber ?? this.servingNumber,
       typeOfFood: typeOfFood ?? this.typeOfFood,
       toServe: toServe ?? this.toServe,
+      servingTime: servingTime ?? this.servingTime,
     );
   }
 }

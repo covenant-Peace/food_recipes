@@ -254,7 +254,7 @@ const kTextJourney23 = TextStyle(
 const kTextJourney24 = TextStyle(
   fontFamily: 'Poppins',
   color: Color(0xFFFFFFFF),
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w900,
   fontSize: 12.0,
 );
 

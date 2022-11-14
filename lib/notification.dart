@@ -51,7 +51,7 @@ class Going extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      controller.fish?.value = false;
+                      // controller.fish?.value = false;
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

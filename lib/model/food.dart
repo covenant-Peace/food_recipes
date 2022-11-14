@@ -1,7 +1,7 @@
 class Food {
   final String name;
   final String description;
-  final double price;
+  final int price;
   final List direction;
   final List ingredient;
   final String image;
@@ -72,7 +72,7 @@ class Food {
   Food copyWith({
     String? name,
     String? description,
-    double? price,
+    int? price,
     List? direction,
     List? ingredient,
     String? image,

@@ -7,7 +7,7 @@ class HistoryCard extends StatelessWidget {
   final String food;
   final int amount;
 
-  HistoryCard({this.amount, this.food});
+  HistoryCard({required this.amount, required this.food});
 
   @override
   Widget build(BuildContext context) {

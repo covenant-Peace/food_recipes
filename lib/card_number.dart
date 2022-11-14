@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'constants.dart';
 
 class CardNumber extends StatelessWidget {
-  String cpNumber;
+  String? cpNumber;
 
   @override
   Widget build(BuildContext context) {

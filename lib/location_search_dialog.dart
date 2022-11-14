@@ -13,7 +13,7 @@ class LocationSearchDialog extends StatelessWidget {
   // const LocationSearchDialog({Key? key}) : super(key: key);
   final GoogleMapController mapController;
 
-  const LocationSearchDialog({@required this.mapController});
+  const LocationSearchDialog({required this.mapController});
 
   @override
   Widget build(BuildContext context) {

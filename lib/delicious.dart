@@ -52,6 +52,7 @@ class _DeliciousState extends State<Delicious> {
           style: TextStyle(color: Colors.white),
         );
       }
+      return Text('');
     }
 
     return Scaffold(

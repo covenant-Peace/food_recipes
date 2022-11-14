@@ -6,32 +6,13 @@ import '../model/food.dart';
 class RecipeProvider extends ChangeNotifier {
   final List<Food> _foods = [];
   Map chosenFood = {};
-  bool _isLoading = false;
+  final List<Food> _chosenRecipe = [];
+
+  List<Food> get recipesBought => _chosenRecipe;
 
   List<Food> get foods => _foods;
-
-  // void getChosenFood(Food model) async {
-  //   _isLoading = true;
-  //   notifyListeners();
-  //   final savedCardDoc = await FirebaseFirestore.instance
-  //       .collection('food')
-  //       .doc('popular')
-  //       .collection('Breakfast')
-  //       .doc(model.)
-  //       .get();
-  //
-  //   chosenCard = (savedCardDoc.data() as dynamic);
-  //   modelling = CardModel(
-  //     cardName: chosenCard['cardName'],
-  //     cardNumber: chosenCard['cardNumber'],
-  //     cvc: chosenCard['cvc'],
-  //     mm: chosenCard['mm'],
-  //     yy: chosenCard['yy'],
-  //     date: chosenCard['date'],
-  //   );
-  //   _isLoading = false;
-  //   notifyListeners();
-  // }
+  int quantity = 0;
+  double totalAmount = 0;
 
   fetchCards() {
     final snapshot = FirebaseFirestore.instance
@@ -52,5 +33,59 @@ class RecipeProvider extends ChangeNotifier {
       }
       notifyListeners();
     });
+  }
+
+  void addToCart(String userId, Food model) async {
+    final snap = FirebaseFirestore.instance
+        .collection('cart')
+        .doc(userId)
+        .collection('myOrderedFoods')
+        .doc();
+
+    final docId = snap.id;
+
+    await snap.set(model.copyWith(uid: docId, quantity: quantity).toMap());
+    notifyListeners();
+    // snap.add({
+    //   'name' : model.name,
+    //   'image' : model.image,
+    //   'description' : model.description,
+    //   'amount' : amount,
+    //   'quantity' : quantity,
+    // });
+  }
+
+  fetchCart(String? userId) {
+    final snapshot = FirebaseFirestore.instance
+        .collection('cart')
+        .doc(userId)
+        .collection('myOrderedFoods')
+        // .orderBy('typeOfFood')
+        .snapshots();
+
+    snapshot.listen((event) {
+      _chosenRecipe.clear();
+      for (var element in event.docs) {
+        _chosenRecipe.add(
+          Food.fromMap(
+            element.data(),
+          ),
+        );
+      }
+      notifyListeners();
+    });
+  }
+
+  void deleteFood(Food model, String userId) async {
+    // _isLoading = true;
+    notifyListeners();
+    final cart = FirebaseFirestore.instance
+        .collection('cart')
+        .doc(userId)
+        .collection('myOrderedFoods');
+
+    await cart.doc(model.uid).delete();
+    // Future.delayed(const Duration(seconds: 4));
+    notifyListeners();
   }
 }

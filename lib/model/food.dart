@@ -1,7 +1,7 @@
 class Food {
   final String name;
   final String description;
-  final double price = 100;
+  final double price;
   final List direction;
   final List ingredient;
   final String image;
@@ -11,18 +11,24 @@ class Food {
   final String servingTime;
   final int typeOfFood;
   final String toServe;
+  final String uid;
+  final int quantity;
 
-  const Food({this.servingTime,
-    this.name,
-    this.description,
-    this.direction,
-    this.ingredient,
-    this.image,
-    this.kcal,
-    this.ratings,
-    this.servingNumber,
-    this.typeOfFood,
-    this.toServe,
+  const Food({
+    this.uid = '',
+    this.quantity = 0,
+    required this.servingTime,
+    required this.name,
+    required this.description,
+    required this.direction,
+    required this.ingredient,
+    required this.image,
+    required this.kcal,
+    required this.ratings,
+    required this.servingNumber,
+    required this.typeOfFood,
+    required this.toServe,
+    required this.price,
   });
 
   factory Food.fromMap(Map<String, dynamic> map) {
@@ -37,23 +43,47 @@ class Food {
       servingNumber: map['servingNumber'],
       typeOfFood: map['typeOfFood'],
       toServe: map['toServe'],
-      servingTime: map['servingTime']
+      servingTime: map['servingTime'],
+      uid: map['uid'],
+      price: map['price'],
+      quantity: map['quantity'],
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'description': description,
+      'direction': direction,
+      'ingredient': ingredient,
+      'image': image,
+      'kcal': kcal,
+      'ratings': ratings,
+      'servingNumber': servingNumber,
+      'typeOfFood': typeOfFood,
+      'toServe': toServe,
+      'servingTime': servingTime,
+      'uid': uid,
+      'price': price,
+      'quantity': quantity,
+    };
+  }
+
   Food copyWith({
-    String name,
-    String description,
-    double price = 100,
-    List direction,
-    List ingredient,
-    String image,
-    int kcal,
-    int ratings,
-    int servingNumber,
-    String servingTime,
-    int typeOfFood,
-    String toServe,
+    String? name,
+    String? description,
+    double? price,
+    List? direction,
+    List? ingredient,
+    String? image,
+    int? kcal,
+    int? ratings,
+    int? servingNumber,
+    String? servingTime,
+    int? typeOfFood,
+    String? toServe,
+    String? uid,
+    int? quantity,
   }) {
     return Food(
       name: name ?? this.name,
@@ -66,7 +96,10 @@ class Food {
       servingNumber: servingNumber ?? this.servingNumber,
       typeOfFood: typeOfFood ?? this.typeOfFood,
       toServe: toServe ?? this.toServe,
+      uid: uid ?? this.uid,
       servingTime: servingTime ?? this.servingTime,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
     );
   }
 }

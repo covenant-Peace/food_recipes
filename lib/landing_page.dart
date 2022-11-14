@@ -19,7 +19,7 @@ import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
 
-final uid = FirebaseAuth.instance.currentUser.uid;
+final uid = FirebaseAuth.instance.currentUser?.uid;
 
 class LandingPage extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _LandingPageState extends State<LandingPage> {
   final controller = Get.put(CategoryController());
   final controllers = Get.put(RatingController());
   final _auth = FirebaseAuth.instance;
-  User loggedInUser;
+  User? loggedInUser;
 
   @override
   void initState() {
@@ -58,19 +58,19 @@ class _LandingPageState extends State<LandingPage> {
       final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
+        print(loggedInUser?.email);
       }
     } catch (e) {
       print(e);
     }
   }
 
-  DocumentSnapshot snapshot;
+  DocumentSnapshot? snapshot;
 
   void getData() async {
     DocumentReference docref = await FirebaseFirestore.instance
         .collection('account details')
-        .doc(_auth.currentUser.uid);
+        .doc(_auth.currentUser?.uid);
     var him = docref.id;
     // snapshot = data as DocumentSnapshot<Object>;
   }
@@ -81,7 +81,7 @@ class _LandingPageState extends State<LandingPage> {
         .doc(uid)
         .get();
     if (docSnapshot.exists) {
-      Map<String, dynamic> data = docSnapshot.data();
+      Map<String, dynamic> data = docSnapshot.data()!;
       setState(() {
         name = data['Full name'];
       });
@@ -117,6 +117,7 @@ class _LandingPageState extends State<LandingPage> {
     } catch (e) {
       print(e);
     }
+    return Text('');
   }
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
@@ -140,7 +141,7 @@ class _LandingPageState extends State<LandingPage> {
           padding: const EdgeInsets.only(left: 20),
           child: GestureDetector(
             onTap: () {
-              _key.currentState.openDrawer();
+              _key.currentState?.openDrawer();
               changeProfile();
             },
             child: CircleAvatar(
@@ -162,7 +163,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Welcome ${_auth.currentUser.displayName}!',
+              'Welcome ${_auth.currentUser?.displayName}!',
               style: kTextGet8,
             ),
             GestureDetector(

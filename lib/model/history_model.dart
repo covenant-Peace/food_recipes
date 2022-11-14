@@ -2,5 +2,5 @@ class History {
   final int amount;
   final String food;
 
-  History({this.amount, this.food});
+  History({required this.amount, required this.food});
 }

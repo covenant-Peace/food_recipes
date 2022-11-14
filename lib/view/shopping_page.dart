@@ -1,22 +1,34 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_string_interpolations
 
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
-import 'package:food_recipes/controller/pay_controller.dart';
-import 'package:food_recipes/controller/shopping_controller.dart';
 import 'package:food_recipes/payment_method.dart';
-import 'package:get/get.dart';
+import 'package:food_recipes/provider/recipe_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../bottom_navigation.dart';
 
-int debin;
+// int debin;
 
-class ShoppingPage extends StatelessWidget {
-  final foodController = Get.put(ShoppingController());
-  final payController = Get.put(PayController());
+class ShoppingPage extends StatefulWidget {
+  @override
+  State<ShoppingPage> createState() => _ShoppingPageState();
+}
 
+class _ShoppingPageState extends State<ShoppingPage> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context
+          .read<RecipeProvider>()
+          .fetchCart(FirebaseAuth.instance.currentUser?.uid);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,17 +66,24 @@ class ShoppingPage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: GetX<ShoppingController>(
-                builder: ((controller) {
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('cart')
+                    .doc(FirebaseAuth.instance.currentUser?.uid)
+                    .collection('myOrderedFoods')
+                    .snapshots(),
+                builder: ((context, snapshot) {
                   return ListView.builder(
-                      itemCount: controller.foods.length,
+                      itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
+                        // context.read<RecipeProvider>().totalAmount = ;
                         return GestureDetector(
                           child: Column(
                             children: [
                               Row(
                                 children: [
-                                  Image.asset('images/plate.png'),
+                                  Image.network(
+                                      snapshot.data.docs[index]['image']),
                                   SizedBox(
                                     width: 17.0,
                                   ),
@@ -78,16 +97,18 @@ class ShoppingPage extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              '${controller.foods[index].name}',
+                                              '${snapshot.data?.docs[index]['name']}',
                                               style: kTextGet4,
                                             ),
                                             GestureDetector(
                                                 onTap: () {
-                                                  // payController.removeFromCart1(
-                                                  //    fill.id,
-                                                  //     fill.foodName,
-                                                  //     fill.foodDescription,
-                                                  //    fill.price);
+                                                  context
+                                                      .read<RecipeProvider>()
+                                                      .deleteFood(
+                                                          snapshot
+                                                              .data.docs[index],
+                                                          FirebaseAuth.instance
+                                                              .currentUser.uid);
                                                 },
                                                 child: Image.asset(
                                                     'images/close.png')),
@@ -97,7 +118,7 @@ class ShoppingPage extends StatelessWidget {
                                           height: 7.0,
                                         ),
                                         Text(
-                                          '${controller.foods[index].description}',
+                                          '${snapshot.data.docs[index]['description']}',
                                           style: kTextGet5,
                                         ),
                                         SizedBox(
@@ -129,11 +150,9 @@ class ShoppingPage extends StatelessWidget {
                                                     children: [
                                                       GestureDetector(
                                                         onTap: () {
-                                                          payController
-                                                              .removeFromCart(
-                                                                  controller
-                                                                          .foods[
-                                                                      index]);
+                                                          if (snapshot.data.docs['quantity'] > 0) {
+                                                            snapshot.data.docs[index]['quantity']--;
+                                                          }
                                                         },
                                                         child: Icon(
                                                           Icons.remove,
@@ -141,19 +160,13 @@ class ShoppingPage extends StatelessWidget {
                                                           size: 10.0,
                                                         ),
                                                       ),
-                                                      GetX<PayController>(
-                                                          builder:
-                                                              ((controller) {
-                                                        return Text(
-                                                            '${controller.count}');
-                                                      })),
+                                                      Text(
+                                                          '${snapshot.data.docs[index]['quantity']}'),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          payController
-                                                              .addToCart(
-                                                                  controller
-                                                                          .foods[
-                                                                      index]);
+                                                          snapshot.data
+                                                                  .docs[index]
+                                                              ['quantity']++;
                                                         },
                                                         child: Icon(
                                                           Icons.add,
@@ -166,13 +179,10 @@ class ShoppingPage extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            GetX<PayController>(
-                                                builder: (controller) {
-                                              return Text(
-                                                'NGN ${controller.totalPrice}',
-                                                style: kTextGet6,
-                                              );
-                                            })
+                                            Text(
+                                              'NGN ${snapshot.data.docs[index]['quantity'] * snapshot.data.docs[index]['price']}',
+                                              style: kTextGet6,
+                                            )
                                           ],
                                         ),
                                       ],
@@ -206,12 +216,10 @@ class ShoppingPage extends StatelessWidget {
                       'SubTotal',
                       style: kTextGet,
                     ),
-                    GetX<PayController>(builder: ((controller) {
-                      return Text(
-                        'NGN ${controller.totalPrice}',
-                        style: kTextGet,
-                      );
-                    }))
+                    Text(
+                      'NGN 0',
+                      style: kTextGet,
+                    )
                   ],
                 ),
                 SizedBox(
@@ -278,13 +286,11 @@ class ShoppingPage extends StatelessWidget {
                   'Total',
                   style: kTextGet1,
                 ),
-                GetX<PayController>(builder: ((controller) {
-                  debin = deliveryFee + controller.totalPrice.toInt();
-                  return Text(
-                    'NGN $debin',
-                    style: kTextGet2,
-                  );
-                })),
+                // debin = deliveryFee + controller.totalPrice.toInt();
+                Text(
+                  'NGN $debin',
+                  style: kTextGet2,
+                )
               ],
             ),
             SizedBox(

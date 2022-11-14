@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class Phone extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback onPressed;
   final TextStyle gret;
   final String labelText;
 
-  Phone({this.onPressed, this.gret, this.labelText});
+  Phone({required this.onPressed, required this.gret, required this.labelText});
   // bool term = false;
 
 

@@ -1,15 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
-class PaymentCard extends StatelessWidget{
-
-  final Function onPressed;
+class PaymentCard extends StatelessWidget {
+  final VoidCallback onPressed;
   final Color cardColor;
   final Widget number;
 
-  PaymentCard({this.onPressed, this.cardColor, this.number});
+  PaymentCard(
+      {required this.onPressed, required this.cardColor, required this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +22,13 @@ class PaymentCard extends StatelessWidget{
             color: Color(0xFF222222),
             border: Border(
               top: BorderSide(
-                  color: cardColor,
-                  width: 1,
-                  style: BorderStyle.solid),
+                  color: cardColor, width: 1, style: BorderStyle.solid),
               bottom: BorderSide(
-                  color: cardColor,
-                  width: 1,
-                  style: BorderStyle.solid),
+                  color: cardColor, width: 1, style: BorderStyle.solid),
               left: BorderSide(
-                  color: cardColor,
-                  width: 1,
-                  style: BorderStyle.solid),
+                  color: cardColor, width: 1, style: BorderStyle.solid),
               right: BorderSide(
-                  color: cardColor,
-                  width: 1,
-                  style: BorderStyle.solid),
+                  color: cardColor, width: 1, style: BorderStyle.solid),
             )),
         child: GestureDetector(
           onTap: onPressed,

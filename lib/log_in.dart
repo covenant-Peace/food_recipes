@@ -20,8 +20,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
-  String email;
-  String password;
+  late String email;
+  late String password;
   bool showSpinner = false;
 
   @override
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     print(e);
                     // await _auth.currentUser.sendEmailVerification();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(e.message.toString()),
+                      content: Text(e.toString()),
                       duration: Duration(seconds: 6),
                     ));
                   }
@@ -240,7 +240,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => BottomNavigation(0)));
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(e.message.toString()),
+                      content: Text(e.toString()),
                       duration: Duration(seconds: 6),
                     ));
                   }

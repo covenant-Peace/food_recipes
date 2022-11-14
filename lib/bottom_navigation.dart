@@ -22,7 +22,7 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   final _auth = FirebaseAuth.instance;
-  User loggedInUser;
+  User? loggedInUser;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       if (user != null) {
         loggedInUser = user;
         if (kDebugMode) {
-          print(loggedInUser.email);
+          print(loggedInUser?.email);
         }
       }
     } catch (e) {

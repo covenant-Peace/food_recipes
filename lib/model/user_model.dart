@@ -8,7 +8,7 @@ class UserModel {
   final phoneNumber;
 
 
-  const UserModel({this.password, this.phoneNumber, this.fullname, this.email});
+  const UserModel({required this.password, this.phoneNumber, required this.fullname, required this.email});
 
 
   factory UserModel.fromMap(Map<String, dynamic> snapshot)

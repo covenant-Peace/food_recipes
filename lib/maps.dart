@@ -21,9 +21,9 @@ class Maps extends StatefulWidget {
 
 class _MapsState extends State<Maps> {
 
-  GoogleMap mMap;
+  GoogleMap? mMap;
   // GoogleMapController controller;
-  Marker mMarker;
+  Marker? mMarker;
 
   // void moveCameraToUserLocation(searchedLocation2) async {
   //   // var location = await Geocode().getLatLng(searchedLocation2);
@@ -217,8 +217,8 @@ class _MapsState extends State<Maps> {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
     final address = await geocoder.findAddressesFromQuery(conti);
     setState(() {
-      emire = address.first.coordinates.latitude;
-      longre = address.first.coordinates.longitude;
+      emire = address.first.coordinates.latitude!;
+      longre = address.first.coordinates.longitude!;
       // _controller..moveCamera(CameraUpdate.newLatLng(LatLng(emire, longre)));
     });
 
@@ -228,7 +228,7 @@ class _MapsState extends State<Maps> {
   longin() async {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
     final address = await geocoder.findAddressesFromQuery(conti);
-    longre = address.first.coordinates.longitude;
+    longre = address.first.coordinates.longitude!;
   }
 }
 

@@ -320,6 +320,7 @@ class _LandingPageState extends State<LandingPage> {
                       padding: const EdgeInsets.only(top: 10),
                       child: Consumer<RecipeProvider>(
                           builder: (context, provide, _) {
+                            int selected = 0;
                         return TabBarView(
                           children: [
                             GridView.builder(
@@ -331,7 +332,10 @@ class _LandingPageState extends State<LandingPage> {
                               itemCount: provide.foods.length,
                               itemBuilder: (context, index) {
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    selected = index;
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaceOrder(provide.foods[selected])));
+                                  },
                                   child: Flexible(
                                     child: Column(
                                       children: [

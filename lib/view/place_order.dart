@@ -14,6 +14,7 @@ class PlaceOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScrollController controller;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF222222),
@@ -34,188 +35,195 @@ class PlaceOrder extends StatelessWidget {
                   ),
                   Align(
                     child: DraggableScrollableSheet(
-                      builder: (context, scrollController) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF222222),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(62.0),
-                              topRight: Radius.circular(62.0),
+                      builder: (context, scrollableController) {
+                        return SingleChildScrollView(
+                          controller: controller,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF222222),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(62.0),
+                                topRight: Radius.circular(62.0),
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 40.0, right: 40.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(
-                                  height: 18.0,
-                                ),
-                                Center(
-                                  child: SizedBox(
-                                    width: 40.0,
-                                    child: Divider(
-                                      color: Color(0xFFE5E5E5),
-                                      thickness: 2.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 40.0, right: 40.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 18.0,
+                                  ),
+                                  Center(
+                                    child: SizedBox(
+                                      width: 40.0,
+                                      child: Divider(
+                                        color: Color(0xFFE5E5E5),
+                                        thickness: 2.0,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 26.0,
-                                ),
-                                Text(
-                                  example.name,
-                                  style: kTextJourney18,
-                                ),
-                                SizedBox(
-                                  height: 11.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.watch_later_outlined,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 8.0,
-                                        ),
-                                        Text(
-                                          example.servingTime,
-                                          style: kTextJourney9,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.people_outline,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 8.0,
-                                        ),
-                                        Text(
-                                          example.servingNumber.toString(),
-                                          style: kTextJourney9,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons
-                                              .local_fire_department_outlined,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 8.0,
-                                        ),
-                                        Text(
-                                          '${example.kcal} kcal',
-                                          style: kTextJourney9,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 27.0,
-                                ),
-                                Text(
-                                  'Ingredient',
-                                  style: kTextJourney14,
-                                ),
-                                SizedBox(
-                                  height: 6.0,
-                                ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: Color(0xFF6A6A6A),
-                                ),
-                                Flexible(
-                                  child: GridView.builder(
-                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 1,
-                                          mainAxisSpacing: 0
-                                    ),
-                                    // physics: NeverScrollableScrollPhysics(),
-                                    padding: EdgeInsets.zero,
-                                    itemCount: example.ingredient.length,
-                                    itemBuilder: (context, index) {
-                                      return Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                  SizedBox(
+                                    height: 26.0,
+                                  ),
+                                  Text(
+                                    example.name,
+                                    style: kTextJourney18,
+                                  ),
+                                  SizedBox(
+                                    height: 11.0,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Row(
                                         children: [
                                           Icon(
-                                            Icons.fiber_manual_record,
-                                            size: 5.0,
-                                            color: Colors.orange,
+                                            Icons.watch_later_outlined,
+                                            color: Colors.white,
                                           ),
                                           SizedBox(
                                             width: 8.0,
                                           ),
-                                          Expanded(
-                                            child: Text(
-                                              example.ingredient[index],
-                                              style: kTextJourney9,
-                                              textAlign: TextAlign.start,
-                                            ),
+                                          Text(
+                                            example.servingTime,
+                                            style: kTextJourney9,
                                           ),
                                         ],
-                                      );
-                                    },
-                                    shrinkWrap: true,
-                                  ),
-                                ),
-                                Text(
-                                  'Direction',
-                                  style: kTextJourney14,
-                                ),
-                                SizedBox(
-                                  height: 3.0,
-                                ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: Color(0xFF6A6A6A),
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Expanded(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: example.direction.length,
-                                    itemBuilder: (context, index) {
-                                      return Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      ),
+                                      Row(
                                         children: [
                                           Icon(
-                                            Icons.fiber_manual_record,
-                                            size: 5.0,
-                                            color: Colors.orange,
+                                            Icons.people_outline,
+                                            color: Colors.white,
                                           ),
                                           SizedBox(
                                             width: 8.0,
                                           ),
-                                          Expanded(
-                                            child: Text(
-                                              example.direction[index],
-                                              style: kTextJourney9,
-                                            ),
+                                          Text(
+                                            example.servingNumber.toString(),
+                                            style: kTextJourney9,
                                           ),
                                         ],
-                                      );
-                                    },
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons
+                                                .local_fire_department_outlined,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(
+                                            width: 8.0,
+                                          ),
+                                          Text(
+                                            '${example.kcal} kcal',
+                                            style: kTextJourney9,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
+                                  SizedBox(
+                                    height: 27.0,
+                                  ),
+                                  Text(
+                                    'Ingredient',
+                                    style: kTextJourney14,
+                                  ),
+                                  SizedBox(
+                                    height: 6.0,
+                                  ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color: Color(0xFF6A6A6A),
+                                  ),
+                                  Flexible(
+                                    child: ListView.builder(
+                                      // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      //   crossAxisCount: 2,
+                                      //   crossAxisSpacing: 1,
+                                      //       mainAxisSpacing: 0
+                                      // ),
+                                      // physics: NeverScrollableScrollPhysics(),
+                                      padding: EdgeInsets.zero,
+                                      controller: controller,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: example.ingredient.length,
+                                      itemBuilder: (context, index) {
+                                        return Row(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(
+                                              Icons.fiber_manual_record,
+                                              size: 5.0,
+                                              color: Colors.orange,
+                                            ),
+                                            SizedBox(
+                                              width: 8.0,
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                example.ingredient[index],
+                                                style: kTextJourney9,
+                                                textAlign: TextAlign.start,
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                      shrinkWrap: true,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Direction',
+                                    style: kTextJourney14,
+                                  ),
+                                  SizedBox(
+                                    height: 3.0,
+                                  ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color: Color(0xFF6A6A6A),
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      controller: controller,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: example.direction.length,
+                                      itemBuilder: (context, index) {
+                                        return Row(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(
+                                              Icons.fiber_manual_record,
+                                              size: 5.0,
+                                              color: Colors.orange,
+                                            ),
+                                            SizedBox(
+                                              width: 8.0,
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                example.direction[index],
+                                                style: kTextJourney9,
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );

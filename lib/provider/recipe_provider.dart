@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../model/food.dart';
@@ -53,6 +54,35 @@ class RecipeProvider extends ChangeNotifier {
     //   'amount' : amount,
     //   'quantity' : quantity,
     // });
+  }
+  Map foodieCart={};
+  void addQuantity(Food model)async{
+    final cartList = await FirebaseFirestore.instance
+        .collection('cart')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection('myOrderedFoods').doc(model.uid).get();
+
+    foodieCart = (cartList.data() as dynamic);
+    quantity = foodieCart['quantity'];
+    quantity++;
+    foodieCart['quantity'] = quantity;
+    notifyListeners();
+  }
+
+  void subtractQuantity(Food model)async{
+    if(model.quantity > 0){
+      final cartList = await FirebaseFirestore.instance
+          .collection('cart')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .collection('myOrderedFoods').doc(model.uid).get();
+
+      foodieCart = (cartList.data() as dynamic);
+      quantity = foodieCart['quantity'];
+      quantity--;
+      foodieCart['quantity'] = quantity;
+      notifyListeners();
+    }
+    // notifyListeners();
   }
 
   fetchCart(String? userId) {

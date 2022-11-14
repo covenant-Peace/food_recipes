@@ -37,10 +37,10 @@ class _HomePageState extends State<HomePage> {
   int _radioValue = 0;
   CheckoutMethod _method = CheckoutMethod.card;
   bool _inProgress = false;
-  String _cardNumber;
-  String _cvv;
-  int _expiryMonth;
-  int _expiryYear;
+  String? _cardNumber;
+  String? _cvv;
+  int? _expiryMonth;
+  int? _expiryYear;
 
   @override
   void initState()async {
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
       );
       print('Response = $response');
       setState(() => _inProgress = false);
-      _updateStatus(response.reference, '$response');
+      _updateStatus(response.reference.toString(), '$response');
     } catch (e) {
       setState(() => _inProgress = false);
       // _showMessage("Check console for error");
@@ -187,16 +187,16 @@ class _HomePageState extends State<HomePage> {
 
     // Checking if the transaction is successful
     if (response.status) {
-      _verifyOnServer(reference);
+      _verifyOnServer(reference!);
       return;
     }
 
     // The transaction failed. Checking if we should verify the transaction
     if (response.verify) {
-      _verifyOnServer(reference);
+      _verifyOnServer(reference!);
     } else {
       setState(() => _inProgress = false);
-      _updateStatus(reference, response.message);
+      _updateStatus(reference!, response.message);
     }
   }
 
@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<String> _fetchAccessCodeFrmServer(String reference) async {
     String url = '$backendUrl/new-access-code';
-    String accessCode;
+    String? accessCode;
     try {
       print("Access code url = $url");
       http.Response response = await http.get(Uri.parse(url));
@@ -281,10 +281,10 @@ class _HomePageState extends State<HomePage> {
       _updateStatus(
           reference,
           'There was a problem getting a new access code form'
-          ' the backend: ${e.message}');
+          ' the backend: ${e.toString()}');
     }
 
-    return accessCode;
+    return accessCode!;
   }
 
   void _verifyOnServer(String reference) async {
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
       _updateStatus(
           reference,
           'There was a problem verifying %s on the backend: '
-          '$reference ${e.message}');
+          '$reference ${e.toString()}');
     }
     setState(() => _inProgress = false);
   }

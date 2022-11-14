@@ -10,11 +10,11 @@ import 'package:food_recipes/services/auth_service.dart';
 import '../model/user_model.dart';
 
 class UserProvider with ChangeNotifier {
-  UserModel _user;
+  UserModel? _user;
   final AUthService _authMethods = AUthService();
 
   UserModel get getUser {
-    return _user;
+    return _user!;
   }
 
   Future<void> refreshUser() async {

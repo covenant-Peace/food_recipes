@@ -26,7 +26,7 @@ class PaymentMethod extends StatefulWidget {
 }
 
 class _PaymentMethodState extends State<PaymentMethod> {
-  BottomNavigation just;
+  BottomNavigation? just;
 
   List<CardNumber> peace = [
     CardNumber(),
@@ -35,7 +35,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
     CardNumber(),
   ];
 
-  Paymentcard selectedCard;
+  Paymentcard? selectedCard;
   TextEditingController contNum = TextEditingController();
   TextEditingController contCvv = TextEditingController();
   TextEditingController contMon = TextEditingController();
@@ -71,10 +71,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
   int _radioValue = 0;
   CheckoutMethod _method = CheckoutMethod.card;
   bool _inProgress = false;
-  String _cardNumber;
-  String _cvv;
-  int _expiryMonth;
-  int _expiryYear;
+  String? _cardNumber;
+  String? _cvv;
+  int? _expiryMonth;
+  int? _expiryYear;
   String paystackPublicKey = 'pk_test_52eb73e1b35453adf5f002dda6fe77262beca85b';
 
   @override
@@ -285,7 +285,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       cursorColor: Colors.white,
                       controller: contMon,
                       keyboardType: TextInputType.number,
-                      onSaved: (String value) =>
+                      onSaved: (String? value) =>
                           _expiryMonth = int.tryParse(value ?? ""),
                       onChanged: (newText) {
                         // cpNumber = newText;
@@ -336,7 +336,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       cursorColor: Colors.white,
                       controller: contYear,
                       keyboardType: TextInputType.number,
-                      onSaved: (String value) =>
+                      onSaved: (String? value) =>
                           _expiryYear = int.tryParse(value ?? ""),
                       onChanged: (newText) {
                         // cpNumber = newText;
@@ -387,7 +387,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       style: kTextJourney17,
                       keyboardType: TextInputType.number,
                       controller: contCvv,
-                      onSaved: (String value) => _cvv = value,
+                      onSaved: (String? value) => _cvv = value,
                       onChanged: (newText) {
                         if (newText.length == 3) {
                           FocusScope.of(context).unfocus();
@@ -477,8 +477,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
     setState(() => _inProgress = true);
     _formKey.currentState?.save();
     Charge charge = Charge()
-      ..amount = debin * 100 // In base currency
-      ..email = FirebaseAuth.instance.currentUser.email
+      ..amount =  100 // In base currency
+      ..email = FirebaseAuth.instance.currentUser?.email
       ..reference = _getReference()
       ..putCustomField('Charged by', 'Food Recipe Team')
       ..card = _getCardFromUI();
@@ -500,7 +500,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
       );
       print('Response = $response');
       setState(() => _inProgress = false);
-      _updateStatus(response.reference, '$response');
+      _updateStatus(response.reference.toString(), '$response');
     } catch (e) {
       setState(() => _inProgress = false);
       // _showMessage("Check console for error");
@@ -523,7 +523,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
       charge
         ..amount = 10000 // In base currency
-        ..email = FirebaseAuth.instance.currentUser.email
+        ..email = FirebaseAuth.instance.currentUser?.email
         ..reference = _getReference()
         ..putCustomField('Charged From', 'Flutter SDK');
       _chargeCard(charge);
@@ -542,16 +542,16 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
     // Checking if the transaction is successful
     if (response.status) {
-      _verifyOnServer(reference);
+      _verifyOnServer(reference!);
       return;
     }
 
     // The transaction failed. Checking if we should verify the transaction
     if (response.verify) {
-      _verifyOnServer(reference);
+      _verifyOnServer(reference!);
     } else {
       setState(() => _inProgress = false);
-      _updateStatus(reference, response.message);
+      _updateStatus(reference!, response.message);
     }
   }
 
@@ -604,7 +604,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
   Future<String> _fetchAccessCodeFrmServer(String reference) async {
     String url = '$backendUrl/new-access-code';
-    String accessCode;
+    String? accessCode;
     try {
       print("Access code url = $url");
       http.Response response = await http.get(Uri.parse(url));
@@ -615,10 +615,10 @@ class _PaymentMethodState extends State<PaymentMethod> {
       _updateStatus(
           reference,
           'There was a problem getting a new access code form'
-          ' the backend: ${e.message}');
+          ' the backend: ${e.toString()}');
     }
 
-    return accessCode;
+    return accessCode!;
   }
 
   void _verifyOnServer(String reference) async {
@@ -632,7 +632,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
       _updateStatus(
           reference,
           'There was a problem verifying %s on the backend: '
-          '$reference ${e.message}');
+          '$reference ${e.toString()}');
     }
     setState(() => _inProgress = false);
   }
@@ -660,7 +660,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
 class CardNumber1 extends StatelessWidget {
   final String monORyear;
 
-  CardNumber1({this.monORyear});
+  CardNumber1({required this.monORyear});
 
   @override
   Widget build(BuildContext context) {

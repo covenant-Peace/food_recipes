@@ -44,7 +44,7 @@ class _MapsState extends State<Maps> {
   static const LatLng destination = LatLng(37.33429383, -122.06600055);
   final locationController = Get.put(LocationController());
 
-  String conti;
+  String? conti;
   static const _apiKey = 'AIzaSyDz-FceM_J5lDltH3ajwSHVDSVzt3Sm-xI';
 
   @override
@@ -215,7 +215,7 @@ class _MapsState extends State<Maps> {
 
   void latin() async {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
-    final address = await geocoder.findAddressesFromQuery(conti);
+    final address = await geocoder.findAddressesFromQuery(conti!);
     setState(() {
       emire = address.first.coordinates.latitude!;
       longre = address.first.coordinates.longitude!;
@@ -227,7 +227,7 @@ class _MapsState extends State<Maps> {
 
   longin() async {
     final LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
-    final address = await geocoder.findAddressesFromQuery(conti);
+    final address = await geocoder.findAddressesFromQuery(conti!);
     longre = address.first.coordinates.longitude!;
   }
 }

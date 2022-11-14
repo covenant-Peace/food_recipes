@@ -26,20 +26,20 @@ class SignUpScreenState extends State<SignUpScreen> {
   static const String id = 'sign_up';
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
-  String email;
-  String password;
+  String? email;
+  String? password;
   bool showSpinner = false;
-  User user;
-  Timer timer;
+  User? user;
+  Timer? timer;
   bool validate = false;
-  String phoneNumber;
+  String? phoneNumber;
 
   Future<void> checkVerify() async {
     user = _auth.currentUser;
-    user.sendEmailVerification();
-    await user.reload();
-    if (user.emailVerified) {
-      timer.cancel();
+    user?.sendEmailVerification();
+    await user?.reload();
+    if (user!.emailVerified) {
+      timer?.cancel();
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => BottomNavigation(0)));
     }
@@ -248,11 +248,11 @@ class SignUpScreenState extends State<SignUpScreen> {
                     try {
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      FirebaseAuth.instance.currentUser.updateDisplayName(name);
+                              email: email!, password: password!);
+                      FirebaseAuth.instance.currentUser?.updateDisplayName(name);
 
                       if (newUser != null) {
-                        _firestore.collection('account details').doc(newUser.user.uid).set({
+                        _firestore.collection('account details').doc(newUser.user?.uid).set({
                           'Full name': name,
                           'email': email,
                           'password': password,
@@ -265,7 +265,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(e.message.toString()),
+                        content: Text(e.toString()),
                         duration: Duration(seconds: 6),
                       ));
                     }
@@ -330,7 +330,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                             builder: (context) => BottomNavigation(0)));
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(e.message.toString()),
+                      content: Text(e.toString()),
                       duration: Duration(seconds: 6),
                     )
                     );

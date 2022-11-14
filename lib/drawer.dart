@@ -31,7 +31,7 @@ class _AppState extends State<App> {
         maxWidth: 512,
         maxHeight: 512,
         imageQuality: 75);
-    ref = FirebaseStorage.instance.ref().child(image?.path);
+    ref = FirebaseStorage.instance.ref().child(image!.path);
     await ref.putFile(File(image.path));
     ref.getDownloadURL().then((value) {
       print(value);
@@ -56,6 +56,7 @@ class _AppState extends State<App> {
     } catch (e) {
       print(e);
     }
+    return Text('');
   }
 
   @override

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../bottom_navigation.dart';
 
-// int debin;
+int debin = 0;
 
 class ShoppingPage extends StatefulWidget {
   @override
@@ -72,135 +72,146 @@ class _ShoppingPageState extends State<ShoppingPage> {
                     .doc(FirebaseAuth.instance.currentUser?.uid)
                     .collection('myOrderedFoods')
                     .snapshots(),
-                builder: ((context, snapshot) {
-                  return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        // context.read<RecipeProvider>().totalAmount = ;
-                        return GestureDetector(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Image.network(
-                                      snapshot.data.docs[index]['image']),
-                                  SizedBox(
-                                    width: 17.0,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              '${snapshot.data?.docs[index]['name']}',
-                                              style: kTextGet4,
-                                            ),
-                                            GestureDetector(
-                                                onTap: () {
-                                                  context
-                                                      .read<RecipeProvider>()
-                                                      .deleteFood(
-                                                          snapshot
-                                                              .data.docs[index],
-                                                          FirebaseAuth.instance
-                                                              .currentUser.uid);
-                                                },
-                                                child: Image.asset(
-                                                    'images/close.png')),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 7.0,
-                                        ),
-                                        Text(
-                                          '${snapshot.data.docs[index]['description']}',
-                                          style: kTextGet5,
-                                        ),
-                                        SizedBox(
-                                          height: 10.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  'Quantity  ',
-                                                  style: kTextGet5,
-                                                ),
-                                                Container(
-                                                  height: 17.0,
-                                                  width: 37.0,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4.0),
-                                                    color: Colors.grey,
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          if (snapshot.data.docs['quantity'] > 0) {
-                                                            snapshot.data.docs[index]['quantity']--;
-                                                          }
-                                                        },
-                                                        child: Icon(
-                                                          Icons.remove,
-                                                          color: Colors.white,
-                                                          size: 10.0,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                          '${snapshot.data.docs[index]['quantity']}'),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          snapshot.data
-                                                                  .docs[index]
-                                                              ['quantity']++;
-                                                        },
-                                                        child: Icon(
-                                                          Icons.add,
-                                                          color: Colors.white,
-                                                          size: 10.0,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Text(
-                                              'NGN ${snapshot.data.docs[index]['quantity'] * snapshot.data.docs[index]['price']}',
-                                              style: kTextGet6,
-                                            )
-                                          ],
-                                        ),
-                                      ],
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.docs.length,
+                        itemBuilder: (context, index) {
+                          // context.read<RecipeProvider>().totalAmount = ;
+                          return GestureDetector(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.network(
+                                        snapshot.data.docs[index]['image']),
+                                    SizedBox(
+                                      width: 17.0,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15.0,
-                              ),
-                              Divider(
-                                thickness: 0.0,
-                                color: Color(0xFF6A6A6A),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                '${snapshot.data?.docs[index]['name']}',
+                                                style: kTextGet4,
+                                              ),
+                                              GestureDetector(
+                                                  onTap: () {
+                                                    context
+                                                        .read<RecipeProvider>()
+                                                        .deleteFood(
+                                                            snapshot.data
+                                                                .docs[index],
+                                                            FirebaseAuth
+                                                                .instance
+                                                                .currentUser
+                                                                ?.uid);
+                                                  },
+                                                  child: Image.asset(
+                                                      'images/close.png')),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 7.0,
+                                          ),
+                                          Text(
+                                            '${snapshot.data.docs[index]['description']}',
+                                            style: kTextGet5,
+                                          ),
+                                          SizedBox(
+                                            height: 10.0,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Quantity  ',
+                                                    style: kTextGet5,
+                                                  ),
+                                                  Container(
+                                                    height: 17.0,
+                                                    width: 37.0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.0),
+                                                      color: Colors.grey,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            if (snapshot.data
+                                                                        .docs[
+                                                                    'quantity'] >
+                                                                0) {
+                                                              snapshot.data
+                                                                          .docs[
+                                                                      index][
+                                                                  'quantity']--;
+                                                            }
+                                                          },
+                                                          child: Icon(
+                                                            Icons.remove,
+                                                            color: Colors.white,
+                                                            size: 10.0,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                            '${snapshot.data.docs[index]['quantity']}'),
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            snapshot.data
+                                                                    .docs[index]
+                                                                ['quantity']++;
+                                                          },
+                                                          child: Icon(
+                                                            Icons.add,
+                                                            color: Colors.white,
+                                                            size: 10.0,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Text(
+                                                'NGN ${snapshot.data.docs[index]['quantity'] * snapshot.data!.docs[index]['price']}',
+                                                style: kTextGet6,
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 15.0,
+                                ),
+                                Divider(
+                                  thickness: 0.0,
+                                  color: Color(0xFF6A6A6A),
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                  }
+                  return const LinearProgressIndicator();
                 }),
               ),
             ),

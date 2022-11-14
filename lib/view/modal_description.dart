@@ -174,7 +174,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                     style: kTextGet,
                   ),
                   Text(
-                    'NGN${buyingPrice * _counter}',
+                    'NGN$_counter',
                     style: kTextJourney10,
                   ),
                 ]),

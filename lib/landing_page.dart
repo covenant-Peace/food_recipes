@@ -15,7 +15,6 @@ import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'constants.dart';
-import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
 
@@ -261,8 +260,12 @@ class _LandingPageState extends State<LandingPage> {
                   style: kTextGet8,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Delicious())),
+                  onTap: () {
+                    // =>
+                    //     Navigator.push(context,
+                    //         MaterialPageRoute(
+                    //             builder: (context) => Delicious()))
+                  },
                   child: Text(
                     'See all',
                     style: kTextJourney22,
@@ -321,7 +324,7 @@ class _LandingPageState extends State<LandingPage> {
                       padding: const EdgeInsets.only(top: 10),
                       child: Consumer<RecipeProvider>(
                           builder: (context, provide, _) {
-                            int selected = 0;
+                        int selected = 0;
                         return TabBarView(
                           children: [
                             GridView.builder(
@@ -335,7 +338,11 @@ class _LandingPageState extends State<LandingPage> {
                                 return GestureDetector(
                                   onTap: () {
                                     selected = index;
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaceOrder(provide.foods[selected])));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => PlaceOrder(
+                                                provide.foods[selected])));
                                   },
                                   child: Flexible(
                                     child: Column(
@@ -1579,6 +1586,7 @@ class Built extends StatelessWidget {
     double getw(double w) {
       return MediaQuery.of(context).size.width * (w / 433.84);
     }
+
     int selectedIndex = 0;
 
     return Consumer<RecipeProvider>(builder: (context, snapshot, _) {
@@ -1588,8 +1596,11 @@ class Built extends StatelessWidget {
             InkWell(
               onTap: () {
                 selectedIndex = index;
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PlaceOrder(snapshot.foods[selectedIndex])));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            PlaceOrder(snapshot.foods[selectedIndex])));
               },
               child: Container(
                 width: getw(250),
@@ -1604,7 +1615,10 @@ class Built extends StatelessWidget {
                     children: [
                       ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.network(snapshot.foods[index].image, fit: BoxFit.contain,)),
+                          child: Image.network(
+                            snapshot.foods[index].image,
+                            fit: BoxFit.contain,
+                          )),
                       SizedBox(
                         height: 10,
                       ),

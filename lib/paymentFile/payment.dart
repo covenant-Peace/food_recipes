@@ -21,7 +21,7 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  Paymentcard selectedCard;
+  Paymentcard? selectedCard;
 
   // int widgetNumber = foodWidget.length;
 

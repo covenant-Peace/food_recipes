@@ -22,14 +22,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   void _navigateHome() async {
-    User user;
-    String emaill;
+    User? user;
+    String? emaill;
     try {
       UserProvider userProvider = Provider.of(context, listen: false);
 
       await userProvider.refreshUser();
       user = FirebaseAuth.instance.currentUser;
-      emaill = user.email;
+      emaill = user?.email;
     } catch (e) {
       user = null;
     }

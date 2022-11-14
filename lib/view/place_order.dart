@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/constants.dart';
 import 'package:food_recipes/provider/recipe_provider.dart';
-import 'package:food_recipes/provider/user_provider.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +17,7 @@ class PlaceOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScrollController controller;
+    ScrollController? controller;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF222222),
@@ -161,7 +159,8 @@ class PlaceOrder extends StatelessWidget {
                                       itemCount: example.ingredient.length,
                                       itemBuilder: (context, index) {
                                         return Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Icon(
                                               Icons.fiber_manual_record,
@@ -206,7 +205,8 @@ class PlaceOrder extends StatelessWidget {
                                       itemCount: example.direction.length,
                                       itemBuilder: (context, index) {
                                         return Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Icon(
                                               Icons.fiber_manual_record,
@@ -310,7 +310,8 @@ class PlaceOrder extends StatelessWidget {
                     )),
                 child: GestureDetector(
                   onTap: () {
-                    context.read<RecipeProvider>().addToCart(FirebaseAuth.instance.currentUser.uid, example);
+                    context.read<RecipeProvider>().addToCart(
+                        FirebaseAuth.instance.currentUser?.uid, example);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

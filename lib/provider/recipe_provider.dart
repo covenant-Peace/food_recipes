@@ -35,7 +35,7 @@ class RecipeProvider extends ChangeNotifier {
     });
   }
 
-  void addToCart(String userId, Food model) async {
+  void addToCart(String? userId, Food model) async {
     final snap = FirebaseFirestore.instance
         .collection('cart')
         .doc(userId)
@@ -76,7 +76,7 @@ class RecipeProvider extends ChangeNotifier {
     });
   }
 
-  void deleteFood(Food model, String userId) async {
+  void deleteFood(Food model, String? userId) async {
     // _isLoading = true;
     notifyListeners();
     final cart = FirebaseFirestore.instance

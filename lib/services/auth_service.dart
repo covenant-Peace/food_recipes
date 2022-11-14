@@ -31,9 +31,9 @@ class AUthService {
 
   Future<void> googleSignIn(BuildContext context) async {
     try {
-      final GoogleSignInAccount googleuser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication googleAuth =
-          await googleuser.authentication;
+          await googleuser!.authentication;
 
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         final credential = GoogleAuthProvider.credential(
@@ -46,17 +46,17 @@ class AUthService {
       }
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.message),
+        content: Text(e.toString()),
         duration: Duration(seconds: 6),
       ));
     }
   }
 
   Future<UserModel> getUserDetails() async {
-    User currentUser = _auth.currentUser;
+    User? currentUser = _auth.currentUser;
 
     DocumentSnapshot snap =
-    await _firestore.collection('account details').doc(currentUser.uid).get();
+    await _firestore.collection('account details').doc(currentUser?.uid).get();
 
     return UserModel.fromSnap(snap);
   }
@@ -64,14 +64,14 @@ class AUthService {
   Future<void> signInWithFacebook(BuildContext context) async {
 
     try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final LoginResult? loginResult = await FacebookAuth.instance.login();
       final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken.token);
+          FacebookAuthProvider.credential(loginResult!.accessToken!.token);
 
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.message),
+        content: Text(e.toString()),
         duration: Duration(seconds: 6),
       ));
     }
@@ -85,13 +85,13 @@ class VerifyEmail extends StatefulWidget {
 }
 
 class _VerifyEmailState extends State<VerifyEmail> {
-  bool isVerified = false;
+  bool? isVerified = false;
 
   @override
   void initState() {
     super.initState();
-    isVerified = FirebaseAuth.instance.currentUser.emailVerified;
-    if (!isVerified) {
+    isVerified = FirebaseAuth.instance.currentUser?.emailVerified;
+    if (!isVerified!) {
       sendVerify();
     } else {
       Navigator.push(context,
@@ -102,17 +102,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
   Future sendVerify() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      await user.sendEmailVerification();
+      await user?.sendEmailVerification();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.message),
+        content: Text(e.toString()),
         duration: Duration(seconds: 6),
       ));
     }
   }
 
   @override
-  Widget build(BuildContext context) => isVerified
+  Widget build(BuildContext context) => isVerified!
       ? BottomNavigation(0)
       : Scaffold(
           backgroundColor: Color(0xff222222),

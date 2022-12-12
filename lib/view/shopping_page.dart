@@ -26,6 +26,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
           .read<RecipeProvider>()
           .fetchCart(FirebaseAuth.instance.currentUser?.uid);
     });
+    context.read<RecipeProvider>().total();
     super.initState();
   }
 
@@ -72,16 +73,16 @@ class _ShoppingPageState extends State<ShoppingPage> {
                 ),
               ],
             ),
-            Expanded(
-              child: Consumer<RecipeProvider>(
-                // stream: FirebaseFirestore.instance
-                //     .collection('cart')
-                //     .doc(FirebaseAuth.instance.currentUser?.uid)
-                //     .collection('myOrderedFoods')
-                //     .snapshots(),
-                builder: ((context, snapshot, _) {
-                  // if (snapshot.hasData) {
-                  return ListView.builder(
+            Consumer<RecipeProvider>(
+              // stream: FirebaseFirestore.instance
+              //     .collection('cart')
+              //     .doc(FirebaseAuth.instance.currentUser?.uid)
+              //     .collection('myOrderedFoods')
+              //     .snapshots(),
+              builder: ((context, snapshot, _) {
+                // if (snapshot.hasData) {
+                return Expanded(
+                  child: ListView.builder(
                       itemCount: snapshot.recipesBought.length,
                       itemBuilder: (context, index) {
                         // context.read<RecipeProvider>().totalAmount = ;
@@ -173,12 +174,19 @@ class _ShoppingPageState extends State<ShoppingPage> {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: () {
-                                                        context
-                                                            .read<
-                                                                RecipeProvider>()
-                                                            .subtractQuantity(
-                                                                snapshot.recipesBought[
-                                                                    index]);
+                                                        if (snapshot
+                                                                .recipesBought[
+                                                                    index]
+                                                                .quantity >
+                                                            0) {
+                                                          snapshot.subtractQuantity(
+                                                              snapshot.recipesBought[
+                                                                  index]);
+                                                        }
+
+                                                        setState(() {
+                                                          snapshot.total();
+                                                        });
                                                       },
                                                       child: Icon(
                                                         Icons.remove,
@@ -190,12 +198,13 @@ class _ShoppingPageState extends State<ShoppingPage> {
                                                         '${snapshot.recipesBought[index].quantity}'),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        context
-                                                            .read<
-                                                                RecipeProvider>()
-                                                            .addQuantity(snapshot
-                                                                    .recipesBought[
+                                                        snapshot.addQuantity(
+                                                            snapshot.recipesBought[
                                                                 index]);
+
+                                                        setState(() {
+                                                          snapshot.total();
+                                                        });
                                                       },
                                                       child: Icon(
                                                         Icons.add,
@@ -229,11 +238,10 @@ class _ShoppingPageState extends State<ShoppingPage> {
                             ],
                           ),
                         );
-                      });
-                  // }
-                  return const LinearProgressIndicator();
-                }),
-              ),
+                      }),
+                );
+                // }
+              }),
             ),
             SizedBox(
               height: 20.0,
@@ -248,7 +256,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
                       style: kTextGet,
                     ),
                     Text(
-                      'NGN 0',
+                      'NGN ${context.read<RecipeProvider>().sum}',
                       style: kTextGet,
                     )
                   ],
@@ -319,7 +327,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
                 ),
                 // debin = deliveryFee + controller.totalPrice.toInt();
                 Text(
-                  'NGN $debin',
+                  'NGN ${context.read<RecipeProvider>().sum + deliveryFee}',
                   style: kTextGet2,
                 )
               ],

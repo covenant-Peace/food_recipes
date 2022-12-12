@@ -55,34 +55,47 @@ class RecipeProvider extends ChangeNotifier {
     //   'quantity' : quantity,
     // });
   }
-  Map foodieCart={};
-  void addQuantity(Food model)async{
-    final cartList = await FirebaseFirestore.instance
+
+  Map foodieCart = {};
+
+  void addQuantity(Food model) async {
+    await FirebaseFirestore.instance
         .collection('cart')
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection('myOrderedFoods').doc(model.uid).get();
+        .collection('myOrderedFoods')
+        .doc(model.uid)
+        .update({'quantity': FieldValue.increment(1)});
 
-    foodieCart = (cartList.data() as dynamic);
-    quantity = foodieCart['quantity'];
-    quantity++;
-    foodieCart['quantity'] = quantity;
     notifyListeners();
   }
 
-  void subtractQuantity(Food model)async{
-    if(model.quantity > 0){
-      final cartList = await FirebaseFirestore.instance
+  void subtractQuantity(Food model) async {
+    if (model.quantity > 0) {
+      await FirebaseFirestore.instance
           .collection('cart')
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .collection('myOrderedFoods').doc(model.uid).get();
+          .collection('myOrderedFoods')
+          .doc(model.uid)
+          .update({'quantity': FieldValue.increment(-1)});
 
-      foodieCart = (cartList.data() as dynamic);
-      quantity = foodieCart['quantity'];
-      quantity--;
-      foodieCart['quantity'] = quantity;
       notifyListeners();
     }
     // notifyListeners();
+  }
+  int sum =0;
+
+  total()async{
+    final snap = await FirebaseFirestore.instance
+        .collection('cart')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection('myOrderedFoods').get();
+
+    for (var element in snap.docs) {
+      int value = element.data()['price'] * element.data()['quantity'];
+      sum = sum + value;
+    }
+    // notifyListeners();
+    notifyListeners();
   }
 
   fetchCart(String? userId) {

@@ -325,6 +325,7 @@ class _LandingPageState extends State<LandingPage> {
                       child: Consumer<RecipeProvider>(
                           builder: (context, provide, _) {
                         int selected = 0;
+                        if(provide.foods.isNotEmpty){
                         return TabBarView(
                           children: [
                             GridView.builder(
@@ -1526,7 +1527,10 @@ class _LandingPageState extends State<LandingPage> {
                               ],
                             ),
                           ],
-                        );
+                        );}
+                        else{
+                          return CircularProgressIndicator();
+                        }
                       }),
                     ),
                   )
@@ -1590,6 +1594,9 @@ class Built extends StatelessWidget {
     int selectedIndex = 0;
 
     return Consumer<RecipeProvider>(builder: (context, snapshot, _) {
+      if(snapshot.foods.isEmpty){
+        return CircularProgressIndicator();
+      }
       return ListView.builder(
         itemBuilder: (context, index) => Row(
           children: [

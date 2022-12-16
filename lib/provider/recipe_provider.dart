@@ -6,20 +6,28 @@ import '../model/food.dart';
 
 class RecipeProvider extends ChangeNotifier {
   final List<Food> _foods = [];
+  final List<Food> _foods1 = [];
+  final List<Food> _foods2 = [];
+  final List<Food> _foods3 = [];
+
   Map chosenFood = {};
   final List<Food> _chosenRecipe = [];
 
   List<Food> get recipesBought => _chosenRecipe;
 
   List<Food> get foods => _foods;
+  List<Food> get foods1 => _foods1;
+  List<Food> get foods2 => _foods2;
+  List<Food> get foods3 => _foods3;
+
   int quantity = 0;
   double totalAmount = 0;
 
-  fetchCards() {
+  fetchFoods() {
     final snapshot = FirebaseFirestore.instance
         .collection('food')
         .doc('popular')
-        .collection('Breakfast')
+        .collection('Breakfast').where('typeOfFood', isEqualTo: 0)
         // .orderBy('typeOfFood')
         .snapshots();
 
@@ -27,6 +35,48 @@ class RecipeProvider extends ChangeNotifier {
       _foods.clear();
       for (var element in event.docs) {
         _foods.add(
+          Food.fromMap(
+            element.data(),
+          ),
+        );
+      }
+      notifyListeners();
+    });
+  }
+
+  fetchFoods1() {
+    final snapshot = FirebaseFirestore.instance
+        .collection('food')
+        .doc('popular')
+        .collection('Breakfast').where('typeOfFood', isEqualTo: 1)
+    // .orderBy('typeOfFood')
+        .snapshots();
+
+    snapshot.listen((event) {
+      _foods1.clear();
+      for (var element in event.docs) {
+        _foods1.add(
+          Food.fromMap(
+            element.data(),
+          ),
+        );
+      }
+      notifyListeners();
+    });
+  }
+
+  fetchFoods2() {
+    final snapshot = FirebaseFirestore.instance
+        .collection('food')
+        .doc('popular')
+        .collection('Breakfast').where('typeOfFood', isEqualTo: 2)
+    // .orderBy('typeOfFood')
+        .snapshots();
+
+    snapshot.listen((event) {
+      _foods2.clear();
+      for (var element in event.docs) {
+        _foods2.add(
           Food.fromMap(
             element.data(),
           ),

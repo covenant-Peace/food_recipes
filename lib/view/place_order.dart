@@ -201,7 +201,7 @@ class PlaceOrder extends StatelessWidget {
                                     child: ListView.builder(
                                       shrinkWrap: true,
                                       controller: controller,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      // physics: NeverScrollableScrollPhysics(),
                                       itemCount: example.direction.length,
                                       itemBuilder: (context, index) {
                                         return Row(
@@ -307,7 +307,8 @@ class PlaceOrder extends StatelessWidget {
                           color: Colors.orange,
                           width: 1,
                           style: BorderStyle.solid),
-                    )),
+                    ),
+                ),
                 child: GestureDetector(
                   onTap: () {
                     context.read<RecipeProvider>().addToCart(

@@ -3,12 +3,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_recipes/model/food.dart';
 import 'package:food_recipes/view/description.dart';
 
 import 'constants.dart';
 import 'drawer.dart';
 
-enum Food {
+enum Foods {
   salad,
   vegetables,
   soup,
@@ -25,7 +26,7 @@ class Delicious extends StatefulWidget {
 
 class _DeliciousState extends State<Delicious> {
   final GlobalKey<ScaffoldState> _gkey = GlobalKey<ScaffoldState>();
-  Food chosen = Food.salad;
+  Foods chosen = Foods.salad;
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +39,14 @@ class _DeliciousState extends State<Delicious> {
     }
 
     Widget grealish() {
-      if (chosen == Food.salad) {
+      if (chosen == Foods.salad) {
         return Foden();
-      } else if (chosen == Food.soup) {
+      } else if (chosen == Foods.soup) {
         return Text(
           'Coming Soon',
           style: TextStyle(color: Colors.white),
         );
-      } else if (chosen == Food.vegetables) {
+      } else if (chosen == Foods.vegetables) {
         return Text(
           'Coming Soon',
           style: TextStyle(color: Colors.white),
@@ -107,7 +108,7 @@ class _DeliciousState extends State<Delicious> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      chosen = Food.salad;
+                      chosen = Foods.salad;
                     });
                     // Navigator.push(
                     //     context,
@@ -123,7 +124,7 @@ class _DeliciousState extends State<Delicious> {
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: chosen == Food.salad
+                      color: chosen == Foods.salad
                           ? Color(0xFFEDA92E)
                           : Color(0xfff2f2f2),
                     ),
@@ -141,7 +142,7 @@ class _DeliciousState extends State<Delicious> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      chosen = Food.vegetables;
+                      chosen = Foods.vegetables;
                     });
                     // Navigator.push(
                     //     context,
@@ -157,7 +158,7 @@ class _DeliciousState extends State<Delicious> {
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: chosen == Food.vegetables
+                      color: chosen == Foods.vegetables
                           ? Color(0xFFEDA92E)
                           : Color(0xfff2f2f2),
                     ),
@@ -175,7 +176,7 @@ class _DeliciousState extends State<Delicious> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      chosen = Food.soup;
+                      chosen = Foods.soup;
                     });
                   },
                   child: Container(
@@ -187,7 +188,7 @@ class _DeliciousState extends State<Delicious> {
                     height: getH(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: chosen == Food.soup
+                      color: chosen == Foods.soup
                           ? Color(0xFFEDA92E)
                           : Color(0xfff2f2f2),
                     ),
@@ -245,11 +246,28 @@ class Foden extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       selected = index;
+                      Food model = Food(
+                        image: snapshot.data.docs[selected]['image'],
+                        typeOfFood: snapshot.data.docs[selected]['typeOfFood'],
+                        price: snapshot.data.docs[selected]['price'],
+                        servingTime: snapshot.data.docs[selected]
+                            ['servingTime'],
+                        toServe: snapshot.data.docs[selected]['toServe'],
+                        name: snapshot.data.docs[selected]['name'],
+                        description: snapshot.data.docs[selected]
+                            ['description'],
+                        servingNumber: snapshot.data.docs[selected]
+                            ['servingNumber'],
+                        ingredient: snapshot.data.docs[selected]['ingredient'],
+                        kcal: snapshot.data.docs[selected]['kcal'],
+                        direction: snapshot.data.docs[selected]['direction'],
+                        ratings: snapshot.data.docs[selected]['ratings'],
+                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Description(
-                            snapshot.data.docs[selected],
+                            model,
                           ),
                         ),
                       );

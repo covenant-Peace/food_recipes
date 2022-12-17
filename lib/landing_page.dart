@@ -347,10 +347,13 @@ class _LandingPageState extends State<LandingPage> {
                                     onTap: () {
                                       selected = index;
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => PlaceOrder(
-                                                  provide.foods[selected])));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PlaceOrder(
+                                            provide.foods[selected],
+                                          ),
+                                        ),
+                                      );
                                     },
                                     child: Flexible(
                                       child: Column(

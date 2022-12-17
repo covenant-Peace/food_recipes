@@ -21,52 +21,58 @@ class Description extends StatelessWidget {
       key: _gkey,
       drawer: App(),
       backgroundColor: Color(0xFF222222),
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Image.network(
-                    exampple.image,
-                  ),
-                ),
-                Align(
-                  child: DraggableScrollableSheet(
-                    builder: (context, scrollController) {
-                      return SingleChildScrollView(
-                        controller: scrollController,
-                        child: ModalDescription(exampple),
-                      );
-                    },
-                    minChildSize: 0.5,
-                    initialChildSize: 0.5,
-                    maxChildSize: 0.93,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(33.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                          onTap: () => _gkey.currentState?.openDrawer(),
-                          child: SvgPicture.asset(
-                            'images/looks.svg',
-                          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: ClipRRect(
+                      child: Image.network(
+                        exampple.image,
                       ),
-                      Icon(
-                        Icons.search,
-                        color: Color(0xFF0C0C0C),
-                      ),
-                    ],
+                      borderRadius:
+                      BorderRadius.circular(15),
+                    ),
                   ),
-                ),
-              ],
+                  Align(
+                    child: DraggableScrollableSheet(
+                      builder: (context, scrollController) {
+                        return SingleChildScrollView(
+                          controller: scrollController,
+                          child: ModalDescription(exampple),
+                        );
+                      },
+                      minChildSize: 0.64,
+                      initialChildSize: 0.65,
+                      maxChildSize: 0.93,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(33.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                            onTap: () => _gkey.currentState?.openDrawer(),
+                            child: SvgPicture.asset(
+                              'images/looks.svg',
+                            ),
+                        ),
+                        Icon(
+                          Icons.search,
+                          color: Color(0xFF0C0C0C),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -4,10 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:food_recipes/model/food.dart';
 import '../drawer.dart';
 import 'modal_description.dart';
 
 class Description extends StatelessWidget {
+  final Food exampple;
+
+  Description(this.exampple);
+
   final GlobalKey<ScaffoldState> _gkey = GlobalKey<ScaffoldState>();
 
   @override
@@ -23,8 +28,8 @@ class Description extends StatelessWidget {
               children: <Widget>[
                 Align(
                   alignment: Alignment.topCenter,
-                  child: Image.asset(
-                    'images/flower.png',
+                  child: Image.network(
+                    exampple.image,
                   ),
                 ),
                 Align(
@@ -32,7 +37,7 @@ class Description extends StatelessWidget {
                     builder: (context, scrollController) {
                       return SingleChildScrollView(
                         controller: scrollController,
-                        child: ModalDescription(),
+                        child: ModalDescription(exampple),
                       );
                     },
                     minChildSize: 0.5,

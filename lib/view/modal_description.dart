@@ -3,10 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipes/constants.dart';
-import 'package:food_recipes/delicious.dart';
+// import 'package:food_recipes/delicious.dart';
+import 'package:food_recipes/model/food.dart';
 import 'package:food_recipes/view/shopping_page.dart';
 
 class ModalDescription extends StatefulWidget {
+  final Food exampple;
+
+  ModalDescription(this.exampple);
+
   @override
   State<ModalDescription> createState() => _ModalDescriptionState();
 }
@@ -68,14 +73,14 @@ class _ModalDescriptionState extends State<ModalDescription> {
               height: 6.0,
             ),
             Text(
-              'Salad',
+              widget.exampple.name,
               style: kTextJourney18,
             ),
             SizedBox(
               height: 5.0,
             ),
             Text(
-              'Fresh and healthy salad made with our \nown chef Recipe. Special healthy and-fat \nfree dish for those who want to lose weight',
+              widget.exampple.description,
               style: kTextGet,
             ),
             SizedBox(
@@ -157,7 +162,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                   width: 13.0,
                 ),
                 Text(
-                  '25 Mins',
+                  widget.exampple.servingTime,
                   style: kTextGet,
                 )
               ],
@@ -174,7 +179,7 @@ class _ModalDescriptionState extends State<ModalDescription> {
                     style: kTextGet,
                   ),
                   Text(
-                    'NGN$_counter',
+                    'NGN${_counter * widget.exampple.price}',
                     style: kTextJourney10,
                   ),
                 ]),

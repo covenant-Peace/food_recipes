@@ -238,22 +238,27 @@ class Foden extends StatelessWidget {
         builder: (context, AsyncSnapshot snapshot) {
           return ListView.builder(
             itemBuilder: (context, index) {
+              int selected = 0;
               // buyingPrice = controller.dels[index].price;
               return Column(
                 children: [
                   InkWell(
                     onTap: () {
+                      selected = index;
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Description()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Description(
+                            snapshot.data.docs[selected],
+                          ),
+                        ),
+                      );
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ClipRRect(
-                          borderRadius:
-                          BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(15),
                           child: SizedBox(
                             child: Image.network(
                               snapshot.data!.docs[index]['image'],

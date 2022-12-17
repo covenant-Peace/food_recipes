@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'constants.dart';
+import 'delicious.dart';
 import 'drawer.dart';
 import 'notification.dart';
 
@@ -265,9 +266,12 @@ class _LandingPageState extends State<LandingPage> {
                 GestureDetector(
                   onTap: () {
                     // =>
-                    //     Navigator.push(context,
-                    //         MaterialPageRoute(
-                    //             builder: (context) => Delicious()))
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Delicious(),
+                      ),
+                    );
                   },
                   child: Text(
                     'See all',
@@ -612,7 +616,7 @@ class _LandingPageState extends State<LandingPage> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => PlaceOrder(
-                                              provide.foods3[selected],
+                                            provide.foods3[selected],
                                           ),
                                         ),
                                       );

@@ -86,6 +86,27 @@ class RecipeProvider extends ChangeNotifier {
     });
   }
 
+  fetchFoods3() {
+    final snapshot = FirebaseFirestore.instance
+        .collection('food')
+        .doc('popular')
+        .collection('Breakfast').where('typeOfFood', isEqualTo: 3)
+    // .orderBy('typeOfFood')
+        .snapshots();
+
+    snapshot.listen((event) {
+      _foods3.clear();
+      for (var element in event.docs) {
+        _foods3.add(
+          Food.fromMap(
+            element.data(),
+          ),
+        );
+      }
+      notifyListeners();
+    });
+  }
+
   void addToCart(String? userId, Food model) async {
     final snap = FirebaseFirestore.instance
         .collection('cart')

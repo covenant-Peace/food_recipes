@@ -42,6 +42,7 @@ class _LandingPageState extends State<LandingPage> {
       context.read<RecipeProvider>().fetchFoods();
       context.read<RecipeProvider>().fetchFoods1();
       context.read<RecipeProvider>().fetchFoods2();
+      context.read<RecipeProvider>().fetchFoods3();
     });
     // _auth.currentUser.updatePhotoURL(imageUrl);
   }
@@ -598,19 +599,23 @@ class _LandingPageState extends State<LandingPage> {
                               GridView.builder(
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 3,
-                                        mainAxisSpacing: 1),
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 3,
+                                  mainAxisSpacing: 1,
+                                ),
                                 itemCount: provide.foods3.length,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
                                       selected = index;
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => PlaceOrder(
-                                                  provide.foods3[selected])));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PlaceOrder(
+                                              provide.foods3[selected],
+                                          ),
+                                        ),
+                                      );
                                     },
                                     child: Flexible(
                                       child: Column(
@@ -685,7 +690,9 @@ class _LandingPageState extends State<LandingPage> {
                             ],
                           );
                         } else {
-                          return CircularProgressIndicator(value: 2.0,);
+                          return CircularProgressIndicator(
+                            value: 0.2,
+                          );
                         }
                       }),
                     ),

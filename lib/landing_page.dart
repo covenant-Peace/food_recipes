@@ -697,8 +697,10 @@ class _LandingPageState extends State<LandingPage> {
                             ],
                           );
                         } else {
-                          return CircularProgressIndicator(
-                            value: 0.2,
+                          return Center(
+                            child: CircularProgressIndicator(
+                                // value: 0.2,
+                                ),
                           );
                         }
                       }),
@@ -765,7 +767,9 @@ class Built extends StatelessWidget {
 
     return Consumer<RecipeProvider>(builder: (context, snapshot, _) {
       if (snapshot.foods.isEmpty) {
-        return CircularProgressIndicator();
+        return Center(
+          child: CircularProgressIndicator(),
+        );
       }
       return ListView.builder(
         itemBuilder: (context, index) => Row(

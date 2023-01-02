@@ -430,7 +430,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                             height: 50.0,
                             child: Platform.isIOS
                                 ? const CupertinoActivityIndicator()
-                                : const CircularProgressIndicator(),
+                                : Center(child: const CircularProgressIndicator()),
                           )
                         : Flexible(
                             flex: 2,

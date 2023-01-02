@@ -129,12 +129,19 @@ class _AppState extends State<App> {
               height: MediaQuery.of(context).size.height * 0.009,
             ),
             ListTile(
-              leading: SvgPicture.asset('images/paymentmethod.svg'),
-              title: Text('Payment Method', style: kTextJourney27),
+              leading: SvgPicture.asset(
+                'images/paymentmethod.svg',
+              ),
+              title: Text(
+                'Payment Method',
+                style: kTextJourney27,
+              ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PaymentMethod()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PaymentMethod()),
+                );
               },
             ),
             SizedBox(
@@ -156,7 +163,10 @@ class _AppState extends State<App> {
             ),
             ListTile(
               leading: SvgPicture.asset('images/logout.svg'),
-              title: Text('Log out', style: kTextJourney27),
+              title: Text(
+                'Log out',
+                style: kTextJourney27,
+              ),
               onTap: () async {
                 await _auth.signOut();
                 Navigator.pop(context);

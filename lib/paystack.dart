@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 import 'dart:io';
 
@@ -43,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   int? _expiryYear;
 
   @override
-  void initState()async {
+  void initState() async {
     // await plugin.initialize(publicKey: paystackPublicKey);
     super.initState();
   }
@@ -80,7 +82,9 @@ class _HomePageState extends State<HomePage> {
                               height: 50.0,
                               child: Platform.isIOS
                                   ? const CupertinoActivityIndicator()
-                                  : const CircularProgressIndicator(),
+                                  : Center(
+                                      child: const CircularProgressIndicator(),
+                                    ),
                             )
                           : Column(
                               mainAxisSize: MainAxisSize.min,

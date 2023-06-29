@@ -283,10 +283,7 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: geth(13),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.34,
-              child: Built(),
-            ),
+            Built(),
             DefaultTabController(
               length: 4,
               child: Column(
@@ -772,87 +769,80 @@ class Built extends StatelessWidget {
         );
       }
       return ListView.builder(
-        itemBuilder: (context, index) => Row(
-          children: [
-            InkWell(
-              onTap: () {
-                selectedIndex = index;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            PlaceOrder(snapshot.foods[selectedIndex])));
-              },
-              child: Container(
-                width: getw(250),
-                decoration: BoxDecoration(
-                  color: Color(0xff0c0c0c),
-                  borderRadius: BorderRadius.circular(9),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(9.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            snapshot.foods[index].image,
-                            fit: BoxFit.contain,
-                          )),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        snapshot.foods[index].name,
-                        style: kTextJourney23,
-                      ),
-                      SizedBox(
-                        height: getw(10),
-                      ),
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          RatingBar.builder(
-                            itemBuilder: (context, _) => Icon(
-                              Icons.star,
-                              color: Colors.orange,
-                            ),
-                            itemCount: 5,
-                            ignoreGestures: true,
-                            unratedColor: Color(0xffc4c4c4),
-                            itemSize: 15,
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
-                            initialRating:
-                                snapshot.foods[index].ratings.toDouble(),
-                          ),
-                          SizedBox(
-                            width: getw(10),
-                          ),
-                          Text(
-                            '(100)',
-                            style: kTextJourney25,
-                          ),
-                          SizedBox(
-                            width: getw(70),
-                          ),
-                          Text(
-                            snapshot.foods[index].price.toString(),
-                            style: kTextJourney24,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
+        itemBuilder: (context, index) => InkWell(
+          onTap: () {
+            selectedIndex = index;
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        PlaceOrder(snapshot.foods[selectedIndex])));
+          },
+          child: Container(
+            height: geth(200),
+            width: getw(250),
+            decoration: BoxDecoration(
+              color: Color(0xff0c0c0c),
+              borderRadius: BorderRadius.circular(9),
             ),
-            SizedBox(
-              width: 15,
-            )
-          ],
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(9),
+            margin: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      snapshot.foods[index].image,
+                      fit: BoxFit.contain,
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  snapshot.foods[index].name,
+                  style: kTextJourney23,
+                ),
+                SizedBox(
+                  height: getw(10),
+                ),
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    RatingBar.builder(
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.orange,
+                      ),
+                      itemCount: 5,
+                      ignoreGestures: true,
+                      unratedColor: Color(0xffc4c4c4),
+                      itemSize: 15,
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                      initialRating: snapshot.foods[index].ratings.toDouble(),
+                    ),
+                    SizedBox(
+                      width: getw(10),
+                    ),
+                    Text(
+                      '(100)',
+                      style: kTextJourney25,
+                    ),
+                    SizedBox(
+                      width: getw(70),
+                    ),
+                    Text(
+                      snapshot.foods[index].price.toString(),
+                      style: kTextJourney24,
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
         itemCount: snapshot.foods.length,
         scrollDirection: Axis.horizontal,

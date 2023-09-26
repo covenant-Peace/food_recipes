@@ -6,9 +6,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_recipes/services/auth_service.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/log_in.dart';
+import 'package:food_recipes/services/auth_service.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'bottom_navigation.dart';
@@ -40,8 +40,15 @@ class SignUpScreenState extends State<SignUpScreen> {
     await user?.reload();
     if (user!.emailVerified) {
       timer?.cancel();
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => BottomNavigation(0)));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BottomNavigation(0),
+          settings: RouteSettings(
+            name: "going to home screen",
+          ),
+        ),
+      );
     }
   }
 
@@ -249,10 +256,14 @@ class SignUpScreenState extends State<SignUpScreen> {
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email!, password: password!);
-                      FirebaseAuth.instance.currentUser?.updateDisplayName(name);
+                      FirebaseAuth.instance.currentUser
+                          ?.updateDisplayName(name);
 
                       if (newUser != null) {
-                        _firestore.collection('account details').doc(newUser.user?.uid).set({
+                        _firestore
+                            .collection('account details')
+                            .doc(newUser.user?.uid)
+                            .set({
                           'Full name': name,
                           'email': email,
                           'password': password,
@@ -332,8 +343,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.toString()),
                       duration: Duration(seconds: 6),
-                    )
-                    );
+                    ));
                   }
                   setState(() {
                     showSpinner = false;

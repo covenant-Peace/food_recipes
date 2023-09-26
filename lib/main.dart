@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipes/homescreen.dart';
 import 'package:food_recipes/provider/recipe_provider.dart';
 import 'package:food_recipes/provider/user_provider.dart';
+import 'package:food_recipes/services/analytics.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
             // initialRoute: SplashScreen.routeName,
             // onGenerateRoute: route.controller,
             home: HomeScreen(),
+            navigatorObservers: [
+              AnalyticService().getAnalytics(),
+            ],
           );
         },
       );

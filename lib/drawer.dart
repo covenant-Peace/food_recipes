@@ -168,10 +168,16 @@ class _AppState extends State<App> {
                 style: kTextJourney27,
               ),
               onTap: () async {
-                await _auth.signOut();
-                Navigator.pop(context);
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                // await _auth.signOut();
+                // Navigator.pop(context);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
+                    ),
+                  );
+                },);
               },
             ),
             SizedBox(

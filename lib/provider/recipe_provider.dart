@@ -202,4 +202,16 @@ class RecipeProvider extends ChangeNotifier {
     // Future.delayed(const Duration(seconds: 4));
     notifyListeners();
   }
+
+  bool showSpinner = false;
+
+  turnOnCircle(){
+    showSpinner = true;
+    notifyListeners();
+  }
+
+  turnOffCircle(){
+    showSpinner = false;
+    notifyListeners();
+  }
 }

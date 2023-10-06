@@ -1,12 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/services/auth_service.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:food_recipes/bottom_navigation.dart';
 import 'package:food_recipes/journey.dart';
 import 'package:food_recipes/passwordFile/forgot_password.dart';
+import 'package:food_recipes/provider/recipe_provider.dart';
+import 'package:food_recipes/services/auth_service.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:provider/provider.dart';
 
 import 'constants.dart';
 import 'sign_up.dart';
@@ -22,14 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   late String email;
   late String password;
-  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF222222),
       body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
+        inAsyncCall: context.watch<RecipeProvider>().showSpinner,
         child: Padding(
           padding: const EdgeInsets.only(left: 38.0, right: 36.0),
           child: ListView(
@@ -148,9 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               GestureDetector(
                 onTap: () async {
-                  setState(() {
-                    showSpinner = true;
-                  });
+                  context.read<RecipeProvider>().turnOnCircle();
                   try {
                     // if (_auth.currentUser != null) {
                     //   if (!_auth.currentUser.emailVerified) {
@@ -162,26 +163,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     //   } else {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
-                    if (user != null) {
+                    if (user.user!.email!.isNotEmpty) {
                       await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  AUthService().handleAuthState()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AUthService().handleAuthState(),
+                        ),
+                      );
                       //     }
                       //   }
                     }
-                  } catch (e) {
-                    print(e);
+                  }
+                  catch (e) {
+                    if (kDebugMode) {
+                      print(e);
+                    }
                     // await _auth.currentUser.sendEmailVerification();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.toString()),
                       duration: Duration(seconds: 6),
                     ));
                   }
-                  setState(() {
-                    showSpinner = false;
-                  });
+                  context.read<RecipeProvider>().turnOffCircle();
                 },
                 child: Container(
                   height: 56.0,
@@ -203,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 130.0,
                     child: Divider(
                       thickness: 1.0,
@@ -214,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'or',
                     style: kTextJourney3,
                   ),
-                  Container(
+                  SizedBox(
                     width: 130.0,
                     child: Divider(
                       thickness: 1.0,
@@ -228,9 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               GestureDetector(
                 onTap: () async {
-                  setState(() {
-                    showSpinner = true;
-                  });
+                  context.read<RecipeProvider>().turnOnCircle();
                   try {
                     await AUthService().googleSignIn(context);
                     // GoogleSignIn().signIn();
@@ -244,9 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       duration: Duration(seconds: 6),
                     ));
                   }
-                  setState(() {
-                    showSpinner = false;
-                  });
+                  context.read<RecipeProvider>().turnOffCircle();
                 },
                 child: Container(
                   height: 56.0,
@@ -320,10 +319,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
+                      SchedulerBinding.instance.addPostFrameCallback((_) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpScreen()));
+                      });
                     },
                     child: Text(
                       ' Signup',

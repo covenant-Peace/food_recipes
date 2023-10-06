@@ -17,16 +17,16 @@ class AUthService {
 
 
   handleAuthState() {
-    return StreamBuilder(
-      builder: (BuildContext context, snapshot) {
-        if (snapshot.hasData) {
+    // return StreamBuilder(
+    //   builder: (BuildContext context, snapshot) {
+    //     if (snapshot.hasData) {
           return VerifyEmail();
-        } else {
-          return SignUpScreen();
-        }
-      },
-      stream: FirebaseAuth.instance.authStateChanges(),
-    );
+    //     } else {
+    //       return SignUpScreen();
+    //     }
+    //   },
+      // stream: FirebaseAuth.instance.authStateChanges(),
+    // );
   }
 
   Future<void> googleSignIn(BuildContext context) async {
